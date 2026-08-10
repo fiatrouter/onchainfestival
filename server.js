@@ -130,6 +130,10 @@ app.get('/api/stats', async (request, response) => {
   }
 });
 
+app.get('/', (request, response) => {
+  response.sendFile(path.join(staticRoot, 'index.html'));
+});
+
 app.use(express.static(staticRoot, { extensions: ['html'], index: 'index.html' }));
 
 async function start() {

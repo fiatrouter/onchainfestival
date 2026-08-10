@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "functions": {
+    "server.js": {
+      "includeFiles": [
+        "*.html",
+        "*.png",
+        "*.js",
+        "moments/**",
+        "speakers/**",
+        "sponsors/**"
+      ]
+    }
+  }
+}
