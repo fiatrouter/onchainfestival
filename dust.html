@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onchain Festival 2026 | Africa's Digital Economy Festival</title>
+  <meta name="description"
+    content="Africa's flagship digital economy festival. October 30 2026. Lagos Nigeria. Where builders, governments, investors and innovators shape the future of money." />
+  <meta property="og:title" content="Onchain Festival 2026 — Where Africa's Future Is Built" />
+  <meta property="og:description"
+    content="October 30 2026. Lagos Nigeria. Builders. Capital. Policy. Enterprise. AI. Digital Assets." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #050505;
+      --black2: #0d0d0d;
+      --white: #ffffff;
+      --cream: #F8F5F0;
+      --burgundy: #6B1E2E;
+      --burgundy2: #8B2438;
+      --burgundy3: #3D0A14;
+      --gold: #C8962A;
+      --gold-lt: #E8B84B;
+      --gold-dk: #A07820;
+      --gray-dk: #1A0A0F;
+      --gray-mid: #4A2828;
+      --gray-lt: #9A8080;
+      --glass-d: rgba(255, 255, 255, 0.04);
+      --glass-db: rgba(255, 255, 255, 0.08);
+      --glass-l: rgba(107, 30, 46, 0.05);
+      --glass-lb: rgba(107, 30, 46, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .display {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .display-xl {
+      font-size: clamp(3rem, 8vw, 7rem);
+    }
+
+    .display-lg {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+    }
+
+    .display-md {
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+    }
+
+    .display-sm {
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+    }
+
+    .label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .label.dark {
+      color: var(--burgundy);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .section-dark2 {
+      background: var(--black2);
+      color: var(--white);
+    }
+
+    .section-light {
+      background: var(--white);
+      color: var(--gray-dk);
+    }
+
+    .section-cream {
+      background: var(--cream);
+      color: var(--gray-dk);
+    }
+
+    .section {
+      padding: 8rem 0;
+      position: relative;
+    }
+
+    /* ── NAV ──────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.2rem 0;
+      transition: all 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(200, 150, 42, 0.15);
+      padding: 0.85rem 0;
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--gray-dk);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo-icon {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse-dot 2.5s ease infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(200, 150, 42, 0.6);
+      }
+
+      50% {
+        box-shadow: 0 0 0 7px rgba(200, 150, 42, 0);
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--gray-dk);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links a:hover {
+      color: var(--black);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.35rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all 0.25s ease;
+      background: var(--gold);
+      color: #000;
+      width: auto !important;
+      max-width: fit-content !important;
+      min-width: 0 !important;
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      white-space: nowrap;
+      line-height: 1.1;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-lt);
+      transform: translateY(-1px);
+    }
+
+    .nav-mobile-btn {
+      display: none;
+      background: none;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      padding: 0.45rem 0.6rem;
+      color: var(--gray-dk);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    /* ── BUTTONS ──────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+      width: auto !important;
+      max-width: fit-content !important;
+      min-width: 0 !important;
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      white-space: nowrap;
+      line-height: 1.1;
+    }
+
+    .btn,
+    .btn:link,
+    .btn:visited,
+    .btn:hover,
+    .btn:focus,
+    .btn:active,
+    .nav-cta {
+      border-radius: 999px !important;
+      width: auto !important;
+      max-width: fit-content !important;
+      min-width: 0 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex: 0 0 auto !important;
+      box-sizing: border-box !important;
+      white-space: nowrap !important;
+      line-height: 1.1 !important;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(200, 150, 42, 0.3);
+    }
+
+    .btn-burgundy {
+      background: var(--burgundy);
+      color: var(--white);
+    }
+
+    .btn-burgundy:hover {
+      background: var(--burgundy2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(107, 30, 46, 0.35);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-outline-white:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--burgundy);
+      border: 1.5px solid var(--burgundy);
+    }
+
+    .btn-outline-dark:hover {
+      background: var(--burgundy);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ── HERO ─────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--white);
+      color: var(--gray-dk);
+    }
+
+    #particle-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-aurora {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: none;
+    }
+
+    @keyframes aurora-shift {
+      0% {
+        opacity: 0.7;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1.04);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      padding-top: 8rem;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      background: black;
+      border: 1px solid rgba(200, 150, 42, 0.28);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-eyebrow span {
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: var(--gold-lt);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      max-width: 980px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-title .line1 {
+      display: block;
+      color: var(--black);
+    }
+
+    .hero-title .line2 {
+      display: block;
+      background: linear-gradient(120deg, var(--gold) 0%, var(--gold-lt) 50%, #8B2438 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      max-width: 540px;
+      font-size: 1.1rem;
+      color: rgba(26, 10, 15, 0.75);
+      margin-bottom: 3rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 5rem;
+    }
+
+    .hero .hero-actions .btn {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: auto !important;
+      max-width: fit-content !important;
+      min-width: 0 !important;
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      white-space: nowrap;
+      line-height: 1.1;
+      border-radius: 999px;
+      padding: 0.7rem 1.25rem;
+    }
+
+    .hero .hero-actions .btn-gold {
+      border-radius: 999px;
+    }
+
+    .hero .hero-actions .btn-outline-dark {
+      border-radius: 999px;
+      border: 1.5px solid var(--burgundy);
+      background: transparent;
+      color: var(--burgundy);
+    }
+
+    nav.scrolled .nav-logo,
+    nav.scrolled .nav-links a,
+    nav.scrolled .nav-mobile-btn {
+      color: var(--white);
+    }
+
+    /* Countdown */
+    .countdown-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .countdown-items {
+      display: flex;
+      gap: 0.85rem;
+    }
+
+    .countdown-item {
+      text-align: center;
+      min-width: 74px;
+      padding: 1rem 0.75rem;
+      background: rgba(26, 10, 15, 0.04);
+      border: 1px solid rgba(26, 10, 15, 0.06);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .countdown-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--gold-lt);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      display: block;
+    }
+
+    .countdown-unit {
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: rgba(26, 10, 15, 0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.35rem;
+      display: block;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .scroll-hint span {
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scroll-pulse 2.5s ease infinite;
+    }
+
+    @keyframes scroll-pulse {
+
+      0%,
+      100% {
+        opacity: 0.25;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* ── TRUST BAR (dark) ─────────────────────────────────────────── */
+    .trust-bar {
+      padding: 2.2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+      position: relative;
+      background: var(--black2);
+    }
+
+    .trust-bar::before,
+    .trust-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 140px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .trust-bar::before {
+      left: 0;
+      background: linear-gradient(to right, var(--black2), transparent);
+    }
+
+    .trust-bar::after {
+      right: 0;
+      background: linear-gradient(to left, var(--black2), transparent);
+    }
+
+    .trust-track {
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .trust-item {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+
+    .trust-item:hover {
+      color: var(--gold-lt);
+    }
+
+    .trust-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.3;
+      flex-shrink: 0;
+    }
+
+    /* ── SECTION HEADERS ──────────────────────────────────────────── */
+    .section-header {
+      margin-bottom: 5rem;
+    }
+
+    .section-header.centered {
+      text-align: center;
+    }
+
+    .section-title {
+      margin-top: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      max-width: 520px;
+      line-height: 1.75;
+    }
+
+    .section-header.centered .section-desc {
+      margin: 0 auto;
+    }
+
+    .why-now-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    .why-now-grid .section-header {
+      margin-bottom: 0;
+    }
+
+    .why-now-visual {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      height: 420px;
+      justify-self: end;
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .why-now-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(107, 30, 46, 0.4), transparent 36%),
+        radial-gradient(circle at bottom right, rgba(200, 150, 42, 0.25), transparent 38%),
+        linear-gradient(to top, rgba(5, 5, 5, 0.2), transparent 45%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .why-now-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.95) contrast(1.05);
+    }
+
+    .why-now-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0 0, rgba(5, 5, 5, 0.6), transparent 28%),
+        radial-gradient(circle at 100% 0, rgba(5, 5, 5, 0.55), transparent 28%),
+        radial-gradient(circle at 0 100%, rgba(5, 5, 5, 0.58), transparent 28%),
+        radial-gradient(circle at 100% 100%, rgba(5, 5, 5, 0.55), transparent 28%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* On light sections */
+    .section-light .section-title,
+    .section-cream .section-title {
+      color: var(--burgundy);
+    }
+
+    .section-light .section-desc,
+    .section-cream .section-desc {
+      color: var(--gray-mid);
+    }
+
+    /* ── WHY NOW — DARK ───────────────────────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 0 0 3.5rem -0.6rem;
+    }
+
+    .stat-card {
+      background: var(--black);
+      padding: 3rem 2.5rem;
+      transition: background 0.3s;
+    }
+
+    .stat-card:hover {
+      background: rgba(107, 30, 46, 0.08);
+    }
+
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin: 0.6rem 0;
+    }
+
+    .stat-num.gold {
+      color: var(--gold-lt);
+    }
+
+    .stat-num.white {
+      color: var(--white);
+    }
+
+    .stat-num.dim {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .stat-label {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin-top: 0.5rem;
+      line-height: 1.55;
+    }
+
+    /* ── FOUR FORCES — LIGHT ──────────────────────────────────────── */
+    .forces-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .force-card {
+      padding: 2.5rem;
+      border-radius: 20px;
+      background: var(--white);
+      border: 1.5px solid rgba(107, 30, 46, 0.1);
+      box-shadow: 0 4px 24px rgba(107, 30, 46, 0.06);
+      transition: all 0.35s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .force-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--burgundy), var(--gold));
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+
+    .force-card:hover {
+      transform: translateY(-6px) rotate(-0.4deg);
+      box-shadow: 0 20px 50px rgba(107, 30, 46, 0.14);
+      border-color: rgba(107, 30, 46, 0.2);
+    }
+
+    .force-card:hover::before {
+      opacity: 1;
+    }
+
+    .force-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .force-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--burgundy);
+      letter-spacing: -0.02em;
+    }
+
+    .force-desc {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--gray-mid);
+    }
+
+    /* ── EXPERIENCE — DARK ────────────────────────────────────────── */
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .exp-card {
+      padding: 2rem 1.8rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-card:hover {
+      border-color: rgba(200, 150, 42, 0.25);
+      background: rgba(200, 150, 42, 0.04);
+      transform: translateY(-4px);
+    }
+
+    .exp-card.wide {
+      grid-column: span 2;
+    }
+
+    .exp-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .exp-desc {
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.65;
+    }
+
+    .exp-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(200, 150, 42, 0.12);
+      color: var(--gold-lt);
+    }
+
+    /* ── SPEAKERS — LIGHT ─────────────────────────────────────────── */
+    .speakers-intro {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .speaker-card {
+      border-radius: 20px;
+      background: var(--white);
+      border: 1.5px solid rgba(107, 30, 46, 0.1);
+      box-shadow: 0 2px 16px rgba(107, 30, 46, 0.06);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .speaker-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(107, 30, 46, 0.14);
+      border-color: rgba(107, 30, 46, 0.2);
+    }
+
+    .speaker-avatar {
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .speaker-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .speaker-avatar-inner {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--burgundy), var(--burgundy2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold-lt);
+    }
+
+    .speaker-avatar.confirmed {
+      background: linear-gradient(145deg, rgba(107, 30, 46, 0.08), rgba(200, 150, 42, 0.06));
+    }
+
+    .speaker-info {
+      padding: 1.4rem 1.4rem 1.5rem;
+    }
+
+    .speaker-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--burgundy);
+    }
+
+    .speaker-role {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      line-height: 1.5;
+    }
+
+    .speaker-org {
+      font-size: 0.75rem;
+      color: var(--gold-dk);
+      font-weight: 600;
+      margin-top: 0.3rem;
+    }
+
+    .speaker-tba .speaker-avatar-inner {
+      background: rgba(107, 30, 46, 0.06);
+      color: rgba(107, 30, 46, 0.25);
+    }
+
+    .speaker-tba .speaker-name {
+      color: rgba(107, 30, 46, 0.3);
+    }
+
+    .speaker-tba .speaker-role {
+      color: rgba(107, 30, 46, 0.2);
+    }
+
+    .tba-badge {
+      display: inline-block;
+      margin-top: 0.6rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(200, 150, 42, 0.1);
+      color: var(--gold-dk);
+    }
+
+    .speakers-apply-box {
+      padding: 3rem;
+      border-radius: 20px;
+      background: var(--burgundy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .speakers-apply-box h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .speakers-apply-box p {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* ── SCHEDULE — DARK ──────────────────────────────────────────── */
+    .schedule-list {
+      max-width: 900px;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      align-items: start;
+      transition: all 0.25s;
+    }
+
+    .schedule-item:first-child {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .schedule-item:hover {
+      background: rgba(200, 150, 42, 0.03);
+      padding-left: 0.75rem;
+      border-radius: 12px;
+      border-bottom-color: transparent;
+    }
+
+    .schedule-time {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      padding-top: 0.1rem;
+    }
+
+    .schedule-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .schedule-desc {
+      font-size: 0.83rem;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.55;
+    }
+
+    /* ── SPONSORS — CREAM ─────────────────────────────────────────── */
+    .sponsor-tiers {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .sponsor-tier {
+      border-radius: 18px;
+      border: 1.5px solid rgba(107, 30, 46, 0.12);
+      background: var(--white);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .sponsor-tier:hover {
+      border-color: rgba(107, 30, 46, 0.25);
+      box-shadow: 0 4px 20px rgba(107, 30, 46, 0.08);
+    }
+
+    .tier-title-partner {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(200, 150, 42, 0.04), var(--white));
+    }
+
+    .sponsor-tier-header {
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .desktop-left,
+    .desktop-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .desktop-left {
+      gap: 1rem;
+      min-width: 0;
+    }
+
+    .desktop-right {
+      gap: 1.5rem;
+    }
+
+    .tier-row {
+      display: none;
+    }
+
+    .sponsor-tier-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 0;
+    }
+
+    .tier-badge {
+      padding: 0.2rem 0.7rem;
+      border-radius: 100px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .badge-title {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .badge-platinum {
+      background: #1A0A0F;
+      color: var(--gold-lt);
+    }
+
+    .badge-gold {
+      background: rgba(200, 150, 42, 0.15);
+      color: var(--gold-dk);
+      border: 1px solid rgba(200, 150, 42, 0.3);
+    }
+
+    .badge-silver {
+      background: rgba(107, 30, 46, 0.08);
+      color: var(--burgundy);
+      border: 1px solid rgba(107, 30, 46, 0.2);
+    }
+
+    .badge-other {
+      background: var(--cream);
+      color: var(--gray-mid);
+      border: 1px solid rgba(107, 30, 46, 0.12);
+    }
+
+    .tier-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      white-space: nowrap;
+    }
+
+    .tier-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tier-slots {
+      font-size: 0.75rem;
+      color: var(--gray-lt);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .tier-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      white-space: nowrap;
+    }
+
+    .tier-title-partner .tier-price {
+      color: var(--gold-dk);
+    }
+
+    .tier-icon {
+      font-size: 1rem;
+      color: var(--gray-lt);
+      transition: transform 0.3s;
+    }
+
+    .sponsor-tier.open .tier-icon {
+      transform: rotate(180deg);
+      color: var(--burgundy);
+    }
+
+    .sponsor-tier-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .sponsor-tier.open .sponsor-tier-body {
+      max-height: 500px;
+    }
+
+    .tier-benefits {
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tier-benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      font-size: 0.85rem;
+      color: var(--gray-mid);
+    }
+
+    .tier-benefit-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .tier-cta {
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    /* ── GALLERY — DARK ───────────────────────────────────────────── */
+    .gallery-marquee {
+      display: grid;
+      gap: 1rem;
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+
+    .gallery-marquee-row {
+      display: flex;
+      width: max-content;
+      gap: 1rem;
+      animation: gallery-marquee 34s linear infinite;
+    }
+
+    .gallery-marquee-row.paused {
+      animation-play-state: paused;
+    }
+
+    .gallery-card {
+      position: relative;
+      width: min(20rem, 56vw);
+      flex: 0 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .gallery-card.bumped {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .gallery-card img {
+      display: block;
+      width: 100%;
+      height: 17.5rem;
+      object-fit: cover;
+    }
+
+    .gallery-card .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.85rem 0.95rem;
+      font-size: 0.76rem;
+      line-height: 1.4;
+      color: #fff;
+      background: linear-gradient(to top, rgba(5, 5, 5, 0.88), transparent 85%);
+    }
+
+    @keyframes gallery-marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .partner-marquee {
+      position: relative;
+      overflow: hidden;
+      padding: 2.25rem 0;
+      background: var(--black2);
+    }
+
+    .partner-marquee::before,
+    .partner-marquee::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .partner-marquee::before {
+      left: 0;
+      background: linear-gradient(to right, var(--black2), transparent);
+    }
+
+    .partner-marquee::after {
+      right: 0;
+      background: linear-gradient(to left, var(--black2), transparent);
+    }
+
+    .partner-track {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      width: max-content;
+      animation: partner-scroll 28s linear infinite;
+      will-change: transform;
+    }
+
+    .partner-track img {
+      display: block;
+      height: 72px;
+      width: auto;
+      object-fit: contain;
+      filter: saturate(1.05);
+    }
+
+    @keyframes partner-scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ── COMMUNITY — LIGHT ────────────────────────────────────────── */
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 5rem;
+    }
+
+    .community-card {
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      background: var(--white);
+      border: 1.5px solid rgba(107, 30, 46, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .community-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(107, 30, 46, 0.1);
+      border-color: var(--gold);
+    }
+
+    .community-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--burgundy);
+    }
+
+    .community-label {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      margin-top: 0.3rem;
+    }
+
+    /* Newsletter */
+    .newsletter-box {
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+      margin-top: 1.75rem;
+      background: var(--white);
+      border: 1.5px solid rgba(107, 30, 46, 0.15);
+      border-radius: 100px;
+      padding: 0.35rem 0.35rem 0.35rem 1.4rem;
+      box-shadow: 0 4px 20px rgba(107, 30, 46, 0.06);
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--gray-dk);
+      font-size: 0.88rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .newsletter-input::placeholder {
+      color: var(--gray-lt);
+    }
+
+    .newsletter-submit {
+      padding: 0.65rem 1.4rem;
+      background: var(--burgundy);
+      color: var(--white);
+      border: none;
+      border-radius: 100px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+
+    .newsletter-submit:hover {
+      background: var(--burgundy2);
+    }
+
+    /* ── FAQ — DARK ───────────────────────────────────────────────── */
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.75rem 0;
+    }
+
+    .faq-question {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      color: var(--white);
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover {
+      color: var(--gold-lt);
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+    }
+
+    .faq-answer p {
+      padding-top: 1rem;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.8;
+    }
+
+    /* ── CONTACT — LIGHT ──────────────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-card {
+      padding: 1.75rem 2rem;
+      border-radius: 16px;
+      background: var(--white);
+      border: 1.5px solid rgba(107, 30, 46, 0.1);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 1rem;
+    }
+
+    .contact-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 30px rgba(107, 30, 46, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(107, 30, 46, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-card-value {
+      font-size: 0.82rem;
+      color: var(--gray-mid);
+      line-height: 1.5;
+    }
+
+    .contact-form-card {
+      padding: 2.5rem;
+      border-radius: 20px;
+      background: var(--white);
+      border: 1.5px solid rgba(107, 30, 46, 0.1);
+      box-shadow: 0 4px 30px rgba(107, 30, 46, 0.07);
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.8rem 1.1rem;
+      background: var(--cream);
+      border: 1.5px solid rgba(107, 30, 46, 0.1);
+      border-radius: 10px;
+      color: var(--gray-dk);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(200, 150, 42, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── REGISTER CTA — DARK ──────────────────────────────────────── */
+    .register-cta {
+      padding: 10rem 0;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      background: var(--black);
+    }
+
+    .register-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(107, 30, 46, 0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 20% 80%, rgba(200, 150, 42, 0.08) 0%, transparent 50%);
+    }
+
+    .register-bg-text {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(5rem, 15vw, 13rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      color: rgba(255, 255, 255, 0.025);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .register-cta-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────────── */
+    footer {
+      padding: 5rem 0 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--black2);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.84rem;
+      margin-top: 1rem;
+      max-width: 230px;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.7;
+    }
+
+    .footer-col h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col a {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: all 0.25s;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+    }
+
+    .social-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(200, 150, 42, 0.08);
+    }
+
+    /* ── REVEAL ANIMATIONS ────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    .reveal-delay-5 {
+      transition-delay: 0.5s;
+    }
+
+    /* ── DIVIDER ──────────────────────────────────────────────────── */
+    .gold-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.2rem 0 2rem;
+      border-radius: 2px;
+    }
+
+    .section-header.centered .gold-rule {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .exp-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .exp-card.wide {
+        grid-column: span 1;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-now-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-now-visual {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-links.mobile-open {
+        display: flex;
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        left: 2rem;
+        right: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem 1.2rem;
+        background: rgba(5, 5, 5, 0.96);
+        border: 1px solid rgba(200, 150, 42, 0.18);
+        border-radius: 16px;
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+        z-index: 1001;
+      }
+
+      .nav-links.mobile-open a {
+        color: var(--white);
+        font-size: 0.95rem;
+      }
+
+      .sponsor-tier-header {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.7rem;
+      }
+
+      .desktop-left,
+      .desktop-right {
+        display: none;
+      }
+
+      .tier-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        width: 100%;
+      }
+
+      .tier-row .sponsor-tier-left,
+      .tier-row .tier-right {
+        width: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+      }
+
+      .tier-row .tier-right {
+        justify-content: flex-end;
+      }
+
+      .tier-name {
+        white-space: normal;
+      }
+
+      .nav-mobile-btn {
+        display: block;
+      }
+
+      .display-xl {
+        font-size: clamp(2.6rem, 10vw, 4rem);
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .forces-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        columns: 2 150px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .hero-content {
+        padding-top: 9rem;
+      }
+
+      .speakers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .schedule-item {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .hero-content {
+        padding: 7rem 1rem 0;
+      }
+
+      .hero-sub {
+        max-width: 100%;
+        width: 100%;
+        font-size: 0.96rem;
+      }
+
+      .countdown-items {
+        gap: 0.45rem;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .countdown-item {
+        min-width: 58px;
+        padding: 0.85rem 0.35rem;
+      }
+
+      .countdown-num {
+        font-size: 1.65rem;
+      }
+
+      .trust-bar {
+        margin-top: 1.2rem;
+        padding: 1.2rem 0;
+      }
+
+      .trust-track {
+        width: max-content;
+        justify-content: flex-start;
+        gap: 1rem;
+        animation: marquee 30s linear infinite;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+      }
+
+      .trust-item {
+        font-size: 0.66rem;
+        letter-spacing: 0.06em;
+      }
+
+      .stats-grid {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+      }
+
+      .stat-card {
+        padding: 2rem 0.9rem;
+      }
+
+      .speaker-tba .speaker-info {
+        text-align: center;
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+      }
+
+      .speaker-tba .speaker-role,
+      .speaker-tba .speaker-org {
+        text-align: center;
+      }
+    }
+
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ────────────────────────────────────────────────────── -->
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <img src="icon.png" alt="Onchain Festival" class="nav-logo-icon" />
+        Onchain Festival
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="Onchain_Festival_2026_Sponsorship_Deck_v3.pdf" target="_blank" rel="noopener">Deck</a></li>
+      </ul>
+      <a class="nav-cta gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Register Now</a>
+      <button class="nav-mobile-btn" id="mobile-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- ── HERO (dark) ────────────────────────────────────────────── -->
+  <section class="hero" id="home">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-aurora"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="nav-logo-dot"></div>
+        <span>October 30, 2026 &nbsp;·&nbsp; Lagos, Nigeria &nbsp;·&nbsp; Edition 2.0</span>
+      </div>
+      <h1 class="display display-xl hero-title">
+        <span class="line1">Digital Assets: Policy, Regulation and Compliance</span>
+      </h1>
+      <p class="hero-sub">Innovators | Investors | Regulators | Policy Makers | Virtual Assets Service Providers.</p><p class="hero-sub">All in one room, one day, shaping the financial infrastructure of a continent.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Register Now ↗</a>
+        <a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener"
+          class="btn btn-outline-dark">Become a Partner</a>
+      </div>
+      <div class="countdown-label">Countdown to October 30, 2026</div>
+      <div class="countdown-items">
+        <div class="countdown-item"><span class="countdown-num" id="cd-days">00</span><span
+            class="countdown-unit">Days</span></div>
+        <div class="countdown-item"><span class="countdown-num" id="cd-hours">00</span><span
+            class="countdown-unit">Hours</span></div>
+        <div class="countdown-item"><span class="countdown-num" id="cd-mins">00</span><span
+            class="countdown-unit">Mins</span></div>
+        <div class="countdown-item"><span class="countdown-num" id="cd-secs">00</span><span
+            class="countdown-unit">Secs</span></div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── TRUST BAR (dark) ───────────────────────────────────────── -->
+  <div class="trust-bar">
+    <div class="trust-track">
+      <span class="trust-item">Coinbase</span><span class="trust-dot"></span>
+      <span class="trust-item">Base West Africa</span><span class="trust-dot"></span>
+      <span class="trust-item">Aptos Africa</span><span class="trust-dot"></span>
+      <span class="trust-item">Lisk</span><span class="trust-dot"></span>
+      <span class="trust-item">cNGN</span><span class="trust-dot"></span>
+      <span class="trust-item">LSETF</span><span class="trust-dot"></span>
+      <span class="trust-item">Wema Bank</span><span class="trust-dot"></span>
+      <span class="trust-item">Zenith Bank</span><span class="trust-dot"></span>
+      <span class="trust-item">Techpoint Africa</span><span class="trust-dot"></span>
+      <span class="trust-item">TechCabal</span><span class="trust-dot"></span>
+      <span class="trust-item">SEC Nigeria</span><span class="trust-dot"></span>
+      <span class="trust-item">TechNext</span><span class="trust-dot"></span>
+      <span class="trust-item">Crello</span><span class="trust-dot"></span>
+      <span class="trust-item">ThisDay Live</span><span class="trust-dot"></span>
+      <!-- duplicate for seamless loop -->
+      <span class="trust-item">Coinbase</span><span class="trust-dot"></span>
+      <span class="trust-item">Base West Africa</span><span class="trust-dot"></span>
+      <span class="trust-item">Aptos Africa</span><span class="trust-dot"></span>
+      <span class="trust-item">Lisk</span><span class="trust-dot"></span>
+      <span class="trust-item">cNGN</span><span class="trust-dot"></span>
+      <span class="trust-item">LSETF</span><span class="trust-dot"></span>
+      <span class="trust-item">Wema Bank</span><span class="trust-dot"></span>
+      <span class="trust-item">Zenith Bank</span><span class="trust-dot"></span>
+      <span class="trust-item">Techpoint Africa</span><span class="trust-dot"></span>
+      <span class="trust-item">TechCabal</span><span class="trust-dot"></span>
+      <span class="trust-item">SEC Nigeria</span><span class="trust-dot"></span>
+      <span class="trust-item">TechNext</span><span class="trust-dot"></span>
+      <span class="trust-item">Crello</span><span class="trust-dot"></span>
+      <span class="trust-item">ThisDay Live</span><span class="trust-dot"></span>
+    </div>
+  </div>
+
+  <!-- ── WHY NOW (dark) ─────────────────────────────────────────── -->
+  <section class="section section-dark" id="about">
+    <div class="container">
+      <div class="why-now-grid reveal">
+        <div class="section-header">
+          <div class="label">Why Now</div>
+          <div class="gold-rule"></div>
+          <h2 class="display display-lg section-title" style="color:var(--white); max-width:680px;">Africa Is the
+            World's Biggest Digital Asset Market. Nobody Has Built the Stage for It. Until Now.</h2>
+          <p class="section-desc" style="color:rgba(255,255,255,0.45);">The numbers tell a story most of the world has
+            not read yet. We built the room for it.</p>
+        </div>
+
+        <div class="why-now-visual" aria-hidden="true">
+          <img src="moments/lan_9875.JPEG" alt="">
+        </div>
+      </div>
+      <div class="stats-grid reveal">
+        <div class="stat-card">
+          <div class="label">Nigeria Annual Stablecoin Volume</div>
+          <div class="stat-num gold" data-count="92.1" data-prefix="$" data-suffix="B">$0B</div>
+          <div class="stat-label">The highest stablecoin transaction volume of any single nation on earth</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Population</div>
+          <div class="stat-num white" data-count="1.4" data-prefix="" data-suffix="B">0B</div>
+          <div class="stat-label">People on the African continent, with a median age of just 19 years old</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Digital Asset Adoption Ranking</div>
+          <div class="stat-num gold" data-count="3" data-prefix="Top " data-suffix="">#</div>
+          <div class="stat-label">Africa has ranked among the top three regions globally for digital asset adoption
+            three consecutive years</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Onchain Festival 2026 Target</div>
+          <div class="stat-num dim" data-count="1000" data-prefix="" data-suffix="+">0</div>
+          <div class="stat-label">Founders, investors, government officials, builders, and enterprise leaders in one
+            room</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE (dark) ──────────────────────────────────────── -->
+  <section class="section section-dark" id="experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">The Experience</div>
+        <div class="gold-rule"></div>
+        <h2 class="display display-lg section-title" style="color:var(--white);">Eight Worlds Inside One Festival</h2>
+        <p class="section-desc" style="color:rgba(255,255,255,0.45);">Every track is curated for a specific audience and
+          a specific outcome. No wasted time. No generic panels.</p>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-card wide reveal">
+          <div class="exp-num">01</div>
+          <div class="exp-title">Policy Forum and Compliance</div>
+          <p class="exp-desc">Government officials, regulators, and legal architects discuss the frameworks that will
+            govern Africa's digital economy. The conversations here become tomorrow's national policy.</p>
+          <span class="exp-tag">Governance</span>
+        </div>
+        <div class="exp-card reveal reveal-delay-1">
+          <div class="exp-num">02</div>
+          <div class="exp-title">Investor Summit</div>
+          <p class="exp-desc">VCs, angel investors, and family offices meet the founders building companies worth
+            backing. Deal flow is not accidental here.</p>
+          <span class="exp-tag">Capital</span>
+        </div>
+        <div class="exp-card reveal reveal-delay-2">
+          <div class="exp-num">03</div>
+          <div class="exp-title">Main Stage</div>
+          <p class="exp-desc">Keynotes and fireside chats with Africa's most consequential voices in tech, finance, and
+            policy.</p>
+          <span class="exp-tag">All Access</span>
+        </div>
+        <div class="exp-card reveal reveal-delay-1">
+          <div class="exp-num">04</div>
+          <div class="exp-title">Builder and Innovation Track</div>
+          <p class="exp-desc">Where builders demonstrate what they have shipped and find the partners they need to scale
+            globally.</p>
+          <span class="exp-tag">Builders</span>
+        </div>
+        <div class="exp-card reveal reveal-delay-2">
+          <div class="exp-num">05</div>
+          <div class="exp-title">Startup Showcase</div>
+          <p class="exp-desc">Live pitches. Product demos. Real investors in the room. Africa's next generation of
+            companies gets its moment.</p>
+          <span class="exp-tag">Founders</span>
+        </div>
+        <div class="exp-card reveal reveal-delay-3">
+          <div class="exp-num">06</div>
+          <div class="exp-title">Exhibition Floor</div>
+          <p class="exp-desc">Over 20 companies presenting products directly to 1,000 active buyers, investors, and
+            decision makers all day.</p>
+          <span class="exp-tag">All Tickets</span>
+        </div>
+        <div class="exp-card wide reveal reveal-delay-4">
+          <div class="exp-num">07</div>
+          <div class="exp-title">VIP Lounge and Curated Networking</div>
+          <p class="exp-desc">Facilitated introductions. Private conversations. The relationships that matter most, made
+            deliberately. For Title and Platinum partners and invited guests. The most concentrated deal-flow
+            environment in African tech.</p>
+          <span class="exp-tag">VIP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PARTNERS / SPONSORS MARQUEE ───────────────────────────── -->
+  <section class="partner-marquee" aria-label="Partner logos">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <div class="label dark">Partners</div>
+        <div class="gold-rule"></div>
+        <h2 class="display display-lg section-title">Our partner ecosystem</h2>
+      </div>
+      <p class="section-desc" style="margin:0 auto 1.5rem; color:var(--white); text-align:center; max-width:680px;">The brands and institutions powering the Onchain Festival experience.</p>
+      <div class="partner-track" aria-hidden="true">
+        <img src="sponsors/cbn.png" alt="Sponsor logo" />
+        <img src="sponsors/nfiu.png" alt="Sponsor logo" />
+        <img src="sponsors/obiex.png" alt="Sponsor logo" />
+        <img src="sponsors/sec.png" alt="Sponsor logo" />
+        <img src="sponsors/techcabal.png" alt="Sponsor logo" />
+        <img src="sponsors/technext.png" alt="Sponsor logo" />
+        <img src="sponsors/tradepal.png" alt="Sponsor logo" />
+        <img src="sponsors/cccgroup.png" alt="Sponsor logo" />
+        <img src="sponsors/vaspa.png" alt="Sponsor logo" />
+        <img src="sponsors/cbn.png" alt="Sponsor logo" />
+        <img src="sponsors/nfiu.png" alt="Sponsor logo" />
+        <img src="sponsors/obiex.png" alt="Sponsor logo" />
+        <img src="sponsors/sec.png" alt="Sponsor logo" />
+        <img src="sponsors/techcabal.png" alt="Sponsor logo" />
+        <img src="sponsors/technext.png" alt="Sponsor logo" />
+        <img src="sponsors/tradepal.png" alt="Sponsor logo" />
+        <img src="sponsors/cccgroup.png" alt="Sponsor logo" />
+        <img src="sponsors/vaspa.png" alt="Sponsor logo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SPEAKERS (light) ───────────────────────────────────────── -->
+  <section class="section section-light" id="speakers">
+    <div class="container">
+      <div class="speakers-intro reveal">
+        <div>
+          <div class="label dark">Speakers 2026</div>
+          <div class="gold-rule"></div>
+          <h2 class="display display-lg section-title" style="color:var(--burgundy);">The Voices Shaping Africa's
+            Digital Economy</h2>
+          <p class="section-desc">Government leaders. Founders. Investors. Policy architects. Builders who are actually
+            shipping. Full lineup to be announced from August 2026.</p>
+        </div>
+      </div>
+
+      <div class="speakers-grid">
+        <!-- Confirmed -->
+        <div class="speaker-card reveal reveal-delay-1">
+          <div class="speaker-avatar confirmed">
+            <img src="speakers/adegolu.png" alt="Femi Adegolu" class="speaker-photo">
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">Femi Adegolu</div>
+            <div class="speaker-role">Founder and Chief Architect</div>
+            <div class="speaker-org">Onchain Festival</div>
+          </div>
+        </div>
+        <div class="speaker-card reveal reveal-delay-2">
+          <div class="speaker-avatar confirmed">
+            <img src="speakers/timi.png" alt="Dr. Emomotimi Agama" class="speaker-photo">
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">Dr. Emomotimi Agama</div>
+            <div class="speaker-role">Director-General</div>
+            <div class="speaker-org">SEC</div>
+          </div>
+        </div>
+
+        <div class="speaker-card reveal reveal-delay-9">
+          <div class="speaker-avatar confirmed">
+            <img src="speakers/funsho.png" alt="Funsho Kale" class="speaker-photo">
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">Funsho Kale</div>
+            <div class="speaker-role">Founder and Director</div>
+            <span class="speaker-org">CCC Group</span>
+          </div>
+        </div>
+
+        <!-- TBA Slots -->
+        <div class="speaker-card reveal reveal-delay-3">
+          <div class="speaker-avatar confirmed">
+            <img src="speakers/iheyen.png" alt="Senator Iheyen" class="speaker-photo">
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">Senator Iheyen</div>
+            <div class="speaker-role">Founding trustee</div>
+            <span class="speaker-org">VASPA</span>
+          </div>
+        </div>
+
+        <div class="speaker-card reveal reveal-delay-4">
+          <div class="speaker-avatar confirmed">
+            <img src="speakers/uwakwe.png" alt="Lucky Uwakwe" class="speaker-photo">
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">Lucky Uwakwe</div>
+            <div class="speaker-role">Founder and CEO</div>
+            <span class="speaker-org">Sabi Group</span>
+          </div>
+        </div>
+
+        <div class="speaker-card reveal reveal-delay-5">
+          <div class="speaker-avatar confirmed">
+            <img src="speakers/akoma.png" alt="Victor Akoma" class="speaker-photo">
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">Victor Akoma</div>
+            <div class="speaker-role">COO</div>
+            <span class="speaker-org">Interstellar</span>
+          </div>
+        </div>
+
+        <div class="speaker-card reveal reveal-delay-6">
+          <div class="speaker-avatar confirmed">
+            <img src="speakers/laurent.png" alt="Laurent Dhaeyer" class="speaker-photo">
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">Laurent Dhaeyer</div>
+            <div class="speaker-role">COO</div>
+            <span class="speaker-org">Ezra</span>
+          </div>
+        </div>
+
+        <div class="speaker-card reveal reveal-delay-7">
+          <div class="speaker-avatar confirmed">
+            <img src="speakers/margaret.png" alt="Margaret Enesi-obanimoh" class="speaker-photo">
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">Margaret Enesi-obanimoh</div>
+            <div class="speaker-role">Anti Money Laundering Specialist</div>
+            <span class="speaker-org">NAICOM</span>
+          </div>
+        </div>
+
+        <div class="speaker-card reveal reveal-delay-8">
+          <div class="speaker-avatar confirmed">
+            <img src="speakers/toyin.png" alt="Toyin Bamidele" class="speaker-photo">
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">Toyin Bamidele</div>
+            <div class="speaker-role">Digital Innovation Officer</div>
+            <span class="speaker-org">UNDP</span>
+          </div>
+        </div>
+
+        <div class="speaker-card reveal reveal-delay-8">
+          <div class="speaker-avatar confirmed">
+            <img src="speakers/deborah.jpg" alt="Deborah Ojengbede" class="speaker-photo">
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">Deborah Ojengbede</div>
+            <div class="speaker-role">Chief Executive Officer</div>
+            <span class="speaker-org">TradePal Ai</span>
+          </div>
+        </div>
+
+        
+      </div>
+
+      <div class="speakers-apply-box reveal">
+        <div>
+          <h3>Want to speak at Onchain Festival 2026?</h3>
+          <p>We are curating a world-class lineup. Applications open now. We prioritise speakers who bring real data,
+            real decisions, and a point of view the audience will not hear anywhere else.</p>
+        </div>
+        <a href="mailto:femiadegolu@gmail.com?subject=Speaker Application - Onchain Festival 2026" class="btn btn-gold"
+          style="flex-shrink:0; white-space:nowrap;">Apply to Speak</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PARTNERS (cream) ───────────────────────────────────────── -->
+  <section class="section section-cream" id="partners">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label dark">Partner With Us</div>
+        <div class="gold-rule"></div>
+        <h2 class="display display-lg section-title">Six Ways to Own a Piece of Africa's Most Important Room</h2>
+        <p class="section-desc">These are not sponsorship tiers. Each one is a strategic position inside the
+          conversation shaping Africa's digital economy.</p>
+      </div>
+      <div class="sponsor-tiers">
+
+        <div class="sponsor-tier tier-title-partner open reveal" id="tier-0">
+          <div class="sponsor-tier-header" onclick="toggleTier(0)">
+            <div class="desktop-left">
+              <span class="tier-badge badge-title">Title Partner</span>
+              <span class="tier-name">Title Partner</span>
+            </div>
+            <div class="desktop-right">
+              <span class="tier-slots">1 slot only</span>
+              <span class="tier-price">₦24M</span>
+              <span class="tier-icon" id="tier-icon-0">▲</span>
+            </div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left">
+                <span class="tier-badge badge-title">Title Partner</span>
+              </div>
+              <div class="tier-right">
+                <span class="tier-slots">1 slot only</span>
+              </div>
+            </div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left">
+                <span class="tier-name">Title Partner</span>
+              </div>
+              <div class="tier-right">
+                <span class="tier-price">₦24M</span>
+              </div>
+            </div>
+          </div>
+          <div class="sponsor-tier-body">
+            <div class="tier-benefits">
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Your name embedded in the event title
+                across every communication channel</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Keynote speaking slot on the main stage,
+                30 minutes, yours alone</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Exclusive naming rights to the VIP and
+                investor lounge</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Full verified attendee data post-event,
+                1,000 industry contacts</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Dedicated product launch window on the
+                main stage, broadcast live</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Priority positioning in Nairobi, Dubai,
+                and London editions</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Branded content series produced by the
+                Onchain Festival media team</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Facilitated 1-on-1 introductions to every
+                speaker, investor, and government official</div>
+            </div>
+            <div class="tier-cta">
+              <a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener"
+                class="btn btn-burgundy">Book a Call to Discuss</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sponsor-tier reveal reveal-delay-1" id="tier-1">
+          <div class="sponsor-tier-header" onclick="toggleTier(1)">
+            <div class="desktop-left"><span class="tier-badge badge-platinum">Platinum</span><span
+                class="tier-name">Platinum Partner</span></div>
+            <div class="desktop-right"><span class="tier-slots">2 slots</span><span
+                class="tier-price">₦14.4M</span><span class="tier-icon" id="tier-icon-1">▼</span></div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left"><span class="tier-badge badge-platinum">Platinum</span></div>
+              <div class="tier-right"><span class="tier-slots">2 slots</span></div>
+            </div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left"><span class="tier-name">Platinum Partner</span></div>
+              <div class="tier-right"><span class="tier-price">₦14.4M</span></div>
+            </div>
+          </div>
+          <div class="sponsor-tier-body">
+            <div class="tier-benefits">
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Main stage logo presence throughout the
+                entire day</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Featured speaking or panel role on the
+                main stage</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Prime exhibition booth with maximum
+                attendee traffic</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Full VIP lounge access with facilitated
+                investor introductions</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Pre-event press release placement and
+                post-event coverage</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Full verified attendee data post-event
+              </div>
+            </div>
+            <div class="tier-cta"><a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank"
+                rel="noopener" class="btn btn-outline-dark" style="font-size:0.84rem;">Schedule a Conversation</a></div>
+          </div>
+        </div>
+
+        <div class="sponsor-tier reveal reveal-delay-2" id="tier-2">
+          <div class="sponsor-tier-header" onclick="toggleTier(2)">
+            <div class="desktop-left"><span class="tier-badge badge-gold">Gold</span><span class="tier-name">Gold
+                Partner</span></div>
+            <div class="desktop-right"><span class="tier-slots">3 slots</span><span class="tier-price">₦7.2M</span><span
+                class="tier-icon" id="tier-icon-2">▼</span></div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left"><span class="tier-badge badge-gold">Gold</span></div>
+              <div class="tier-right"><span class="tier-slots">3 slots</span></div>
+            </div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left"><span class="tier-name">Gold Partner</span></div>
+              <div class="tier-right"><span class="tier-price">₦7.2M</span></div>
+            </div>
+          </div>
+          <div class="sponsor-tier-body">
+            <div class="tier-benefits">
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Logo on all materials, stage backdrop, and
+                livestream</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Panel speaking opportunity</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Exhibition space on the main floor</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>VIP networking access and investor lounge
+                entry</div>
+            </div>
+            <div class="tier-cta"><a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank"
+                rel="noopener" class="btn btn-outline-dark" style="font-size:0.84rem;">Schedule a Conversation</a></div>
+          </div>
+        </div>
+
+        <div class="sponsor-tier reveal reveal-delay-3" id="tier-3">
+          <div class="sponsor-tier-header" onclick="toggleTier(3)">
+            <div class="desktop-left"><span class="tier-badge badge-silver">Silver</span><span class="tier-name">Silver
+                Partner</span></div>
+            <div class="desktop-right"><span class="tier-slots">5 slots</span><span class="tier-price">₦2.4M</span><span
+                class="tier-icon" id="tier-icon-3">▼</span></div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left"><span class="tier-badge badge-silver">Silver</span></div>
+              <div class="tier-right"><span class="tier-slots">5 slots</span></div>
+            </div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left"><span class="tier-name">Silver Partner</span></div>
+              <div class="tier-right"><span class="tier-price">₦2.4M</span></div>
+            </div>
+          </div>
+          <div class="sponsor-tier-body">
+            <div class="tier-benefits">
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Logo across all event materials and
+                digital platforms</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Panel participation opportunity</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Exhibition booth and VIP lounge access
+              </div>
+            </div>
+            <div class="tier-cta"><a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank"
+                rel="noopener" class="btn btn-outline-dark" style="font-size:0.84rem;">Schedule a Conversation</a></div>
+          </div>
+        </div>
+
+        <div class="sponsor-tier reveal reveal-delay-4" id="tier-4">
+          <div class="sponsor-tier-header" onclick="toggleTier(4)">
+            <div class="desktop-left"><span class="tier-badge badge-other">Exhibition</span><span
+                class="tier-name">Exhibition Partner</span></div>
+            <div class="desktop-right"><span class="tier-slots">Limited booths</span><span
+                class="tier-price">₦1M</span><span class="tier-icon" id="tier-icon-4">▼</span></div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left"><span class="tier-badge badge-other">Exhibition</span></div>
+              <div class="tier-right"><span class="tier-slots">Limited booths</span></div>
+            </div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left"><span class="tier-name">Exhibition Partner</span></div>
+              <div class="tier-right"><span class="tier-price">₦1M</span></div>
+            </div>
+          </div>
+          <div class="sponsor-tier-body">
+            <div class="tier-benefits">
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Dedicated booth on the main exhibition
+                floor for the full day</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Direct access to 1,000 builders, buyers,
+                and decision makers</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Full access to all sessions and the
+                speaker programme</div>
+            </div>
+            <div class="tier-cta"><a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank"
+                rel="noopener" class="btn btn-outline-dark" style="font-size:0.84rem;">Book a Booth</a></div>
+          </div>
+        </div>
+
+        <div class="sponsor-tier reveal reveal-delay-5" id="tier-5">
+          <div class="sponsor-tier-header" onclick="toggleTier(5)">
+            <div class="desktop-left"><span class="tier-badge badge-other">Startup</span><span class="tier-name">Startup
+                Partner</span></div>
+            <div class="desktop-right"><span class="tier-slots">Open</span><span class="tier-price">₦720K</span><span
+                class="tier-icon" id="tier-icon-5">▼</span></div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left"><span class="tier-badge badge-other">Startup</span></div>
+              <div class="tier-right"><span class="tier-slots">Open</span></div>
+            </div>
+            <div class="tier-row">
+              <div class="sponsor-tier-left"><span class="tier-name">Startup Partner</span></div>
+              <div class="tier-right"><span class="tier-price">₦720K</span></div>
+            </div>
+          </div>
+          <div class="sponsor-tier-body">
+            <div class="tier-benefits">
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Booth space in the startup showcase zone
+              </div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Direct exposure to VCs and angel investors
+                in the room</div>
+              <div class="tier-benefit"><span class="tier-benefit-dot"></span>Social media feature across
+                platforms</div>
+            </div>
+            <div class="tier-cta"><a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank"
+                rel="noopener" class="btn btn-outline-dark" style="font-size:0.84rem;">Apply Now</a></div>
+          </div>
+        </div>
+
+      </div>
+      <div
+        style="margin-top:2.5rem; padding:2rem; border-radius:14px; background:rgba(107,30,46,0.06); border:1px solid rgba(107,30,46,0.12);"
+        class="reveal">
+        <p style="font-size:0.88rem; color:var(--gray-mid); text-align:center;">Every partner, regardless of tier,
+          receives: official event programme inclusion, social media feature, after-party invitation, post-event report
+          recognition, and a direct ongoing relationship with the Onchain Festival team.</p>
+      </div>
+      <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+        <a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener"
+          class="btn btn-burgundy">Book a Partnership Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SCHEDULE (dark) ────────────────────────────────────────── -->
+  <section class="section section-dark2" id="schedule">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">Schedule</div>
+        <div class="gold-rule"></div>
+        <h2 class="display display-lg section-title" style="color:var(--white);">October 30, 2026</h2>
+        <p class="section-desc" style="color:rgba(255,255,255,0.45);">One day. Eight tracks. Every session built for
+          real outcomes. Full schedule to be published in September 2026.</p>
+      </div>
+      <div class="schedule-list">
+        <div class="schedule-item reveal reveal-delay-1">
+          <div class="schedule-time">08:00 AM</div>
+          <div>
+            <div class="schedule-title">Registration and Exhibition Opens</div>
+            <div class="schedule-desc">Doors open. Exhibition floor live. Networking begins.</div>
+          </div>
+        </div>
+        <div class="schedule-item reveal reveal-delay-2">
+          <div class="schedule-time">09:30 AM</div>
+          <div>
+            <div class="schedule-title">Opening Keynote: Africa's Path to a Digital Economy</div>
+            <div class="schedule-desc">Femi Adegolu, Founder and Chief Architect, Onchain Festival</div>
+          </div>
+        </div>
+        <div class="schedule-item reveal reveal-delay-3">
+          <div class="schedule-time">10:30 AM</div>
+          <div>
+            <div class="schedule-title">Policy Forum: Regulating the Digital Asset Economy</div>
+            <div class="schedule-desc">Governance Line: SEC Nigeria, LSETF and guest regulators</div>
+          </div>
+        </div>
+        <div class="schedule-item reveal reveal-delay-4">
+          <div class="schedule-time">12:00 PM</div>
+          <div>
+            <div class="schedule-title">Investor Summit: Capital, Fintech and Inclusive Growth</div>
+            <div class="schedule-desc">Capital Line: VCs, angels and institutional investors</div>
+          </div>
+        </div>
+        <div class="schedule-item reveal reveal-delay-1">
+          <div class="schedule-time">01:30 PM</div>
+          <div>
+            <div class="schedule-title">Startup Showcase: Live Pitches to Real Investors</div>
+            <div class="schedule-desc">Africa's next generation of companies in front of the right audience</div>
+          </div>
+        </div>
+        <div class="schedule-item reveal reveal-delay-2">
+          <div class="schedule-time">03:30 PM</div>
+          <div>
+            <div class="schedule-title">Builder Track: Building Onchain from Africa to Global Dominance</div>
+            <div class="schedule-desc">Founders and engineers showing what they have shipped</div>
+          </div>
+        </div>
+        <div class="schedule-item reveal reveal-delay-3">
+          <div class="schedule-time">05:30 PM</div>
+          <div>
+            <div class="schedule-title">Main Stage Closing: Where Africa Goes Next</div>
+            <div class="schedule-desc">A conversation with Africa's most consequential voices in digital finance</div>
+          </div>
+        </div>
+        <div class="schedule-item reveal reveal-delay-4">
+          <div class="schedule-time">07:00 PM</div>
+          <div>
+            <div class="schedule-title">Official After Party</div>
+            <div class="schedule-desc">Exclusive networking for all credentialed attendees</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:3rem;" class="reveal">
+        <a class="btn btn-gold gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Secure Your Ticket</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY (dark) ─────────────────────────────────────────── -->
+  <section class="section section-dark" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label">2025 Edition</div>
+        <div class="gold-rule"></div>
+        <h2 class="display display-lg section-title" style="color:var(--white);">They Said It Could Not Be Done in
+          Lagos.</h2>
+        <p class="section-desc" style="color:rgba(255,255,255,0.45);">Then October 30, 2025 happened. Edition 2 goes
+          further in every direction.</p>
+      </div>
+      <div class="gallery-marquee reveal" aria-label="2025 edition moving image strip">
+        <div class="gallery-marquee-row" id="galleryRowLan">
+          <button class="gallery-card" type="button" aria-label="exhibition.JPEG">
+            <img src="moments/exhibition.JPEG" alt="exhibition">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_0005.JPEG">
+            <img src="moments/lan_0005.JPEG" alt="lan_0005">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_103.jpg">
+            <img src="moments/lan_103.jpg" alt="lan_103">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_104.jpg">
+            <img src="moments/lan_104.jpg" alt="lan_104">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_105.jpg">
+            <img src="moments/lan_105.jpg" alt="lan_105">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_106.jpg">
+            <img src="moments/lan_106.jpg" alt="lan_106">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_107.jpg">
+            <img src="moments/lan_107.jpg" alt="lan_107">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_108.jpg">
+            <img src="moments/lan_108.jpg" alt="lan_108">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_9800.jpeg">
+            <img src="moments/lan_9800.jpeg" alt="lan_9800">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_9830.JPEG">
+            <img src="moments/lan_9830.JPEG" alt="lan_9830">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_9834.JPEG">
+            <img src="moments/lan_9834.JPEG" alt="lan_9834">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_9875.JPEG">
+            <img src="moments/lan_9875.JPEG" alt="lan_9875">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_9995.JPEG">
+            <img src="moments/lan_9995.JPEG" alt="lan_9995">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_9998.JPEG">
+            <img src="moments/lan_9998.JPEG" alt="lan_9998">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_9999.JPEG">
+            <img src="moments/lan_9999.JPEG" alt="lan_9999">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_G101.jpg">
+            <img src="moments/lan_G101.jpg" alt="lan_G101">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_SHOW102.jpg">
+            <img src="moments/lan_SHOW102.jpg" alt="lan_SHOW102">
+            <span class="gallery-caption"></span>
+          </button>
+          <!-- duplicate set for seamless marquee -->
+          <button class="gallery-card" type="button" aria-label="exhibition.JPEG-dup">
+            <img src="moments/exhibition.JPEG" alt="exhibition">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="lan_0005.JPEG-dup">
+            <img src="moments/lan_0005.JPEG" alt="lan_0005">
+            <span class="gallery-caption"></span>
+          </button>
+        </div>
+        <div class="gallery-marquee-row" id="galleryRowPor">
+          <button class="gallery-card" type="button" aria-label="por_9797.JPG.jpeg">
+            <img src="moments/por_9797.JPG.jpeg" alt="por_9797">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="por_9798.jpg">
+            <img src="moments/por_9798.jpg" alt="por_9798">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="por_9828.JPEG">
+            <img src="moments/por_9828.JPEG" alt="por_9828">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="por_9874.JPEG">
+            <img src="moments/por_9874.JPEG" alt="por_9874">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="networking.JPEG">
+            <img src="moments/networking.JPEG" alt="networking">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="openingkeynote.JPEG">
+            <img src="moments/openingkeynote.JPEG" alt="openingkeynote">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="panel.jpeg">
+            <img src="moments/panel.jpeg" alt="panel">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="showcase.JPEG">
+            <img src="moments/showcase.JPEG" alt="showcase">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="speakersessions.jpeg">
+            <img src="moments/speakersessions.jpeg" alt="speakersessions">
+            <span class="gallery-caption"></span>
+          </button>
+          <!-- duplicate set for seamless marquee -->
+          <button class="gallery-card" type="button" aria-label="por_9797-dup">
+            <img src="moments/por_9797.JPG.jpeg" alt="por_9797">
+            <span class="gallery-caption"></span>
+          </button>
+          <button class="gallery-card" type="button" aria-label="por_9798-dup">
+            <img src="moments/por_9798.jpg" alt="por_9798">
+            <span class="gallery-caption"></span>
+          </button>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:3rem;" class="reveal">
+        <a href="https://www.youtube.com/@onchainfestival" target="_blank" rel="noopener"
+          class="btn btn-outline-white">Watch Highlights on YouTube ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMMUNITY (light) ──────────────────────────────────────── -->
+  <section class="section section-light" id="community">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <div class="label dark">The Community</div>
+        <div class="gold-rule"></div>
+        <h2 class="display display-lg section-title">A Movement Growing Across Africa and Beyond</h2>
+      </div>
+      <div class="community-grid">
+        <div class="community-card reveal reveal-delay-1">
+          <div style="font-size:1.6rem; margin-bottom:0.75rem;">🌍</div>
+          <div class="community-num">24</div>
+          <div class="community-label">Countries Represented at Edition 1</div>
+        </div>
+        <div class="community-card reveal reveal-delay-2">
+          <div style="font-size:1.6rem; margin-bottom:0.75rem;">👤</div>
+          <div class="community-num">5,000+</div>
+          <div class="community-label">Community Members</div>
+        </div>
+        <div class="community-card reveal reveal-delay-3">
+          <div style="font-size:1.6rem; margin-bottom:0.75rem;">🏢</div>
+          <div class="community-num">80+</div>
+          <div class="community-label">Companies in Ecosystem</div>
+        </div>
+        <div class="community-card reveal reveal-delay-4">
+          <div style="font-size:1.6rem; margin-bottom:0.75rem;">📱</div>
+          <div class="community-num">3K+</div>
+          <div class="community-label">Social Following</div>
+        </div>
+        <div class="community-card reveal reveal-delay-5">
+          <div style="font-size:1.6rem; margin-bottom:0.75rem;">🤝</div>
+          <div class="community-num">14</div>
+          <div class="community-label">Institutional Partners in 2025</div>
+        </div>
+      </div>
+      <div class="newsletter-box reveal">
+        <div class="label dark" style="text-align:center;">Stay in the Loop</div>
+        <h3 class="display display-sm" style="margin-top:0.75rem; text-align:center; color:var(--burgundy);">Get updates
+          before they go public</h3>
+        <p style="text-align:center; font-size:0.88rem; color:var(--gray-mid); margin-top:0.75rem;">Speaker
+          announcements. Ticket drops. Partner reveals. All sent directly to you.</p>
+        <div class="newsletter-form">
+          <input class="newsletter-input" type="email" placeholder="your@email.com" />
+          <button class="newsletter-submit">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ (dark) ─────────────────────────────────────────────── -->
+  <section class="section section-dark2" id="faq">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <div class="label">Questions</div>
+        <div class="gold-rule" style="margin-left:auto; margin-right:auto;"></div>
+        <h2 class="display display-lg section-title" style="color:var(--white);">Answered</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <div class="faq-question" onclick="toggleFaq(this)">Who attends Onchain Festival?<span
+              class="faq-icon">+</span></div>
+          <div class="faq-answer">
+            <p>Founders, investors, government officials, regulators, enterprise leaders, builders, media, and the
+              entire ecosystem of Africa's digital economy. In 2025, attendees came from 24 countries and included
+              representatives from SEC Nigeria, LSETF, Coinbase, Lisk, Aptos, Zenith Bank, and Wema Bank.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal reveal-delay-1">
+          <div class="faq-question" onclick="toggleFaq(this)">When and where is Onchain Festival 2026?<span
+              class="faq-icon">+</span></div>
+          <div class="faq-answer">
+            <p>October 30, 2026 in Lagos, Nigeria. The exact venue will be confirmed and announced this year. Sign up to
+              our mailing list to be notified first.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal reveal-delay-2">
+          <div class="faq-question" onclick="toggleFaq(this)">How do I become a speaker?<span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Send your speaker application to femiadegolu@gmail.com with the subject line "Speaker Application." We
+              prioritise speakers who bring real data, real decisions, and a perspective the audience will not hear
+              anywhere else. Applications are reviewed on a rolling basis.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal reveal-delay-3">
+          <div class="faq-question" onclick="toggleFaq(this)">What sponsorship packages are available?<span
+              class="faq-icon">+</span></div>
+          <div class="faq-answer">
+            <p>We offer six tiers from Title Partner (₦24M) down to Startup Partner (₦720K). Book a call with Femi at
+              the link on this page and we will walk through the right option for your brand and objectives.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal reveal-delay-4">
+          <div class="faq-question" onclick="toggleFaq(this)">Is this only about blockchain?<span
+              class="faq-icon">+</span></div>
+          <div class="faq-answer">
+            <p>No. Onchain Festival covers the full breadth of Africa's digital economy: AI, blockchain, digital assets,
+              stablecoins, payments, fintech, compliance, government policy, enterprise adoption, and startup
+              innovation. We deliberately built a cross-sector platform because the future of Africa's digital economy
+              does not sit inside one vertical.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal reveal-delay-5">
+          <div class="faq-question" onclick="toggleFaq(this)">Where do I buy a ticket?<span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Tickets are available at https://www.gruve.events/onchain-festival-2-0. Early registration is open now and we recommend
+              securing your spot early as the 2025 edition sold out.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT (light) ────────────────────────────────────────── -->
+  <section class="section section-light" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="label dark">Contact</div>
+        <div class="gold-rule"></div>
+        <h2 class="display display-lg section-title">Let's Talk</h2>
+        <p class="section-desc">Whether you want to partner, speak, attend, or just start a conversation, we respond
+          quickly. Reach Femi directly.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <a href="https://wa.me/2349071679312" class="contact-card" target="_blank" rel="noopener">
+            <div class="contact-icon">💬</div>
+            <div>
+              <div class="contact-card-title">WhatsApp</div>
+              <div class="contact-card-value">+234 907 167 9312 &nbsp;·&nbsp; Preferred for quick conversations and
+                partnership enquiries</div>
+            </div>
+          </a>
+          <a href="mailto:femiadegolu@gmail.com" class="contact-card" target="_blank" rel="noopener">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-card-title">Email</div>
+              <div class="contact-card-value">femiadegolu@gmail.com &nbsp;·&nbsp; Sponsorships, media, partnerships,
+                speakers</div>
+            </div>
+          </a>
+          <a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" class="contact-card" target="_blank"
+            rel="noopener">
+            <div class="contact-icon">📅</div>
+            <div>
+              <div class="contact-card-title">Book a Call</div>
+              <div class="contact-card-value">Schedule a 30-minute call with Femi to discuss partnership and sponsorship
+                opportunities</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/company/onchain-festival/" class="contact-card" target="_blank"
+            rel="noopener">
+            <div class="contact-icon">🔗</div>
+            <div>
+              <div class="contact-card-title">LinkedIn</div>
+              <div class="contact-card-value">linkedin.com/company/onchain-festival &nbsp;·&nbsp; News and updates</div>
+            </div>
+          </a>
+        </div>
+        <div class="contact-form-card reveal reveal-delay-2">
+          <h3 class="display display-sm" style="color:var(--burgundy); margin-bottom:0.4rem;">Send a Message</h3>
+          <p style="font-size:0.85rem; color:var(--gray-mid); margin-bottom:2rem;">We reply within 24 hours.</p>
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-input" placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Enquiry Type</label>
+            <select class="form-input" style="appearance:none; cursor:pointer; color:var(--gray-dk);">
+              <option>Sponsorship Partnership</option>
+              <option>Speaker Application</option>
+              <option>Media and Press</option>
+              <option>General Attendance</option>
+              <option>Startup Showcase</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-input" placeholder="Tell us what you have in mind..." rows="4"
+              style="resize:vertical;"></textarea>
+          </div>
+          <button class="btn btn-burgundy"
+            style="width:100%; justify-content:center; padding:1rem; font-size:0.9rem;">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── REGISTER CTA (dark) ────────────────────────────────────── -->
+  <section class="register-cta" id="register">
+    <div class="register-bg-text">LAGOS</div>
+    <div class="register-cta-inner">
+      <div class="label" style="text-align:center; margin-bottom:1.2rem;">October 30, 2026</div>
+      <h2 class="display display-xl"
+        style="text-align:center; margin-bottom:1.5rem; max-width:780px; margin-left:auto; margin-right:auto; color:var(--white);">
+        This Is Africa's Moment.<br>Be in the Room.</h2>
+      <p
+        style="text-align:center; font-size:1.05rem; margin-bottom:3rem; max-width:460px; margin-left:auto; margin-right:auto; color:rgba(255,255,255,0.45);">
+        Onchain Festival 2026. One day. One city. The most important room in African tech.</p>
+      <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+        <a class="btn btn-gold gruve-cta-button" style="font-size:0.95rem; padding:1rem 2.5rem;" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Get Your Ticket ↗</a>
+        <a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener"
+          class="btn btn-outline-white" style="font-size:0.95rem; padding:1rem 2.5rem;">Become a Partner</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo" style="text-decoration:none;">
+            <img src="icon.png" alt="Onchain Festival" class="nav-logo-icon" />
+            Onchain Festival
+          </a>
+          <p>Africa's flagship digital economy festival. Where builders, governments, investors, and innovators shape
+            the future of money.</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/company/onchain-festival/" target="_blank" rel="noopener"
+              class="social-link" title="LinkedIn">in</a>
+            <a href="https://www.youtube.com/@onchainfestival" target="_blank" rel="noopener" class="social-link"
+              title="YouTube">▶</a>
+            <a href="https://www.instagram.com/_bchainafrica?igsh=bm44dmNpa2txeGNl" target="_blank" rel="noopener"
+              class="social-link" title="Instagram">◉</a>
+            <a href="https://wa.me/2349071679312" target="_blank" rel="noopener" class="social-link"
+              title="WhatsApp">✉</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Festival</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Partner</h4>
+          <ul>
+            <li><a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank"
+                rel="noopener">Sponsorship</a></li>
+            <li><a href="Onchain_Festival_2026_Sponsorship_Deck_v3.pdf" target="_blank" rel="noopener">View Sponsorship
+                Deck</a></li>
+            <li><a href="mailto:femiadegolu@gmail.com?subject=Speaker Application - Onchain Festival 2026">Apply to
+                Speak</a></li>
+            <li><a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank"
+                rel="noopener">Exhibition Booths</a></li>
+            <li><a href="mailto:femiadegolu@gmail.com?subject=Media Accreditation">Media Accreditation</a></li>
+            <li><a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank"
+                rel="noopener">Startup Showcase</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:femiadegolu@gmail.com">femiadegolu@gmail.com</a></li>
+            <li><a href="https://wa.me/2349071679312">+234 907 167 9312</a></li>
+            <li><a class="gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Buy Tickets</a>
+            </li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Bchain Technologies Limited. All rights reserved. Onchain Festival is a production of Bchain Africa.
+        </p>
+        <p style="color:rgba(255,255,255,0.18);">Lagos, Nigeria.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@gruve/echo@latest/dist/index.umd.js"></script>
+  <script src="tracker-client.js" defer></script>
+
+  <script>
+    // ── PARTICLES ─────────────────────────────────────────────────
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+    const mouse = { x: -9999, y: -9999 };
+    const COUNT = 110;
+    const DIST = 130;
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+
+    // Let Gruve's official embed script handle .gruve-cta-button clicks.
+    // If Gruve's script is not available, the buttons will fall back to their `href` attribute and open a new tab.
+    // Diagnostic + loader: try to dynamically inject Gruve UMD script if no globals are present.
+    (function() {
+      const defaultUrl = 'https://www.gruve.events/onchain-festival-2-0';
+      const umdSrc = 'https://unpkg.com/@gruve/echo@latest/dist/index.umd.js';
+
+      function detectGlobals() {
+        const names = ['Gruve','gruve','GruveEcho','gruveEcho','Echo','echo','__GRUVE__','GRUVE'];
+        return names.filter(n => typeof window[n] !== 'undefined');
+      }
+
+      function injectScript(src) {
+        return new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = src;
+          s.async = true;
+          s.onload = () => resolve(s);
+          s.onerror = () => reject(new Error('Script load error: ' + src));
+          document.head.appendChild(s);
+        });
+      }
+
+      async function ensureGruve() {
+        let found = detectGlobals();
+        if (found.length) {
+          console.info('Gruve embed globals:', found);
+          return true;
+        }
+
+        try {
+          await injectScript(umdSrc);
+        } catch (err) {
+          console.warn('Failed to load Gruve UMD script:', err);
+          applyFallback();
+          return false;
+        }
+
+        const start = Date.now();
+        while (Date.now() - start < 2000) {
+          found = detectGlobals();
+          if (found.length) break;
+          await new Promise(r => setTimeout(r, 150));
+        }
+
+        if (!found.length) {
+          applyFallback();
+        }
+
+        return found.length > 0;
+      }
+
+      function applyFallback() {
+        document.querySelectorAll('.gruve-cta-button').forEach(btn => {
+          const existingHref = btn.getAttribute('href');
+          if (!existingHref) btn.setAttribute('href', defaultUrl);
+          btn.setAttribute('target', '_blank');
+          btn.setAttribute('rel', 'noopener');
+          btn.style.cursor = 'pointer';
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', () => { ensureGruve(); });
+    })();
+
+    const COLORS = [
+      'rgba(200,150,42,',
+      'rgba(107,30,46,',
+      'rgba(232,184,75,',
+      'rgba(139,36,56,',
+    ];
+
+    class P {
+      constructor() { this.init(); }
+      init() {
+        this.x = Math.random() * W;
+        this.y = Math.random() * H;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.r = Math.random() * 1.8 + 0.5;
+        this.a = Math.random() * 0.45 + 0.1;
+        this.c = COLORS[Math.floor(Math.random() * COLORS.length)];
+      }
+      update() {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 100) { this.x -= dx * 0.012; this.y -= dy * 0.012; }
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > W) this.vx *= -1;
+        if (this.y < 0 || this.y > H) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = this.c + this.a + ')';
+        ctx.fill();
+      }
+    }
+
+    function initP() { particles = []; for (let i = 0; i < COUNT; i++) particles.push(new P()); }
+
+    function connections() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < DIST) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(200,150,42,${(1 - d / DIST) * 0.15})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function loop() {
+      ctx.clearRect(0, 0, W, H);
+      connections();
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(loop);
+    }
+
+    window.addEventListener('resize', () => { resize(); initP(); });
+    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    resize(); initP(); loop();
+
+    // ── NAV ───────────────────────────────────────────────────────
+    const nav = document.getElementById('main-nav');
+    const mobileBtn = document.getElementById('mobile-btn');
+    const navLinks = document.querySelector('.nav-links');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
+
+    if (mobileBtn && navLinks) {
+      mobileBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('mobile-open');
+        mobileBtn.setAttribute('aria-expanded', String(navLinks.classList.contains('mobile-open')));
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('mobile-open');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // ── COUNTDOWN ─────────────────────────────────────────────────
+    function tick() {
+      const target = new Date('2026-10-30T09:00:00');
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) return;
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-days').textContent = String(d);
+      document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+    }
+    setInterval(tick, 1000); tick();
+
+    // ── SCROLL REVEAL ─────────────────────────────────────────────
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // ── 2025 EDITION MARQUEE CLICK BUMP ───────────────────────────
+    document.querySelectorAll('.gallery-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const row = card.closest('.gallery-marquee-row');
+        if (!row) return;
+
+        row.classList.add('paused');
+        card.classList.add('bumped');
+
+        clearTimeout(card._bumpTimer);
+        card._bumpTimer = setTimeout(() => {
+          card.classList.remove('bumped');
+          row.classList.remove('paused');
+        }, 500);
+      });
+    });
+
+    // ── COUNTERS ──────────────────────────────────────────────────
+    function counter(el) {
+      const target = parseFloat(el.dataset.count);
+      const pre = el.dataset.prefix || '';
+      const suf = el.dataset.suffix || '';
+      const dur = 1800;
+      const start = performance.now();
+      const float = String(target).includes('.');
+      function step(now) {
+        const t = Math.min((now - start) / dur, 1);
+        const v = (1 - Math.pow(1 - t, 3)) * target;
+        el.textContent = pre + (float ? v.toFixed(1) : Math.floor(v)) + suf;
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    const cobs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { counter(e.target); cobs.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-count]').forEach(el => cobs.observe(el));
+
+    // ── SPONSOR TIERS ─────────────────────────────────────────────
+    function toggleTier(i) {
+      const tier = document.getElementById('tier-' + i);
+      const icon = document.getElementById('tier-icon-' + i);
+      const open = tier.classList.contains('open');
+      document.querySelectorAll('.sponsor-tier').forEach((t, j) => {
+        t.classList.remove('open');
+        const ic = document.getElementById('tier-icon-' + j);
+        if (ic) ic.textContent = '▼';
+      });
+      if (!open) { tier.classList.add('open'); icon.textContent = '▲'; }
+    }
+
+    // ── FAQ ───────────────────────────────────────────────────────
+    function toggleFaq(q) {
+      const item = q.parentElement;
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    }
+
+    // ── SMOOTH SCROLL ─────────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function (e) {
+        const el = document.querySelector(this.getAttribute('href'));
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    // ── NEWSLETTER ────────────────────────────────────────────────
+    document.querySelector('.newsletter-submit').addEventListener('click', function () {
+      const input = this.previousElementSibling;
+      if (input.value && input.value.includes('@')) {
+        this.textContent = 'Subscribed!';
+        this.style.background = 'var(--gold)';
+        this.style.color = '#000';
+        input.value = '';
+        setTimeout(() => { this.textContent = 'Subscribe'; this.style.background = ''; this.style.color = ''; }, 3000);
+      }
+    });
+  </script>
+</body>
+
+</html>

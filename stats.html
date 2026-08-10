@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Onchain Festival Stats</title>
+  <style>
+    :root { color-scheme: dark; font-family: Georgia, serif; background: #171014; color: #f7f0e5; }
+    body { max-width: 960px; margin: 0 auto; padding: 48px 24px; }
+    h1 { color: #e8b84b; font-weight: 400; }
+    form { display: flex; gap: 12px; max-width: 520px; }
+    input, button { border: 1px solid #6b1e2e; padding: 12px 14px; font: inherit; }
+    input { background: #f7f0e5; color: #171014; flex: 1; }
+    button { background: #e8b84b; color: #171014; cursor: pointer; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+    .card { border-top: 2px solid #e8b84b; padding: 20px 0; }
+    .label { color: #c9bdb1; font: 12px sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .value { display: block; font-size: 48px; margin-top: 12px; }
+    #status { color: #c9bdb1; min-height: 1.5em; }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } form { flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <h1>Onchain Festival traffic</h1>
+  <form id="stats-form">
+    <input id="token" type="password" placeholder="Stats token" autocomplete="off" required>
+    <button type="submit">Load stats</button>
+  </form>
+  <p id="status" role="status"></p>
+  <section class="grid" aria-live="polite">
+    <div class="card"><span class="label">Unique visitors · 30 days</span><strong class="value" id="visitors">-</strong></div>
+    <div class="card"><span class="label">Page views · 30 days</span><strong class="value" id="views">-</strong></div>
+    <div class="card"><span class="label">Registration clicks · 30 days</span><strong class="value" id="clicks">-</strong></div>
+  </section>
+  <script>
+    document.getElementById('stats-form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const status = document.getElementById('status');
+      status.textContent = 'Loading...';
+      try {
+        const response = await fetch('/api/stats', { headers: { 'x-stats-token': document.getElementById('token').value } });
+        if (response.status === 401) throw new Error('Invalid stats token');
+        if (!response.ok) throw new Error('Stats server unavailable');
+        const stats = await response.json();
+        document.getElementById('visitors').textContent = stats.uniqueVisitors;
+        document.getElementById('views').textContent = stats.pageViews;
+        document.getElementById('clicks').textContent = stats.registrationClicks;
+        status.textContent = 'Updated through ' + new Date(stats.period.to).toLocaleString();
+      } catch (error) {
+        status.textContent = error.message;
+      }
+    });
+  </script>
+</body>
+</html>
