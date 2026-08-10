@@ -40,6 +40,31 @@ app.disable('x-powered-by');
 app.set('trust proxy', 1);
 app.use(express.json({ limit: '4kb', type: 'application/json' }));
 
+let databaseReady;
+async function initializeDatabase() {
+  await mongoClient.connect();
+  const database = mongoClient.db(databaseName);
+  events = database.collection('events');
+  await Promise.all([
+    events.createIndex({ createdAt: -1 }),
+    events.createIndex({ eventType: 1, createdAt: -1 })
+  ]);
+}
+
+function ensureDatabase(request, response, next) {
+  if (!databaseReady) {
+    databaseReady = initializeDatabase();
+  }
+
+  databaseReady.then(() => next()).catch((error) => {
+    console.error('Database connection failed:', error.message);
+    databaseReady = undefined;
+    response.status(503).json({ error: 'Tracking service unavailable' });
+  });
+}
+
+app.use('/api', ensureDatabase);
+
 app.post('/api/track', rateLimit, async (request, response) => {
   const { eventType, visitorId, path: pagePath, referrer, buttonText } = request.body || {};
   const validEventTypes = new Set(['page_view', 'registration_click']);
@@ -108,18 +133,18 @@ app.get('/api/stats', async (request, response) => {
 app.use(express.static(staticRoot, { extensions: ['html'], index: 'index.html' }));
 
 async function start() {
-  await mongoClient.connect();
-  const database = mongoClient.db(databaseName);
-  events = database.collection('events');
-  await events.createIndex({ createdAt: -1 });
-  await events.createIndex({ eventType: 1, createdAt: -1 });
+  await initializeDatabase();
   app.listen(port, () => console.log(`Onchain Festival running on http://localhost:${port}`));
 }
 
-start().catch((error) => {
-  console.error('Server startup failed:', error.message);
-  process.exit(1);
-});
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  start().catch((error) => {
+    console.error('Server startup failed:', error.message);
+    process.exit(1);
+  });
+}
 
 process.on('SIGINT', async () => {
   await mongoClient.close();
