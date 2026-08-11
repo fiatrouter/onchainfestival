@@ -2075,7 +2075,7 @@
         <li><a href="#contact">Contact</a></li>
         <li><a href="Onchain_Festival_2026_Sponsorship_Deck_v3.pdf" target="_blank" rel="noopener">Deck</a></li>
       </ul>
-      <a href="https://www.gruve.events/onchain-festival-2-0" target="_blank" rel="noopener" class="nav-cta gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Register Now</a>
+      <a class="nav-cta gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Register Now</a>
       <button class="nav-mobile-btn" id="mobile-btn">☰</button>
     </div>
   </nav>
@@ -2094,7 +2094,7 @@
       </h1>
       <p class="hero-sub">Innovators | Investors | Regulators | Policy Makers | Virtual Assets Service Providers.</p><p class="hero-sub">All in one room, one day, shaping the financial infrastructure of a continent.</p>
       <div class="hero-actions">
-        <a href="https://www.gruve.events/onchain-festival-2-0" target="_blank" rel="noopener" class="btn btn-gold gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Register Now ↗</a>
+        <a class="btn btn-gold gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Register Now ↗</a>
         <a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener"
           class="btn btn-outline-dark">Become a Partner</a>
       </div>
@@ -2733,7 +2733,7 @@
         </div>
       </div>
       <div style="margin-top:3rem;" class="reveal">
-        <a href="https://www.gruve.events/onchain-festival-2-0" target="_blank" rel="noopener" class="btn btn-gold gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Secure Your Ticket</a>
+        <a class="btn btn-gold gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Secure Your Ticket</a>
       </div>
     </div>
   </section>
@@ -3090,7 +3090,7 @@
         style="text-align:center; font-size:1.05rem; margin-bottom:3rem; max-width:460px; margin-left:auto; margin-right:auto; color:rgba(255,255,255,0.45);">
         Onchain Festival 2026. One day. One city. The most important room in African tech.</p>
       <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
-        <a href="https://www.gruve.events/onchain-festival-2-0" target="_blank" rel="noopener" class="btn btn-gold gruve-cta-button" style="font-size:0.95rem; padding:1rem 2.5rem;" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Get Your Ticket ↗</a>
+        <a class="btn btn-gold gruve-cta-button" style="font-size:0.95rem; padding:1rem 2.5rem;" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Get Your Ticket ↗</a>
         <a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener"
           class="btn btn-outline-white" style="font-size:0.95rem; padding:1rem 2.5rem;">Become a Partner</a>
       </div>
@@ -3150,7 +3150,7 @@
           <ul>
             <li><a href="mailto:femiadegolu@gmail.com">femiadegolu@gmail.com</a></li>
             <li><a href="https://wa.me/2349071679312">+234 907 167 9312</a></li>
-            <li><a href="https://www.gruve.events/onchain-festival-2-0" target="_blank" rel="noopener" class="gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Buy Tickets</a>
+            <li><a class="gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Buy Tickets</a>
             </li>
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Terms of Use</a></li>
@@ -3185,10 +3185,8 @@
     }
 
     // Let Gruve's official embed script handle .gruve-cta-button clicks.
-    // If Gruve's script is not available, the buttons will fall back to their `href` attribute and open a new tab.
     // Diagnostic + loader: try to dynamically inject Gruve UMD script if no globals are present.
     (function() {
-      const defaultUrl = 'https://www.gruve.events/onchain-festival-2-0';
       const umdSrc = 'https://unpkg.com/@gruve/echo@latest/dist/index.umd.js';
 
       function detectGlobals() {
@@ -3238,10 +3236,7 @@
 
       function applyFallback() {
         document.querySelectorAll('.gruve-cta-button').forEach(btn => {
-          const existingHref = btn.getAttribute('href');
-          if (!existingHref) btn.setAttribute('href', defaultUrl);
-          btn.setAttribute('target', '_blank');
-          btn.setAttribute('rel', 'noopener');
+          btn.setAttribute('aria-disabled', 'true');
           btn.style.cursor = 'pointer';
         });
       }
@@ -3249,7 +3244,7 @@
       document.addEventListener('error', event => {
         const image = event.target;
         if (image instanceof HTMLImageElement && image.src.startsWith('https://storage.gruve.events/')) {
-          image.src = 'moments/openingkeynote.JPEG';
+          image.src = 'gruveimage/portcover.png';
           image.alt = 'Onchain Festival';
         }
       }, true);
