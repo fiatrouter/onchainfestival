@@ -140,6 +140,126 @@
       position: relative;
     }
 
+    /* ── HERO MEDIA + TICKET DRAWER ─────────────────────────────── */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.92;
+      filter: saturate(0.75) contrast(1.08);
+    }
+
+    .hero-video::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(248, 245, 240, 0.72);
+    }
+
+    .hero-video-wash {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(248, 245, 240, 0.88) 0%, rgba(248, 245, 240, 0.56) 42%, rgba(107, 30, 46, 0.16) 100%),
+        linear-gradient(0deg, rgba(5, 5, 5, 0.12), transparent 45%);
+      pointer-events: none;
+    }
+
+    .hero-media-note {
+      position: absolute;
+      right: 2rem;
+      bottom: 2.5rem;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: rgba(255, 255, 255, 0.78);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .hero-media-note::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(200, 150, 42, 0.18);
+    }
+
+    .ticket-drawer {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      z-index: 1100;
+      display: flex;
+      align-items: stretch;
+      transform: translate(0, -50%);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: drop-shadow(-14px 20px 30px rgba(5, 5, 5, 0.2));
+    }
+
+    .ticket-drawer.is-closed {
+      transform: translate(calc(100% - 3.1rem), -50%);
+    }
+
+    .ticket-drawer-tab {
+      width: 3.1rem;
+      border: 0;
+      border-radius: 14px 0 0 14px;
+      background: var(--burgundy);
+      color: var(--gold-lt);
+      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      transition: background 0.2s ease;
+    }
+
+    .ticket-drawer-tab:hover,
+    .ticket-drawer-tab:focus-visible {
+      background: var(--burgundy2);
+      outline: none;
+    }
+
+    .ticket-drawer-panel {
+      width: min(19rem, calc(100vw - 3.1rem));
+      padding: 1.5rem;
+      background: var(--burgundy3);
+      color: var(--white);
+      border: 1px solid rgba(232, 184, 75, 0.3);
+      border-right: 0;
+    }
+
+    .ticket-drawer-panel .label {
+      color: var(--gold-lt);
+    }
+
+    .ticket-drawer-title {
+      margin: 0.6rem 0 1.1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .ticket-drawer-copy {
+      margin-bottom: 1.2rem;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .ticket-drawer .btn {
+      width: 100% !important;
+      justify-content: center;
+    }
+
     /* ── NAV ──────────────────────────────────────────────────────── */
     nav {
       position: fixed;
@@ -862,6 +982,15 @@
       gap: 1.25rem;
     }
 
+    #experience {
+      overflow: hidden;
+      background-image:
+        linear-gradient(135deg, rgba(200, 150, 42, 0.05) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(107, 30, 46, 0.12) 25%, transparent 25%);
+      background-position: 0 0, 18px 18px;
+      background-size: 36px 36px;
+    }
+
     .exp-card {
       padding: 2rem 1.8rem;
       border-radius: 18px;
@@ -870,6 +999,61 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+    }
+
+    .exp-card.wide:first-child {
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.98) 0%, rgba(5, 5, 5, 0.78) 55%, rgba(5, 5, 5, 0.4) 100%),
+        url('moments/openingkeynote.jpeg') center / cover;
+      border-color: rgba(200, 150, 42, 0.22);
+    }
+
+    .exp-card.wide:first-child::after {
+      content: 'LIVE / 01';
+      position: absolute;
+      top: 1.2rem;
+      right: 1.3rem;
+      color: var(--gold-lt);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+    }
+
+    .exp-card:nth-child(2) {
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
+        url('moments/networking.JPEG') center / cover;
+    }
+
+    .exp-card:nth-child(3) {
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
+        url('moments/panel.jpeg') center / cover;
+    }
+
+    .exp-card:nth-child(4) {
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
+        url('moments/showcase.JPEG') center / cover;
+    }
+
+    .exp-card:nth-child(5) {
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
+        url('moments/exhibition.JPEG') center / cover;
+    }
+
+    .exp-card:nth-child(6) {
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
+        url('moments/lan_103.jpg') center / cover;
+    }
+
+    .exp-card:nth-child(7) {
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
+        url('moments/por_9874.JPEG') center / cover;
     }
 
     .exp-card:hover {
@@ -919,6 +1103,35 @@
     }
 
     /* ── SPEAKERS — LIGHT ─────────────────────────────────────────── */
+    .speakers-section {
+      overflow: hidden;
+      position: relative;
+      background-image:
+        linear-gradient(30deg, rgba(107, 30, 46, 0.045) 12%, transparent 12.5%, transparent 87%, rgba(107, 30, 46, 0.045) 87.5%),
+        linear-gradient(150deg, rgba(200, 150, 42, 0.045) 12%, transparent 12.5%, transparent 87%, rgba(200, 150, 42, 0.045) 87.5%);
+      background-position: 0 0, 18px 31px;
+      background-size: 36px 62px;
+    }
+
+    .speakers-section::after {
+      content: '';
+      position: absolute;
+      top: 8rem;
+      right: -8rem;
+      width: min(34vw, 30rem);
+      height: 32rem;
+      background: linear-gradient(150deg, rgba(107, 30, 46, 0.08), rgba(200, 150, 42, 0.02)), url('moments/por_9828.JPEG') center / cover;
+      clip-path: polygon(22% 0, 100% 12%, 78% 100%, 0 86%);
+      opacity: 0.45;
+      transform: rotate(5deg);
+      pointer-events: none;
+    }
+
+    .speakers-section > .container {
+      position: relative;
+      z-index: 1;
+    }
+
     .speakers-intro {
       display: flex;
       align-items: flex-end;
@@ -933,11 +1146,12 @@
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 1.5rem;
       margin-bottom: 3rem;
+      align-items: flex-start;
     }
 
     .speaker-card {
-      border-radius: 20px;
-      background: var(--white);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.86);
       border: 1.5px solid rgba(107, 30, 46, 0.1);
       box-shadow: 0 2px 16px rgba(107, 30, 46, 0.06);
       overflow: hidden;
@@ -959,6 +1173,38 @@
       background: var(--cream);
       position: relative;
       overflow: hidden;
+    }
+
+    .speaker-avatar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(61, 10, 20, 0.42));
+      pointer-events: none;
+    }
+
+    .speaker-card-featured {
+      grid-column: span 2;
+      background: var(--burgundy3);
+      border-color: rgba(200, 150, 42, 0.35);
+    }
+
+    .speaker-card-featured .speaker-avatar {
+      aspect-ratio: 1;
+    }
+
+    .speaker-card-featured .speaker-avatar img {
+      object-fit: contain;
+      background: linear-gradient(145deg, rgba(107, 30, 46, 0.18), rgba(200, 150, 42, 0.12));
+    }
+
+    .speaker-card-featured .speaker-name,
+    .speaker-card-featured .speaker-role {
+      color: var(--white);
+    }
+
+    .speaker-card-featured .speaker-org {
+      color: var(--gold-lt);
     }
 
     .speaker-avatar img {
@@ -1972,6 +2218,15 @@
         padding-top: 9rem;
       }
 
+      .hero-media-note {
+        right: 1.25rem;
+        bottom: 1.5rem;
+      }
+
+      .ticket-drawer-panel {
+        padding: 1.2rem;
+      }
+
       .speakers-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -2003,6 +2258,22 @@
 
       .hero-content {
         padding: 7rem 1rem 0;
+      }
+
+      .hero-media-note {
+        display: none;
+      }
+
+      .ticket-drawer.is-closed {
+        transform: translate(calc(100% - 2.8rem), -50%);
+      }
+
+      .ticket-drawer-tab {
+        width: 2.8rem;
+      }
+
+      .ticket-drawer-panel {
+        width: min(17rem, calc(100vw - 2.8rem));
       }
 
       .hero-sub {
@@ -2096,6 +2367,10 @@
 
   <!-- ── HERO (dark) ────────────────────────────────────────────── -->
   <section class="hero" id="home">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src="videos/recap.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-video-wash"></div>
     <canvas id="particle-canvas"></canvas>
     <div class="hero-aurora"></div>
     <div class="hero-content">
@@ -2104,11 +2379,11 @@
         <span>October 30, 2026 &nbsp;·&nbsp; Lagos, Nigeria &nbsp;·&nbsp; Edition 2.0</span>
       </div>
       <h1 class="display display-xl hero-title">
-        <span class="line1">Digital Assets: Policy, Regulation and Compliance</span>
+        <span class="line1">Africa's Future<br />Runs Onchain.</span>
       </h1>
-      <p class="hero-sub">Innovators | Investors | Regulators | Policy Makers | Virtual Assets Service Providers.</p><p class="hero-sub">All in one room, one day, shaping the financial infrastructure of a continent.</p>
+      <p class="hero-sub">Builders, capital, policy, enterprise and AI in one room, shaping the financial infrastructure of a continent.</p>
       <div class="hero-actions">
-        <a class="btn btn-gold gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Register Now ↗</a>
+        <a class="btn btn-gold gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Get Your Ticket ↗</a>
         <a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener"
           class="btn btn-outline-dark">Become a Partner</a>
       </div>
@@ -2128,7 +2403,18 @@
       <span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
+    <div class="hero-media-note">2025 edition / Lagos</div>
   </section>
+
+  <aside class="ticket-drawer" id="ticket-drawer" aria-label="Ticket purchase">
+    <button class="ticket-drawer-tab" id="ticket-drawer-tab" type="button" aria-label="Open ticket panel" aria-expanded="true">&lt;</button>
+    <div class="ticket-drawer-panel">
+      <div class="label">Be in the room</div>
+      <h2 class="ticket-drawer-title">The next chapter starts here.</h2>
+      <p class="ticket-drawer-copy">Secure your place at Onchain Festival 2026 in Lagos.</p>
+      <a class="btn btn-gold gruve-cta-button" data-gruve-event-address='0bfc792a421ed9e164fc51a94656db5423202d43' data-gruve-theme-color="#ea445a" data-gruve-button-text-color="white">Get Tickets ↗</a>
+    </div>
+  </aside>
 
   <!-- ── TRUST BAR (dark) ───────────────────────────────────────── -->
   <div class="trust-bar">
@@ -2215,7 +2501,7 @@
       <div class="section-header reveal">
         <div class="label">The Experience</div>
         <div class="gold-rule"></div>
-        <h2 class="display display-lg section-title" style="color:var(--white);">Eight Worlds Inside One Festival</h2>
+        <h2 class="display display-lg section-title" style="color:var(--white);">Seven Worlds Inside One Festival</h2>
         <p class="section-desc" style="color:rgba(255,255,255,0.45);">Every track is curated for a specific audience and
           a specific outcome. No wasted time. No generic panels.</p>
       </div>
@@ -2307,7 +2593,7 @@
   </section>
 
   <!-- ── SPEAKERS (light) ───────────────────────────────────────── -->
-  <section class="section section-light" id="speakers">
+  <section class="section section-light speakers-section" id="speakers">
     <div class="container">
       <div class="speakers-intro reveal">
         <div>
@@ -2322,7 +2608,7 @@
 
       <div class="speakers-grid">
         <!-- Confirmed -->
-        <div class="speaker-card reveal reveal-delay-1">
+        <div class="speaker-card speaker-card-featured reveal reveal-delay-1">
           <div class="speaker-avatar confirmed">
             <img src="speakers/adegolu.png" alt="Femi Adegolu" class="speaker-photo">
           </div>
@@ -3346,6 +3632,42 @@
           mobileBtn.setAttribute('aria-expanded', 'false');
         });
       });
+    }
+
+    // ── TICKET DRAWER ────────────────────────────────────────────
+    const ticketDrawer = document.getElementById('ticket-drawer');
+    const ticketDrawerTab = document.getElementById('ticket-drawer-tab');
+    let ticketDrawerTimer;
+
+    function closeTicketDrawer() {
+      ticketDrawer.classList.add('is-closed');
+      ticketDrawerTab.setAttribute('aria-expanded', 'false');
+      ticketDrawerTab.setAttribute('aria-label', 'Open ticket panel');
+      ticketDrawerTab.textContent = '<';
+    }
+
+    function openTicketDrawer() {
+      clearTimeout(ticketDrawerTimer);
+      ticketDrawer.classList.remove('is-closed');
+      ticketDrawerTab.setAttribute('aria-expanded', 'true');
+      ticketDrawerTab.setAttribute('aria-label', 'Close ticket panel');
+      ticketDrawerTab.textContent = '>';
+    }
+
+    if (ticketDrawer && ticketDrawerTab) {
+      ticketDrawerTimer = setTimeout(closeTicketDrawer, 5000);
+      ticketDrawerTab.addEventListener('click', () => {
+        if (ticketDrawer.classList.contains('is-closed')) {
+          openTicketDrawer();
+        } else {
+          closeTicketDrawer();
+        }
+      });
+
+      window.addEventListener('scroll', () => {
+        const hero = document.getElementById('home');
+        if (hero && window.scrollY > hero.offsetHeight * 0.72) closeTicketDrawer();
+      }, { passive: true });
     }
 
     // ── COUNTDOWN ─────────────────────────────────────────────────
