@@ -994,7 +994,7 @@
     .exp-card {
       padding: 2rem 1.8rem;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.03);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(107, 30, 46, 0.08));
       border: 1px solid rgba(255, 255, 255, 0.07);
       transition: all 0.3s ease;
       position: relative;
@@ -1002,64 +1002,116 @@
     }
 
     .exp-card.wide:first-child {
-      background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.98) 0%, rgba(5, 5, 5, 0.78) 55%, rgba(5, 5, 5, 0.4) 100%),
-        url('moments/openingkeynote.jpeg') center / cover;
       border-color: rgba(200, 150, 42, 0.22);
     }
 
-    .exp-card.wide:first-child::after {
-      content: 'LIVE / 01';
+    .exp-card > :not(.exp-geometry) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .exp-geometry {
       position: absolute;
-      top: 1.2rem;
-      right: 1.3rem;
-      color: var(--gold-lt);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.72;
+      transition: opacity 0.35s ease;
     }
 
-    .exp-card:nth-child(2) {
-      background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
-        url('moments/networking.JPEG') center / cover;
+    .exp-geometry::before,
+    .exp-geometry::after,
+    .exp-geometry span {
+      content: '';
+      position: absolute;
+      display: block;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
     }
 
-    .exp-card:nth-child(3) {
-      background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
-        url('moments/panel.jpeg') center / cover;
+    .exp-geometry::before {
+      width: 9rem;
+      height: 9rem;
+      right: -2.8rem;
+      bottom: -3rem;
+      border: 1px solid rgba(232, 184, 75, 0.42);
+      transform: rotate(22deg);
     }
 
-    .exp-card:nth-child(4) {
-      background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
-        url('moments/showcase.JPEG') center / cover;
+    .exp-geometry::after {
+      width: 4.5rem;
+      height: 4.5rem;
+      right: 2rem;
+      top: 2.2rem;
+      border: 1px solid rgba(107, 30, 46, 0.9);
+      background: rgba(200, 150, 42, 0.1);
+      transform: rotate(45deg);
     }
 
-    .exp-card:nth-child(5) {
-      background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
-        url('moments/exhibition.JPEG') center / cover;
+    .exp-geometry span:first-child {
+      width: 0;
+      height: 0;
+      left: 18%;
+      bottom: 16%;
+      border-left: 2.7rem solid transparent;
+      border-right: 2.7rem solid transparent;
+      border-bottom: 4.6rem solid rgba(200, 150, 42, 0.18);
+      transform: rotate(-18deg);
     }
 
-    .exp-card:nth-child(6) {
-      background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
-        url('moments/lan_103.jpg') center / cover;
+    .exp-geometry span:last-child {
+      width: 3.5rem;
+      height: 3.5rem;
+      left: 8%;
+      top: 18%;
+      border-radius: 50%;
+      border: 1px solid rgba(232, 184, 75, 0.34);
+      transform: scale(0.78);
     }
 
-    .exp-card:nth-child(7) {
-      background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.48)),
-        url('moments/por_9874.JPEG') center / cover;
+    .exp-card:nth-child(2) .exp-geometry::before,
+    .exp-card:nth-child(5) .exp-geometry::before {
+      border-radius: 50%;
+      transform: rotate(0) scale(0.82);
+    }
+
+    .exp-card:nth-child(3) .exp-geometry::after,
+    .exp-card:nth-child(6) .exp-geometry::after {
+      border-radius: 50%;
+      transform: rotate(0) scale(0.72);
+    }
+
+    .exp-card:nth-child(4) .exp-geometry span:first-child,
+    .exp-card:nth-child(7) .exp-geometry span:first-child {
+      border-left-width: 3.2rem;
+      border-right-width: 3.2rem;
+      border-bottom-color: rgba(107, 30, 46, 0.44);
+      transform: rotate(35deg);
     }
 
     .exp-card:hover {
       border-color: rgba(200, 150, 42, 0.25);
-      background: rgba(200, 150, 42, 0.04);
+      background: linear-gradient(145deg, rgba(200, 150, 42, 0.08), rgba(107, 30, 46, 0.16));
       transform: translateY(-4px);
+    }
+
+    .exp-card:hover .exp-geometry {
+      opacity: 1;
+    }
+
+    .exp-card:hover .exp-geometry::before {
+      transform: translate(-1rem, -1.2rem) rotate(42deg) scale(1.05);
+    }
+
+    .exp-card:hover .exp-geometry::after {
+      transform: translate(-0.8rem, 0.8rem) rotate(90deg) scale(1.12);
+    }
+
+    .exp-card:hover .exp-geometry span:first-child {
+      transform: translate(1.2rem, -0.8rem) rotate(8deg) scale(1.08);
+    }
+
+    .exp-card:hover .exp-geometry span:last-child {
+      transform: translate(1.2rem, 0.8rem) scale(1.12);
     }
 
     .exp-card.wide {
@@ -1120,7 +1172,7 @@
       right: -8rem;
       width: min(34vw, 30rem);
       height: 32rem;
-      background: linear-gradient(150deg, rgba(107, 30, 46, 0.08), rgba(200, 150, 42, 0.02)), url('moments/por_9828.JPEG') center / cover;
+      background: linear-gradient(150deg, rgba(107, 30, 46, 0.08), rgba(200, 150, 42, 0.02)), url('https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_900/por_9828.JPEG') center / cover;
       clip-path: polygon(22% 0, 100% 12%, 78% 100%, 0 86%);
       opacity: 0.45;
       transform: rotate(5deg);
@@ -1597,6 +1649,80 @@
       line-height: 1.4;
       color: #fff;
       background: linear-gradient(to top, rgba(5, 5, 5, 0.88), transparent 85%);
+    }
+
+    .gallery-reel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: 2.5rem;
+      align-items: center;
+      max-width: 920px;
+      margin: 5rem auto 0;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .gallery-reel-copy {
+      max-width: 420px;
+    }
+
+    .gallery-reel-copy h3 {
+      margin: 0.8rem 0 1rem;
+      color: var(--white);
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 0.98;
+    }
+
+    .gallery-reel-copy p {
+      margin: 0 0 1.5rem;
+      color: rgba(255, 255, 255, 0.58);
+      line-height: 1.7;
+    }
+
+    .gallery-reel-embed {
+      min-width: 0;
+      min-height: 420px;
+      display: flex;
+      justify-content: center;
+      background: var(--white);
+    }
+
+    .gallery-reel-embed blockquote.instagram-media {
+      min-width: 0 !important;
+      width: 100% !important;
+      margin: 0 !important;
+    }
+
+    .gallery-reel-video {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 9 / 16;
+      justify-self: center;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .gallery-reel-video iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 760px) {
+      .gallery-reel {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 3.5rem;
+        padding: 1.25rem;
+      }
+
+      .gallery-reel-embed {
+        min-height: 520px;
+      }
     }
 
     @keyframes gallery-marquee {
@@ -2463,7 +2589,7 @@
         </div>
 
         <div class="why-now-visual" aria-hidden="true">
-          <img src="moments/lan_9875.JPEG" alt="">
+          <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_900/v1787586966/lan_9875.jpg" alt="">
         </div>
       </div>
       <div class="stats-grid reveal">
@@ -2505,6 +2631,7 @@
       </div>
       <div class="exp-grid">
         <div class="exp-card wide reveal">
+          <div class="exp-geometry geometry-01" aria-hidden="true"><span></span><span></span></div>
           <div class="exp-num">01</div>
           <div class="exp-title">Policy Forum and Compliance</div>
           <p class="exp-desc">Government officials, regulators, and legal architects discuss the frameworks that will
@@ -2512,6 +2639,7 @@
           <span class="exp-tag">Governance</span>
         </div>
         <div class="exp-card reveal reveal-delay-1">
+          <div class="exp-geometry geometry-02" aria-hidden="true"><span></span><span></span></div>
           <div class="exp-num">02</div>
           <div class="exp-title">Investor Summit</div>
           <p class="exp-desc">VCs, angel investors, and family offices meet the founders building companies worth
@@ -2519,6 +2647,7 @@
           <span class="exp-tag">Capital</span>
         </div>
         <div class="exp-card reveal reveal-delay-2">
+          <div class="exp-geometry geometry-03" aria-hidden="true"><span></span><span></span></div>
           <div class="exp-num">03</div>
           <div class="exp-title">Main Stage</div>
           <p class="exp-desc">Keynotes and fireside chats with Africa's most consequential voices in tech, finance, and
@@ -2526,6 +2655,7 @@
           <span class="exp-tag">All Access</span>
         </div>
         <div class="exp-card reveal reveal-delay-1">
+          <div class="exp-geometry geometry-04" aria-hidden="true"><span></span><span></span></div>
           <div class="exp-num">04</div>
           <div class="exp-title">Builder and Innovation Track</div>
           <p class="exp-desc">Where builders demonstrate what they have shipped and find the partners they need to scale
@@ -2533,6 +2663,7 @@
           <span class="exp-tag">Builders</span>
         </div>
         <div class="exp-card reveal reveal-delay-2">
+          <div class="exp-geometry geometry-05" aria-hidden="true"><span></span><span></span></div>
           <div class="exp-num">05</div>
           <div class="exp-title">Startup Showcase</div>
           <p class="exp-desc">Live pitches. Product demos. Real investors in the room. Africa's next generation of
@@ -2540,6 +2671,7 @@
           <span class="exp-tag">Founders</span>
         </div>
         <div class="exp-card reveal reveal-delay-3">
+          <div class="exp-geometry geometry-06" aria-hidden="true"><span></span><span></span></div>
           <div class="exp-num">06</div>
           <div class="exp-title">Exhibition Floor</div>
           <p class="exp-desc">Over 20 companies presenting products directly to 1,000 active buyers, investors, and
@@ -2547,6 +2679,7 @@
           <span class="exp-tag">All Tickets</span>
         </div>
         <div class="exp-card wide reveal reveal-delay-4">
+          <div class="exp-geometry geometry-07" aria-hidden="true"><span></span><span></span></div>
           <div class="exp-num">07</div>
           <div class="exp-title">VIP Lounge and Curated Networking</div>
           <p class="exp-desc">Facilitated introductions. Private conversations. The relationships that matter most, made
@@ -3045,127 +3178,127 @@
       <div class="gallery-marquee reveal" aria-label="2025 edition moving image strip">
         <div class="gallery-marquee-row" id="galleryRowLan">
           <button class="gallery-card" type="button" aria-label="exhibition.JPEG">
-            <img src="moments/exhibition.JPEG" alt="exhibition" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/exhibition.JPEG" alt="exhibition" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_0005.JPEG">
-            <img src="moments/lan_0005.JPEG" alt="lan_0005" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_0005.JPEG" alt="lan_0005" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_103.jpg">
-            <img src="moments/lan_103.jpg" alt="lan_103" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_103.jpg" alt="lan_103" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_104.jpg">
-            <img src="moments/lan_104.jpg" alt="lan_104" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_104.jpg" alt="lan_104" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_105.jpg">
-            <img src="moments/lan_105.jpg" alt="lan_105" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_105.jpg" alt="lan_105" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_106.jpg">
-            <img src="moments/lan_106.jpg" alt="lan_106" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_106.jpg" alt="lan_106" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_107.jpg">
-            <img src="moments/lan_107.jpg" alt="lan_107" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_107.jpg" alt="lan_107" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_108.jpg">
-            <img src="moments/lan_108.jpg" alt="lan_108" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_108.jpg" alt="lan_108" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_9800.jpeg">
-            <img src="moments/lan_9800.jpeg" alt="lan_9800" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_9800.jpeg" alt="lan_9800" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_9830.JPEG">
-            <img src="moments/lan_9830.JPEG" alt="lan_9830" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_9830.JPEG" alt="lan_9830" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_9834.JPEG">
-            <img src="moments/lan_9834.JPEG" alt="lan_9834" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_9834.JPEG" alt="lan_9834" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_9875.JPEG">
-            <img src="moments/lan_9875.JPEG" alt="lan_9875" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/v1787586966/lan_9875.jpg" alt="lan_9875" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_9995.JPEG">
-            <img src="moments/lan_9995.JPEG" alt="lan_9995" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_9995.JPEG" alt="lan_9995" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_9998.JPEG">
-            <img src="moments/lan_9998.JPEG" alt="lan_9998" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_9998.JPEG" alt="lan_9998" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_9999.JPEG">
-            <img src="moments/lan_9999.JPEG" alt="lan_9999" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_9999.JPEG" alt="lan_9999" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_G101.jpg">
-            <img src="moments/lan_G101.jpg" alt="lan_G101" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_G101.jpg" alt="lan_G101" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_SHOW102.jpg">
-            <img src="moments/lan_SHOW102.jpg" alt="lan_SHOW102" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_SHOW102.jpg" alt="lan_SHOW102" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <!-- duplicate set for seamless marquee -->
           <button class="gallery-card" type="button" aria-label="exhibition.JPEG-dup">
-            <img src="moments/exhibition.JPEG" alt="exhibition" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/exhibition.JPEG" alt="exhibition" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="lan_0005.JPEG-dup">
-            <img src="moments/lan_0005.JPEG" alt="lan_0005" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_0005.JPEG" alt="lan_0005" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
         </div>
         <div class="gallery-marquee-row" id="galleryRowPor">
           <button class="gallery-card" type="button" aria-label="por_9797.JPG.jpeg">
-            <img src="moments/por_9797.JPG.jpeg" alt="por_9797" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/por_9797.JPG.jpeg" alt="por_9797" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="por_9798.jpg">
-            <img src="moments/por_9798.jpg" alt="por_9798" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/por_9798.jpg" alt="por_9798" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="por_9828.JPEG">
-            <img src="moments/por_9828.JPEG" alt="por_9828" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/por_9828.JPEG" alt="por_9828" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="por_9874.JPEG">
-            <img src="moments/por_9874.JPEG" alt="por_9874" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/por_9874.JPEG" alt="por_9874" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="networking.JPEG">
-            <img src="moments/networking.JPEG" alt="networking" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/networking.JPEG" alt="networking" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="openingkeynote.JPEG">
-            <img src="moments/openingkeynote.JPEG" alt="openingkeynote" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/openingkeynote.JPEG" alt="openingkeynote" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="panel.jpeg">
-            <img src="moments/panel.jpeg" alt="panel" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/panel.jpeg" alt="panel" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="showcase.JPEG">
-            <img src="moments/showcase.JPEG" alt="showcase" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/showcase.JPEG" alt="showcase" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="speakersessions.jpeg">
-            <img src="moments/speakersessions.jpeg" alt="speakersessions" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/speakersessions.jpeg" alt="speakersessions" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <!-- duplicate set for seamless marquee -->
           <button class="gallery-card" type="button" aria-label="por_9797-dup">
-            <img src="moments/por_9797.JPG.jpeg" alt="por_9797" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/por_9797.JPG.jpeg" alt="por_9797" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
           <button class="gallery-card" type="button" aria-label="por_9798-dup">
-            <img src="moments/por_9798.jpg" alt="por_9798" loading="lazy" decoding="async" fetchpriority="low">
+            <img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/por_9798.jpg" alt="por_9798" loading="lazy" decoding="async" fetchpriority="low">
             <span class="gallery-caption"></span>
           </button>
         </div>
@@ -3173,6 +3306,35 @@
       <div style="text-align:center; margin-top:3rem;" class="reveal">
         <a href="https://www.youtube.com/@onchainfestival" target="_blank" rel="noopener"
           class="btn btn-outline-white">Watch Highlights on YouTube ↗</a>
+      </div>
+      <div class="gallery-reel reveal">
+        <div class="gallery-reel-copy">
+          <div class="label">From the Community</div>
+          <h3>See the energy for yourself.</h3>
+          <p>Revisit a moment from Onchain Festival on Instagram.</p>
+          <a href="https://www.instagram.com/reel/DcNf2Rcoaj2/" target="_blank" rel="noopener"
+            class="btn btn-outline-white">Open on Instagram ↗</a>
+        </div>
+        <div class="gallery-reel-embed">
+          <blockquote class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/DcNf2Rcoaj2/"
+            data-instgrm-version="14">
+            <a href="https://www.instagram.com/reel/DcNf2Rcoaj2/" target="_blank" rel="noopener">View this reel on Instagram</a>
+          </blockquote>
+        </div>
+      </div>
+      <div class="gallery-reel reveal">
+        <div class="gallery-reel-copy">
+          <div class="label">Watch the Short</div>
+          <h3>A glimpse of what is coming.</h3>
+          <p>Catch the latest Onchain Festival Short on YouTube.</p>
+          <a href="https://youtube.com/shorts/eNzDtzD0wPc" target="_blank" rel="noopener"
+            class="btn btn-outline-white">Open on YouTube ↗</a>
+        </div>
+        <div class="gallery-reel-video">
+          <iframe src="https://www.youtube-nocookie.com/embed/eNzDtzD0wPc?rel=0"
+            title="Onchain Festival YouTube Short" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -3461,6 +3623,7 @@
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@gruve/echo@latest/dist/index.umd.js"></script>
+  <script async src="https://www.instagram.com/embed.js"></script>
   <script src="tracker-client.js" defer></script>
 
   <script>

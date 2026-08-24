@@ -134,7 +134,15 @@ app.get('/', (request, response) => {
   response.sendFile(path.join(staticRoot, 'index.html'));
 });
 
-app.use(express.static(staticRoot, { extensions: ['html'], index: 'index.html' }));
+app.use(express.static(staticRoot, {
+  extensions: ['html'],
+  index: 'index.html',
+  setHeaders(response, filePath) {
+    if (filePath.includes(`${path.sep}moments${path.sep}`)) {
+      response.setHeader('Cache-Control', 'public, max-age=604800, stale-while-revalidate=86400');
+    }
+  }
+}));
 
 async function start() {
   await initializeDatabase();
