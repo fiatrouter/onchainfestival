@@ -2,8 +2,7 @@
   "version": 2,
   "functions": {
     "server.js": {
-      "includeFiles": "**/*",
-      "excludeFiles": "videos/**"
+      "includeFiles": "**/*"
     }
   }
 }

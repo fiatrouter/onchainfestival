@@ -148,7 +148,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.92;
+      opacity: 0.68;
       filter: saturate(0.75) contrast(1.08);
     }
 
@@ -167,6 +167,88 @@
         linear-gradient(90deg, rgba(248, 245, 240, 0.88) 0%, rgba(248, 245, 240, 0.56) 42%, rgba(107, 30, 46, 0.16) 100%),
         linear-gradient(0deg, rgba(5, 5, 5, 0.12), transparent 45%);
       pointer-events: none;
+    }
+
+    .intro-video-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: rgba(5, 5, 5, 0.94);
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .intro-video-overlay.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-video-frame {
+      position: relative;
+      width: min(1100px, 100%);
+      aspect-ratio: 16 / 9;
+      background: #000;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+    }
+
+    .intro-video-frame iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .intro-video-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.25rem;
+      height: 2.25rem;
+      padding: 0 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 999px;
+      background: rgba(5, 5, 5, 0.7);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .intro-video-close:hover,
+    .intro-video-close:focus-visible {
+      border-color: var(--gold-lt);
+      color: var(--gold-lt);
+      outline: none;
+    }
+
+    @media (max-width: 600px) {
+      .intro-video-overlay {
+        padding: 1rem;
+      }
+
+      .intro-video-frame {
+        width: 100vw;
+        aspect-ratio: 9 / 16;
+      }
+
+      .intro-video-close {
+        top: 0.75rem;
+        right: 0.75rem;
+      }
     }
 
     .hero-media-note {
@@ -2470,6 +2552,15 @@
 
 <body>
 
+  <div class="intro-video-overlay" id="intro-video-overlay" role="dialog" aria-modal="true"
+    aria-label="Onchain Festival recap video">
+    <div class="intro-video-frame">
+      <button class="intro-video-close" id="intro-video-close" type="button" aria-label="Close recap video">&times; Close</button>
+      <iframe src="https://www.youtube-nocookie.com/embed/J781Wb7-bVY?autoplay=1&playsinline=1&rel=0"
+        title="Onchain Festival recap" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
   <!-- ── NAV ────────────────────────────────────────────────────── -->
   <nav id="main-nav">
     <div class="nav-inner">
@@ -2493,7 +2584,9 @@
 
   <!-- ── HERO (dark) ────────────────────────────────────────────── -->
   <section class="hero" id="home">
-    <video class="hero-video" muted playsinline aria-hidden="true"></video>
+    <video class="hero-video" autoplay loop muted playsinline preload="metadata" aria-hidden="true">
+      <source src="videos/recap.mp4" type="video/mp4" />
+    </video>
     <div class="hero-video-wash"></div>
     <canvas id="particle-canvas"></canvas>
     <div class="hero-aurora"></div>
@@ -3774,6 +3867,26 @@
     window.addEventListener('resize', () => { resize(); initP(); });
     window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
     resize(); initP(); loop();
+
+    // ── INTRO VIDEO ──────────────────────────────────────────────
+    const introVideoOverlay = document.getElementById('intro-video-overlay');
+    const introVideoClose = document.getElementById('intro-video-close');
+
+    function closeIntroVideo() {
+      introVideoOverlay.classList.add('is-hidden');
+      document.body.style.overflow = '';
+    }
+
+    if (introVideoOverlay && introVideoClose) {
+      document.body.style.overflow = 'hidden';
+      introVideoClose.addEventListener('click', closeIntroVideo);
+      introVideoOverlay.addEventListener('click', event => {
+        if (event.target === introVideoOverlay) closeIntroVideo();
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeIntroVideo();
+      });
+    }
 
     // ── NAV ───────────────────────────────────────────────────────
     const nav = document.getElementById('main-nav');
