@@ -3871,8 +3871,10 @@
     // ── INTRO VIDEO ──────────────────────────────────────────────
     const introVideoOverlay = document.getElementById('intro-video-overlay');
     const introVideoClose = document.getElementById('intro-video-close');
+    const introVideoFrame = introVideoOverlay?.querySelector('iframe');
 
     function closeIntroVideo() {
+      if (introVideoFrame) introVideoFrame.src = 'about:blank';
       introVideoOverlay.classList.add('is-hidden');
       document.body.style.overflow = '';
     }
