@@ -1734,6 +1734,7 @@
     }
 
     .gallery-reel {
+      position: relative;
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
       gap: 2.5rem;
@@ -1743,6 +1744,48 @@
       padding: 2rem;
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(255, 255, 255, 0.035);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .gallery-reel::before,
+    .gallery-reel::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.72;
+      z-index: 0;
+      filter: drop-shadow(0 0 18px rgba(200, 150, 42, 0.18));
+      background:
+        radial-gradient(circle at 50% 50%, transparent 0 18%, rgba(255, 255, 255, 0.12) 18.5%, transparent 19.2%),
+        radial-gradient(circle at 50% 50%, transparent 0 28%, rgba(200, 150, 42, 0.46) 28.5%, transparent 29%),
+        radial-gradient(circle at 50% 50%, transparent 0 39%, rgba(107, 30, 46, 0.52) 39.5%, transparent 40.2%),
+        repeating-radial-gradient(circle at 50% 50%, rgba(200, 150, 42, 0.18) 0 2px, transparent 2px 12px),
+        repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.12) 0 7deg, transparent 7deg 11deg),
+        radial-gradient(circle at 50% 50%, rgba(5, 5, 5, 0.84) 0 62%, transparent 68%);
+    }
+
+    .gallery-reel::before {
+      width: 23rem;
+      height: 23rem;
+      right: -5rem;
+      top: -5rem;
+      transform: rotate(-18deg);
+    }
+
+    .gallery-reel::after {
+      width: 18rem;
+      height: 18rem;
+      left: -4.5rem;
+      bottom: -4.5rem;
+      transform: rotate(20deg);
+      opacity: 0.62;
+    }
+
+    .gallery-reel > * {
+      position: relative;
+      z-index: 1;
     }
 
     .gallery-reel-copy {
