@@ -93,6 +93,14 @@
     .audience-list b { color: var(--gold); font-size: .75rem; }
     .audience-list strong { display: block; margin-bottom: .2rem; font-size: 1rem; }
     .audience-list span { color: rgba(17,17,17,.62); font-size: .86rem; }
+    .mix-table-wrap { margin-top: 2rem; overflow-x: auto; }
+    .mix-table { width: 100%; min-width: 560px; border-collapse: collapse; text-align: left; }
+    .mix-table th { padding: .8rem 1rem; border-top: 1px solid rgba(17,17,17,.22); border-bottom: 1px solid rgba(17,17,17,.22); color: var(--gold); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; }
+    .mix-table td { padding: 1rem; border-bottom: 1px solid rgba(17,17,17,.14); vertical-align: top; font-size: .82rem; }
+    .mix-table tbody tr:last-child td { border-bottom: 0; }
+    .mix-table td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+    .mix-table td:nth-child(2) { color: rgba(17,17,17,.72); }
+    .mix-table td:last-child { color: rgba(17,17,17,.62); }
 
     .gallery-section { background: #111; }
     .gallery-header { max-width: 680px; }
@@ -182,7 +190,7 @@
       </video>
       <div class="container hero-content">
         <div class="hero-kicker"><span class="live-dot"></span> Lagos / December 5-6, 2026</div>
-        <h1 class="display display-xl">No <em>booths.</em><br />Just the vibe.</h1>
+        <h1 class="display display-xl">Where <em>Technology</em><br />meets Culture</h1>
         <p class="hero-copy">Off_Duty is Africa’s first tech-culture rave. Two days of music and networking for the creators of the digital economy. It’s the end of the year once again ! Let’s rave.</p>
         <div class="hero-actions">
           <a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get your ticket <span>-></span></a>
@@ -208,12 +216,17 @@
           <div class="eyebrow">GET IN THE MIX</div>
           <div class="gold-rule"></div>
           <h2 class="display display-lg">Get in the mix.<br />Own a moment people remember.</h2>
-          <ul class="audience-list">
-            <li><b>01</b><div><strong>Headliner</strong><span>Own the marquee moment, stage presence and biggest cultural-tech story of the season.</span></div></li>
-            <li><b>02</b><div><strong>Mainstage</strong><span>Put your brand in the centre of the action with a named zone and a live demo moment.</span></div></li>
-            <li><b>03</b><div><strong>Afterglow</strong><span>Make your product part of the night through sampling, hospitality and high-intent access.</span></div></li>
-            <li><b>04</b><div><strong>Encore and Crew</strong><span>Choose product placement, creator amplification or community credibility that travels beyond the room.</span></div></li>
-          </ul>
+          <div class="mix-table-wrap">
+            <table class="mix-table">
+              <thead><tr><th>Tier</th><th>Position</th><th>Best for</th></tr></thead>
+              <tbody>
+                <tr><td>Headliner</td><td>Own the marquee moment</td><td>Brands leading the cultural-tech story of the season</td></tr>
+                <tr><td>Mainstage</td><td>Named zone and live demo</td><td>Brands that want to be at the centre of the action</td></tr>
+                <tr><td>Afterglow</td><td>Sampling and hospitality</td><td>Beverage, lifestyle and product-led experiences</td></tr>
+                <tr><td>Encore / Crew</td><td>Placement and amplification</td><td>Creators, communities and products that travel beyond the room</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="audience-art reveal" aria-label="Guests connecting at a live event"></div>
       </div>
@@ -259,6 +272,7 @@
       </div>
     </section>
 
+    <!-- Gallery temporarily hidden for a later relaunch.
     <section class="section section-dark gallery-section" id="gallery">
       <div class="container">
         <div class="section-header gallery-header reveal"><div class="eyebrow">Moments between the summits</div><div class="gold-rule"></div><h2 class="display display-lg">OFFDUTY VIBES</h2><p>From focused rooms and summit energy to the late-night release. This is how the festival changes tempo without losing its point of view.</p></div>
@@ -269,7 +283,7 @@
           <figure class="gallery-card"><img src="https://images.pexels.com/photos/13146356/pexels-photo-13146356.jpeg" alt="Friends enjoying a night event" loading="lazy" /><figcaption>Stay for the afterglow</figcaption></figure>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="final-cta" id="partners">
       <div class="container">
