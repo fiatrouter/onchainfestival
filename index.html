@@ -101,6 +101,17 @@
     .mix-table td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
     .mix-table td:nth-child(2) { color: rgba(17,17,17,.72); }
     .mix-table td:last-child { color: rgba(17,17,17,.62); }
+    .ticket-table-wrap { overflow-x: auto; margin-top: 2rem; }
+    .ticket-table { width: 100%; min-width: 780px; border-collapse: collapse; text-align: left; }
+    .ticket-table th { padding: .8rem .65rem; border-top: 1px solid rgba(17,17,17,.22); border-bottom: 2px solid rgba(17,17,17,.8); color: rgba(17,17,17,.55); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }
+    .ticket-table td { padding: 1rem .65rem; border-bottom: 1px solid rgba(17,17,17,.14); vertical-align: top; color: rgba(17,17,17,.72); font-size: .82rem; line-height: 1.5; }
+    .ticket-table tbody tr:last-child td { border-bottom: 0; }
+    .ticket-table td:first-child { width: 19%; color: var(--ink); font-weight: 700; }
+    .ticket-table td:nth-child(2) { width: 20%; color: var(--ink); font-weight: 700; }
+    .ticket-table td:nth-child(3) { width: 37%; }
+    .ticket-table td:last-child { width: 24%; color: rgba(17,17,17,.82); }
+    .ticket-table small { display: block; margin-top: .15rem; color: rgba(17,17,17,.48); font-size: .78rem; font-weight: 400; }
+    .ticket-note { margin-top: 1.3rem; color: rgba(17,17,17,.5); font-size: .78rem; }
 
     .gallery-section { background: #111; }
     .gallery-header { max-width: 680px; }
@@ -260,13 +271,18 @@
 
     <section class="section section-ash" id="tickets">
       <div class="container">
-        <div class="section-header reveal"><div class="eyebrow">Tickets and tables</div><div class="gold-rule"></div><h2 class="display display-lg">Find your place in the room.</h2><p>Whether you are coming to dance, host, sample, build or own a moment, there is a way in. Tickets and tables are intentionally limited.</p><a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get tickets <span>-></span></a></div>
-        <div class="tiers">
-          <article class="tier featured reveal"><span class="tier-label">Most wanted</span><h3>Headliner</h3><p>Own the marquee, the stage and the biggest cultural tech moment of the December season.</p><div class="tier-price">NGN 15,000,000</div><div class="tier-value">Stacked value: NGN 24.5m+</div><ul class="tier-list"><li>1 slot only</li><li>2 premium tables</li><li>Sunset product drop</li></ul></article>
-          <article class="tier tier-mainstage reveal"><div><span class="tier-label">Co-sponsor</span><h3>Mainstage</h3><p>A zone, a moment and a table. Unmissable without the exclusivity price tag.</p><div class="tier-price">NGN 8,000,000</div><div class="tier-value">Stacked value: NGN 12.8m+</div></div><ul class="tier-list"><li>2 slots</li><li>Zone naming rights</li><li>15-minute demo moment</li></ul></article>
-          <article class="tier reveal"><span class="tier-label">In their hands</span><h3>Afterglow</h3><p>Built for beverage, lifestyle and food brands that want to be poured, served or shared.</p><div class="tier-price">NGN 5,000,000</div><div class="tier-value">Stacked value: NGN 8.2m+</div><ul class="tier-list"><li>3 slots</li><li>Sampling activation</li><li>10 VIP Cocktail tickets</li></ul></article>
-          <article class="tier reveal"><span class="tier-label">Product in hand</span><h3>Encore</h3><p>Put your product into the hands of every VIP Cocktail guest.</p><div class="tier-price">NGN 2,500,000</div><div class="tier-value">Stacked value: NGN 4.1m+</div><ul class="tier-list"><li>5 slots</li><li>4 individual tickets</li><li>Programme feature</li></ul></article>
-          <article class="tier reveal"><span class="tier-label">Community</span><h3>Crew</h3><p>Bring amplification and credibility as a media, creator, hub or community partner.</p><div class="tier-price">NGN 750,000</div><div class="tier-value">Stacked value: NGN 1.3m+</div><ul class="tier-list"><li>Multiple slots open</li><li>2 GA tickets</li><li>Opening remarks recognition</li></ul></article>
+        <div class="section-header reveal"><div class="eyebrow">04</div><div class="gold-rule"></div><h2 class="display display-lg">The Opportunity</h2><p style="color:var(--ink);font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;">Access — three tiers, one crowd</p></div>
+        <div class="ticket-table-wrap reveal">
+          <table class="ticket-table">
+            <thead><tr><th>Tier</th><th>Price</th><th>What's included</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td>Premium Table<small>15 tables · 75 seats</small></td><td>NGN 2,000,000<small>per table of 5</small></td><td>Closest to the stage, barricaded VIP section. Bottle service with champagne, Hennessy, vodka and premium spirits.</td><td>Prestige and visibility. Reserved for speakers, public figures, celebrities and major sponsors.</td></tr>
+              <tr><td>VIP Cocktail<small>300 tickets</small></td><td>NGN 80,000<small>per person</small></td><td>Named cocktail table, one complimentary cocktail, headset and finger food. Standing access keeps people moving and mingling.</td><td>The networking engine.</td></tr>
+              <tr><td>General Access<small>500 tickets</small></td><td>NGN 20,000<small>per person</small></td><td>Full festival grounds: stage, food trucks, games and installations. Standing only.</td><td>Volume and energy: the crowd that makes it feel alive.</td></tr>
+              <tr><td>Investor Lounge</td><td>Badge only</td><td>A curated space inside the festival where investors and founders connect: same energy, higher-stakes conversation.</td><td>Deal flow.</td></tr>
+            </tbody>
+          </table>
+          <p class="ticket-note">875 ticketed guests sits comfortably inside the 700–1,000 capacity, leaving headroom for guest list, press, performers and crew.</p>
         </div>
         <div style="text-align:center;margin-top:2.5rem" class="reveal"><a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get tickets / reserve a table <span>-></span></a></div>
       </div>
