@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#080808" />
-  <meta name="description" content="No Deadline by Onchain Festival. Nigeria's first tech-culture rave. December 5-6, 2026 in Lagos." />
-  <meta property="og:title" content="No Deadline 2026 | Onchain Festival" />
+  <meta name="description" content="Off_Duty by Onchain Festival. Nigeria's first tech-culture rave. December 5-6, 2026 in Lagos." />
+  <meta property="og:title" content="Off_Duty 2026 | Onchain Festival" />
   <meta property="og:description" content="Nigeria's first tech-culture rave. December 5-6, 2026. Lagos." />
-  <title>No Deadline 2026 | Onchain Festival</title>
+  <title>Off_Duty 2026 | Onchain Festival</title>
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,8 +48,8 @@
     nav.scrolled { padding: .75rem 0; background: rgba(8,8,8,.88); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
     .brand { display: flex; align-items: center; gap: .7rem; font-size: .9rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--gold); color: var(--gold-bright); font-size: .7rem; transform: rotate(45deg); }
-    .brand-mark span { transform: rotate(-45deg); }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--gold); padding: .25rem; }
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; }
     .nav-links { display: flex; gap: 1.6rem; list-style: none; color: var(--muted); font-size: .78rem; }
     .nav-links a:hover { color: var(--gold-bright); }
     .nav-cta { padding: .65rem 1.1rem; }
@@ -59,14 +59,14 @@
     .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3; filter: saturate(.7) contrast(1.12); }
     .hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, rgba(8,8,8,.96) 0%, rgba(8,8,8,.64) 43%, rgba(8,8,8,.18) 100%), linear-gradient(0deg, rgba(8,8,8,.88) 0%, transparent 58%); }
     .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; opacity: .24; background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 70px 70px; mask-image: linear-gradient(to bottom, transparent, black 30%, transparent 90%); }
-    .hero-content { width: 100%; padding: 9rem 0 4.5rem; }
+    .hero-content { width: 100%; padding: 9rem 0 4.5rem; text-align: center; }
     .hero-kicker { display: inline-flex; align-items: center; gap: .65rem; padding: .45rem .8rem; border: 1px solid rgba(240,198,92,.5); background: rgba(8,8,8,.38); color: var(--gold-bright); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
     .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold-bright); box-shadow: 0 0 0 6px rgba(240,198,92,.12); animation: pulse 2s infinite; }
     .hero h1 { max-width: 950px; margin: 1.5rem 0; text-transform: uppercase; }
     .hero h1 em { color: var(--gold-bright); font-family: 'DM Serif Display', serif; font-weight: 400; letter-spacing: -.06em; text-transform: none; }
-    .hero-copy { max-width: 540px; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin: 2rem 0 3.6rem; }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 2rem; border-top: 1px solid var(--line); padding-top: 1.2rem; max-width: 840px; }
+    .hero-copy { max-width: 540px; margin: 0 auto; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+    .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: .8rem; margin: 2rem 0 3.6rem; }
+    .hero-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; border-top: 1px solid var(--line); padding-top: 1.2rem; max-width: 840px; margin: 0 auto; }
     .meta-item strong { display: block; color: var(--fog); font-size: 1rem; }
     .meta-item span { color: var(--muted); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
     .hero-side-note { position: absolute; right: 2rem; bottom: 4rem; writing-mode: vertical-rl; color: rgba(255,255,255,.5); font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; }
@@ -84,7 +84,7 @@
     .section-dark .section-header p { color: var(--muted); }
 
     .audience-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 5rem; align-items: center; }
-    .audience-art { min-height: 520px; position: relative; background: url('https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_1000/lan_9998.JPEG') center / cover; filter: saturate(.75) contrast(1.08); }
+    .audience-art { min-height: 520px; position: relative; background: url('https://images.pexels.com/photos/8448551/pexels-photo-8448551.jpeg') center / cover; filter: saturate(.75) contrast(1.08); -webkit-mask-image: radial-gradient(ellipse at center, #000 54%, transparent 100%); mask-image: radial-gradient(ellipse at center, #000 54%, transparent 100%); }
     .audience-art::before { content: ''; position: absolute; inset: 0; background: linear-gradient(140deg, rgba(200,150,42,.6), transparent 38%), linear-gradient(0deg, rgba(8,8,8,.78), transparent 55%); mix-blend-mode: multiply; }
     .audience-art::after { content: 'THE ROOM'; position: absolute; right: -2.8rem; bottom: 2rem; color: var(--gold); font-size: .8rem; font-weight: 700; letter-spacing: .24em; transform: rotate(-90deg); }
     .audience-copy h2 { color: var(--ink); }
@@ -94,6 +94,19 @@
     .audience-list strong { display: block; margin-bottom: .2rem; font-size: 1rem; }
     .audience-list span { color: rgba(17,17,17,.62); font-size: .86rem; }
 
+    .gallery-section { background: #111; }
+    .gallery-header { max-width: 680px; }
+    .gallery-header p { color: var(--muted); }
+    .gallery-grid { display: grid; grid-template-columns: 1.25fr .75fr .9fr; grid-template-rows: 220px 220px; gap: .8rem; }
+    .gallery-card { position: relative; min-height: 0; overflow: hidden; background: #1b1b1b; }
+    .gallery-card:first-child { grid-row: span 2; }
+    .gallery-card img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.8) contrast(1.08); transition: transform .6s ease, filter .6s ease; }
+    .gallery-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,8,8,.72), transparent 55%); pointer-events: none; }
+    .gallery-card:hover img { transform: scale(1.06); filter: saturate(1) contrast(1.08); }
+    .gallery-card figcaption { position: absolute; right: 1rem; bottom: .9rem; left: 1rem; z-index: 1; color: var(--fog); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+    .stats-header { margin-bottom: 2rem; }
+    .stats-header p { color: var(--muted); }
     .numbers { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .number { padding: 2.2rem 1.4rem; border-right: 1px solid var(--line); }
     .number:last-child { border: 0; }
@@ -124,6 +137,10 @@
     .tier-value { margin-top: .35rem; color: rgba(17,17,17,.55); font-size: .75rem; }
     .tier-list { display: grid; gap: .65rem; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid rgba(17,17,17,.14); list-style: none; color: rgba(17,17,17,.72); font-size: .78rem; }
     .tier-list li::before { content: '+ '; color: var(--gold); font-weight: 700; }
+    .tier-mainstage { grid-column: span 2; display: grid; grid-template-columns: .75fr 1.25fr; gap: 1.5rem; }
+    .tier-mainstage .tier-list { margin-top: 0; }
+    .tier-mainstage .tier-price { margin-top: 0; }
+    .tier-ticket { margin-top: 1.25rem; align-self: flex-start; }
 
     .final-cta { position: relative; padding: 9rem 0; text-align: center; background: radial-gradient(circle at 50% 50%, rgba(200,150,42,.22), transparent 28%), #0b0b0b; overflow: hidden; }
     .final-cta::before { content: 'LAZY'; position: absolute; inset: 8% 0 auto; color: rgba(255,255,255,.025); font-size: clamp(8rem, 28vw, 30rem); font-weight: 700; letter-spacing: -.1em; line-height: .7; pointer-events: none; }
@@ -138,15 +155,15 @@
     @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(240,198,92,.35); } 50% { box-shadow: 0 0 0 8px rgba(240,198,92,0); } }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
-    @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } }
-    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(4rem, 18vw, 7rem); } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-price { margin-top: 1.2rem; } .footer-inner { align-items: flex-start; flex-direction: column; } }
+    @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } }
+    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(4rem, 18vw, 7rem); } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .footer-inner { align-items: flex-start; flex-direction: column; } }
     @media (max-width: 430px) { .brand { font-size: .72rem; } .brand-mark { width: 29px; height: 29px; } .nav-cta { display: none; } .hero-actions .btn { width: 100%; } .hero-meta { display: grid; grid-template-columns: 1fr 1fr; } .experiences { grid-template-columns: 1fr; } .experience { min-height: 190px; } }
   </style>
 </head>
 <body>
   <nav id="nav">
     <div class="container nav-inner">
-      <a href="#top" class="brand"><span class="brand-mark"><span>ND</span></span> No Deadline</a>
+      <a href="#top" class="brand"><span class="brand-mark"><img src="icon.png" alt="Onchain Festival" /></span> OFF_DUTY</a>
       <ul class="nav-links" id="nav-links">
         <li><a href="#experience">The vibe</a></li>
         <li><a href="#tickets">Tickets</a></li>
@@ -166,7 +183,7 @@
       <div class="container hero-content">
         <div class="hero-kicker"><span class="live-dot"></span> Lagos / December 5-6, 2026</div>
         <h1 class="display display-xl">No <em>booths.</em><br />Just the vibe.</h1>
-        <p class="hero-copy">No Deadline is Nigeria's first tech-culture rave. Two days of music, culture, creators and the digital economy, built for the room everyone wants to be in.</p>
+        <p class="hero-copy">Off_Duty is Africa’s first tech-culture rave. Two days of music and networking for the creators of the digital economy. It’s the end of the year once again ! Let’s rave.</p>
         <div class="hero-actions">
           <a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get your ticket <span>-></span></a>
           <a class="btn btn-ghost" href="#experience">Enter the experience</a>
@@ -181,35 +198,35 @@
       <div class="hero-side-note">By Onchain Festival / First edition</div>
     </section>
 
-    <div class="ticker" aria-label="No Deadline highlights">
+    <div class="ticker" aria-label="Off_Duty highlights">
       <div class="ticker-track"><span>Music</span><i></i><span>Culture</span><i></i><span>Creators</span><i></i><span>Digital economy</span><i></i><span>December in Lagos</span><i></i><span>Music</span><i></i><span>Culture</span><i></i><span>Creators</span><i></i><span>Digital economy</span><i></i><span>December in Lagos</span><i></i></div>
     </div>
 
     <section class="section section-ash" id="about">
       <div class="container audience-grid">
         <div class="audience-copy reveal">
-          <div class="eyebrow">The opportunity</div>
+          <div class="eyebrow">GET IN THE MIX</div>
           <div class="gold-rule"></div>
-          <h2 class="display display-lg">Your brand isn't fighting for attention.<br />It's living inside the experience.</h2>
+          <h2 class="display display-lg">Get in the mix.<br />Own a moment people remember.</h2>
           <ul class="audience-list">
-            <li><b>01</b><div><strong>Gen Z creators and influencers</strong><span>A good night becomes a week of posts, reels and reposts.</span></div></li>
-            <li><b>02</b><div><strong>Founders, investors and operators</strong><span>High-intent people moving through tech, finance and creative culture.</span></div></li>
-            <li><b>03</b><div><strong>December visitors and diaspora</strong><span>IJGBs and returning diaspora arriving while the season is still fresh.</span></div></li>
-            <li><b>04</b><div><strong>Fashion, lifestyle and nightlife</strong><span>Guests who came for the all-white dress code and stayed for the culture.</span></div></li>
+            <li><b>01</b><div><strong>Headliner</strong><span>Own the marquee moment, stage presence and biggest cultural-tech story of the season.</span></div></li>
+            <li><b>02</b><div><strong>Mainstage</strong><span>Put your brand in the centre of the action with a named zone and a live demo moment.</span></div></li>
+            <li><b>03</b><div><strong>Afterglow</strong><span>Make your product part of the night through sampling, hospitality and high-intent access.</span></div></li>
+            <li><b>04</b><div><strong>Encore and Crew</strong><span>Choose product placement, creator amplification or community credibility that travels beyond the room.</span></div></li>
           </ul>
         </div>
-        <div class="audience-art reveal" aria-label="Crowd enjoying a live event"></div>
+        <div class="audience-art reveal" aria-label="Guests connecting at a live event"></div>
       </div>
     </section>
 
     <section class="section section-dark" id="experience">
       <div class="container">
-        <div class="section-header reveal"><div class="eyebrow">Two days of brand immersion</div><div class="gold-rule"></div><h2 class="display display-lg">A rave with a point of view.</h2><p>Not a conference with a DJ after. Not a booth in a hallway. No Deadline puts culture first and gives your brand a role in the story.</p></div>
+        <div class="section-header reveal"><div class="eyebrow">Two days of brand immersion</div><div class="gold-rule"></div><h2 class="display display-lg">A rave with a point of view.</h2><p>Not a conference with a DJ after. Not a booth in a hallway. Off_Duty puts culture first and gives your brand a role in the story.</p></div>
         <div class="experiences">
           <article class="experience reveal"><span class="experience-num">01 / 06</span><h3>Main stage moments</h3><p>Music, voices and the moments the crowd will record.</p></article>
           <article class="experience reveal"><span class="experience-num">02 / 06</span><h3>Exhibition lounge</h3><p>A branded environment people actually want to explore.</p></article>
           <article class="experience reveal"><span class="experience-num">03 / 06</span><h3>Sunset product drop</h3><p>The Day 2 moment made for the camera roll.</p></article>
-          <article class="experience reveal"><span class="experience-num">04 / 06</span><h3>VIP cocktail tables</h3><p>Premium access, bottle service and closer proximity.</p></article>
+          <article class="experience reveal"><span class="experience-num">04 / 06</span><h3>VIP cocktail tables</h3><p>Premium access, bottle service and closer proximity.</p><a class="btn btn-gold tier-ticket gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Tickets <span>-></span></a></article>
           <article class="experience reveal"><span class="experience-num">05 / 06</span><h3>Games and art</h3><p>Playable, shareable spaces with real dwell time.</p></article>
           <article class="experience reveal"><span class="experience-num">06 / 06</span><h3>UGC all weekend</h3><p>Content capture rights that keep moving after Sunday.</p></article>
         </div>
@@ -218,8 +235,9 @@
 
     <section class="section section-dark" id="proof">
       <div class="container">
+        <div class="section-header stats-header reveal"><div class="eyebrow">The room, by design</div><div class="gold-rule"></div><h2 class="display display-lg">Small enough to matter. Big enough to move culture.</h2><p>Every number is designed to keep the experience intimate, premium and highly visible.</p></div>
         <div class="numbers reveal">
-          <div class="number"><strong>700-1k</strong><span>Curated room by design</span></div>
+          <div class="number"><strong>700–1k persons</strong><span>Curated room by design</span></div>
           <div class="number"><strong>5</strong><span>Partnership tiers</span></div>
           <div class="number"><strong>15</strong><span>Premium tables</span></div>
           <div class="number"><strong>Dec 5-6</strong><span>Before the Detty December rush</span></div>
@@ -229,10 +247,10 @@
 
     <section class="section section-ash" id="tickets">
       <div class="container">
-        <div class="section-header reveal"><div class="eyebrow">Choose your way in</div><div class="gold-rule"></div><h2 class="display display-lg">Find your place in the room.</h2><p>Whether you are coming to dance, host, sample, build or own a moment, there is a way in. Tickets and tables are intentionally limited.</p></div>
+        <div class="section-header reveal"><div class="eyebrow">Tickets and tables</div><div class="gold-rule"></div><h2 class="display display-lg">Find your place in the room.</h2><p>Whether you are coming to dance, host, sample, build or own a moment, there is a way in. Tickets and tables are intentionally limited.</p><a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get tickets <span>-></span></a></div>
         <div class="tiers">
           <article class="tier featured reveal"><span class="tier-label">Most wanted</span><h3>Headliner</h3><p>Own the marquee, the stage and the biggest cultural tech moment of the December season.</p><div class="tier-price">NGN 15,000,000</div><div class="tier-value">Stacked value: NGN 24.5m+</div><ul class="tier-list"><li>1 slot only</li><li>2 premium tables</li><li>Sunset product drop</li></ul></article>
-          <article class="tier reveal"><span class="tier-label">Co-sponsor</span><h3>Mainstage</h3><p>A zone, a moment and a table. Unmissable without the exclusivity price tag.</p><div class="tier-price">NGN 8,000,000</div><div class="tier-value">Stacked value: NGN 12.8m+</div><ul class="tier-list"><li>2 slots</li><li>Zone naming rights</li><li>15-minute demo moment</li></ul></article>
+          <article class="tier tier-mainstage reveal"><div><span class="tier-label">Co-sponsor</span><h3>Mainstage</h3><p>A zone, a moment and a table. Unmissable without the exclusivity price tag.</p><div class="tier-price">NGN 8,000,000</div><div class="tier-value">Stacked value: NGN 12.8m+</div></div><ul class="tier-list"><li>2 slots</li><li>Zone naming rights</li><li>15-minute demo moment</li></ul></article>
           <article class="tier reveal"><span class="tier-label">In their hands</span><h3>Afterglow</h3><p>Built for beverage, lifestyle and food brands that want to be poured, served or shared.</p><div class="tier-price">NGN 5,000,000</div><div class="tier-value">Stacked value: NGN 8.2m+</div><ul class="tier-list"><li>3 slots</li><li>Sampling activation</li><li>10 VIP Cocktail tickets</li></ul></article>
           <article class="tier reveal"><span class="tier-label">Product in hand</span><h3>Encore</h3><p>Put your product into the hands of every VIP Cocktail guest.</p><div class="tier-price">NGN 2,500,000</div><div class="tier-value">Stacked value: NGN 4.1m+</div><ul class="tier-list"><li>5 slots</li><li>4 individual tickets</li><li>Programme feature</li></ul></article>
           <article class="tier reveal"><span class="tier-label">Community</span><h3>Crew</h3><p>Bring amplification and credibility as a media, creator, hub or community partner.</p><div class="tier-price">NGN 750,000</div><div class="tier-value">Stacked value: NGN 1.3m+</div><ul class="tier-list"><li>Multiple slots open</li><li>2 GA tickets</li><li>Opening remarks recognition</li></ul></article>
@@ -241,18 +259,30 @@
       </div>
     </section>
 
+    <section class="section section-dark gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header gallery-header reveal"><div class="eyebrow">Moments between the summits</div><div class="gold-rule"></div><h2 class="display display-lg">OFFDUTY VIBES</h2><p>From focused rooms and summit energy to the late-night release. This is how the festival changes tempo without losing its point of view.</p></div>
+        <div class="gallery-grid reveal">
+          <figure class="gallery-card"><img src="https://images.pexels.com/photos/8448551/pexels-photo-8448551.jpeg" alt="Guests connecting at an event" loading="lazy" /><figcaption>Find your people</figcaption></figure>
+          <figure class="gallery-card"><img src="https://images.pexels.com/photos/2114365/pexels-photo-2114365.jpeg" alt="Crowd dancing under event lights" loading="lazy" /><figcaption>Summit to sound</figcaption></figure>
+          <figure class="gallery-card"><img src="https://images.pexels.com/photos/37200648/pexels-photo-37200648.jpeg" alt="Festival crowd in motion" loading="lazy" /><figcaption>Make the moment</figcaption></figure>
+          <figure class="gallery-card"><img src="https://images.pexels.com/photos/13146356/pexels-photo-13146356.jpeg" alt="Friends enjoying a night event" loading="lazy" /><figcaption>Stay for the afterglow</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
     <section class="final-cta" id="partners">
       <div class="container">
         <div class="eyebrow">Confirmation deadline / November 7, 2026</div>
         <h2 class="display display-lg">Conferences give you a booth.<br /><span style="color:var(--gold-bright)">We give you the whole vibe.</span></h2>
         <p>Slots are allocated first-confirmed, not first-inquired. Lock in your activation, table placement and product-drop timing before the room fills.</p>
-        <a class="btn btn-gold" href="mailto:sponsorship@onchainfestival.org?subject=No Deadline 2026 Partnership">Talk partnership <span>-></span></a>
-        <div class="contact-line">sponsorship@onchainfestival.org &nbsp; / &nbsp; <a href="https://wa.me/2349071679312" target="_blank" rel="noopener">WhatsApp +234 907 167 9312</a></div>
+        <a class="btn btn-gold" href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener">Talk partnership <span>-></span></a>
+        <div class="contact-line">onchainfestival@gmail.com &nbsp; / &nbsp; <a href="https://wa.me/2349071679312" target="_blank" rel="noopener">WhatsApp +234 907 167 9312</a></div>
       </div>
     </section>
   </main>
 
-  <footer id="contact"><div class="container footer-inner"><span>No Deadline BY ONCHAIN FESTIVAL</span><span>December 5-6, 2026 / Lagos, Nigeria</span><span>onchainfestival.org</span></div></footer>
+  <footer id="contact"><div class="container footer-inner"><span>OFF_DUTY BY ONCHAIN FESTIVAL</span><span>December 5-6, 2026 / fired & Ice, Lekki Phase 1, Lagos, Nigeria</span><span>onchainfestival.org</span></div></footer>
 
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
