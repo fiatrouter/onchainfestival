@@ -32,10 +32,10 @@
     .container { width: min(var(--max), calc(100% - 4rem)); margin: 0 auto; }
     .eyebrow { color: var(--gold-bright); font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
     .display { font-weight: 700; letter-spacing: -.055em; line-height: .92; }
-    .display-xl { font-size: clamp(4.6rem, 12vw, 11rem); }
+    .display-xl { font-size: clamp(4rem, 10vw, 9rem); }
     .display-lg { font-size: clamp(3rem, 7vw, 7rem); }
     .gold-rule { width: 54px; height: 2px; background: var(--gold); margin: 1.25rem 0 1.8rem; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; width: max-content !important; max-width: 100%; flex: 0 0 auto; min-height: 48px; padding: .8rem 1.35rem; border: 1px solid transparent; border-radius: 999px; font-size: .8rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; width: max-content !important; max-width: 100%; flex: 0 0 auto; min-height: 48px; padding: .8rem 1.35rem; border: 1px solid transparent; border-radius: 999px !important; font-size: .8rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease; }
     .btn:hover { transform: translateY(-3px); }
     .btn-gold { background: var(--gold); color: #080808; box-shadow: 0 10px 32px rgba(200,150,42,.2); }
     .btn-gold:hover { background: var(--gold-bright); box-shadow: 0 15px 40px rgba(200,150,42,.3); }
@@ -62,7 +62,7 @@
     .hero-content { width: 100%; padding: 9rem 0 4.5rem; text-align: center; }
     .hero-kicker { display: inline-flex; align-items: center; gap: .65rem; padding: .45rem .8rem; border: 1px solid rgba(240,198,92,.5); background: rgba(8,8,8,.38); color: var(--gold-bright); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
     .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold-bright); box-shadow: 0 0 0 6px rgba(240,198,92,.12); animation: pulse 2s infinite; }
-    .hero h1 { max-width: 950px; margin: 1.5rem 0; text-transform: uppercase; }
+    .hero h1 { max-width: 950px; margin: 1.5rem auto; text-transform: uppercase; }
     .hero h1 em { color: var(--gold-bright); font-family: 'DM Serif Display', serif; font-weight: 400; letter-spacing: -.06em; text-transform: none; }
     .hero-copy { max-width: 540px; margin: 0 auto; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
     .hero-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .8rem; margin: 2rem 0 3.6rem; }
@@ -133,15 +133,16 @@
     .number span { display: block; max-width: 150px; margin-top: .8rem; color: var(--muted); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
 
     .experiences { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); }
-    .experience { min-height: 260px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; overflow: hidden; background: #121212; }
-    .experience::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 90% 10%, rgba(200,150,42,.28), transparent 30%), repeating-linear-gradient(135deg, transparent 0 18px, rgba(255,255,255,.025) 19px 20px); transition: transform .6s ease; }
-    .experience:hover::before { transform: scale(1.25) rotate(4deg); }
+    .experience { min-height: 260px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; overflow: hidden; background: #121212 center / cover no-repeat; }
+    .experience::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,8,.12) 0%, rgba(8,8,8,.8) 72%, rgba(8,8,8,.96) 100%); transition: transform .6s ease, filter .6s ease; }
+    .experience:hover::before { transform: scale(1.08); filter: brightness(.9); }
     .experience > * { position: relative; z-index: 1; }
-    .experience:nth-child(2)::before { background: radial-gradient(circle at 20% 80%, rgba(200,150,42,.25), transparent 30%), repeating-radial-gradient(circle, transparent 0 22px, rgba(255,255,255,.035) 23px 24px); }
-    .experience:nth-child(3)::before { background: linear-gradient(145deg, rgba(200,150,42,.24), transparent 46%), repeating-linear-gradient(45deg, transparent 0 14px, rgba(255,255,255,.035) 15px 16px); }
-    .experience:nth-child(4)::before { background: radial-gradient(circle, rgba(200,150,42,.25) 0 2px, transparent 3px); background-size: 26px 26px; }
-    .experience:nth-child(5)::before { background: linear-gradient(90deg, rgba(200,150,42,.2) 1px, transparent 1px), linear-gradient(rgba(200,150,42,.2) 1px, transparent 1px); background-size: 30px 30px; }
-    .experience:nth-child(6)::before { background: radial-gradient(ellipse at 70% 30%, rgba(200,150,42,.3), transparent 42%), linear-gradient(135deg, transparent 45%, rgba(255,255,255,.08) 46% 47%, transparent 48%); }
+    .experience:nth-child(1) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_700/lan_9998.JPEG'); }
+    .experience:nth-child(2) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_700/exhibition.JPEG'); }
+    .experience:nth-child(3) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_700/lan_105.jpg'); }
+    .experience:nth-child(4) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_700/lan_107.jpg'); }
+    .experience:nth-child(5) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_700/lan_103.jpg'); }
+    .experience:nth-child(6) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_700/lan_SHOW102.jpg'); }
     .experience-num { color: var(--gold); font-size: .72rem; letter-spacing: .16em; }
     .experience h3 { margin: .7rem 0 .35rem; font-size: 1.25rem; }
     .experience p { color: var(--muted); font-size: .85rem; }
@@ -175,7 +176,7 @@
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
     @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } }
-    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(4rem, 18vw, 7rem); } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .footer-inner { align-items: flex-start; flex-direction: column; } }
+    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(3.4rem, 16vw, 6rem); } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .footer-inner { align-items: flex-start; flex-direction: column; } }
     @media (max-width: 430px) { .brand { font-size: .72rem; } .brand-mark { width: 38px; height: 38px; } .nav-cta { display: none; } .hero-actions .btn { width: max-content !important; max-width: 100%; } .hero-meta { display: grid; grid-template-columns: 1fr 1fr; } .experiences { grid-template-columns: 1fr; } .experience { min-height: 190px; } }
   </style>
 </head>
@@ -204,14 +205,15 @@
         <div class="hero-kicker"><span class="live-dot"></span> Lagos / December 5-6, 2026</div>
         <h1 class="display display-xl">Where <em>Technology</em><br />meets Culture</h1>
         <div class="hero-actions">
-          <a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get your ticket <span>-></span></a>
+          <a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get your ticket <span aria-hidden="true">👆</span></a>
+          <a class="btn btn-ghost" href="sponsorship_prospectus.pdf" target="_blank" rel="noopener">View prospectus <span aria-hidden="true">👆</span></a>
           <a class="btn btn-ghost" href="#experience">Enter the experience</a>
         </div>
         <div class="hero-meta">
-          <div class="meta-item"><strong>875</strong><span>Verified paid attendees</span></div>
+          <div class="meta-item"><strong>500</strong><span>Attendees</span></div>
           <div class="meta-item"><strong>2 days</strong><span>Brand immersion</span></div>
           <div class="meta-item"><strong>15</strong><span>Premium tables</span></div>
-          <div class="meta-item"><strong>Lekki / VI</strong><span>Lagos, Nigeria</span></div>
+          <div class="meta-item"><strong>Lagos</strong><span>Nigeria</span></div>
         </div>
       </div>
       <div class="hero-side-note">By Onchain Festival / First edition</div>
@@ -221,36 +223,15 @@
       <div class="ticker-track"><span>Music</span><i></i><span>Culture</span><i></i><span>Creators</span><i></i><span>Digital economy</span><i></i><span>December in Lagos</span><i></i><span>Music</span><i></i><span>Culture</span><i></i><span>Creators</span><i></i><span>Digital economy</span><i></i><span>December in Lagos</span><i></i></div>
     </div>
 
-    <section class="section section-ash" id="about">
-      <div class="container audience-grid">
-        <div class="audience-copy reveal">
-          <div class="eyebrow">GET IN THE MIX</div>
-          <div class="gold-rule"></div>
-          <h2 class="display display-lg">Get in the mix.<br />Own a moment people remember.</h2>
-          <div class="mix-table-wrap">
-            <table class="mix-table">
-              <thead><tr><th>Tier</th><th>Position</th><th>Best for</th></tr></thead>
-              <tbody>
-                <tr><td>Headliner</td><td>Own the marquee moment</td><td>Brands leading the cultural-tech story of the season</td></tr>
-                <tr><td>Mainstage</td><td>Named zone and live demo</td><td>Brands that want to be at the centre of the action</td></tr>
-                <tr><td>Afterglow</td><td>Sampling and hospitality</td><td>Beverage, lifestyle and product-led experiences</td></tr>
-                <tr><td>Encore / Crew</td><td>Placement and amplification</td><td>Creators, communities and products that travel beyond the room</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="audience-art reveal" aria-label="Guests connecting at a live event"></div>
-      </div>
-    </section>
-
+    
     <section class="section section-dark" id="experience">
       <div class="container">
-        <div class="section-header reveal"><div class="eyebrow">Two days of brand immersion</div><div class="gold-rule"></div><h2 class="display display-lg">A rave with a point of view.</h2><p>Not a conference with a DJ after. Not a booth in a hallway. Off-Duty puts culture first and gives your brand a role in the story.</p></div>
+        <div class="section-header reveal"><div class="eyebrow">Two days of brand immersion</div><div class="gold-rule"></div><h2 class="display display-lg">A rave with a point of view.</h2><br/><p>Off-Duty puts culture first and gives your brand a role in the story.</p></div>
         <div class="experiences">
           <article class="experience reveal"><span class="experience-num">01 / 06</span><h3>Main stage moments</h3><p>Music, voices and the moments the crowd will record.</p></article>
           <article class="experience reveal"><span class="experience-num">02 / 06</span><h3>Exhibition lounge</h3><p>A branded environment people actually want to explore.</p></article>
           <article class="experience reveal"><span class="experience-num">03 / 06</span><h3>Sunset product drop</h3><p>The Day 2 moment made for the camera roll.</p></article>
-          <article class="experience reveal"><span class="experience-num">04 / 06</span><h3>VIP cocktail tables</h3><p>Premium access, bottle service and closer proximity.</p><a class="btn btn-gold tier-ticket gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Tickets <span>-></span></a></article>
+          <article class="experience reveal"><span class="experience-num">04 / 06</span><h3>VIP cocktail tables</h3><p>Premium access, bottle service and closer proximity.</p><a class="btn btn-gold tier-ticket gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Tickets <span aria-hidden="true">👆</span></a></article>
           <article class="experience reveal"><span class="experience-num">05 / 06</span><h3>Games and art</h3><p>Playable, shareable spaces with real dwell time.</p></article>
           <article class="experience reveal"><span class="experience-num">06 / 06</span><h3>UGC all weekend</h3><p>Content capture rights that keep moving after Sunday.</p></article>
         </div>
@@ -261,7 +242,7 @@
       <div class="container">
         <div class="section-header stats-header reveal"><div class="eyebrow">The room, by design</div><div class="gold-rule"></div><h2 class="display display-lg">Small enough to matter. Big enough to move culture.</h2><p>Every number is designed to keep the experience intimate, premium and highly visible.</p></div>
         <div class="numbers reveal">
-          <div class="number"><strong>500 Attendees</strong><span>Curated room by design</span></div>
+          <div class="number"><strong>700k-1k Persons</strong><span>Curated room by design</span></div>
           <div class="number"><strong>5</strong><span>Partnership tiers</span></div>
           <div class="number"><strong>15</strong><span>Premium tables</span></div>
           <div class="number"><strong>Dec 5-6</strong><span>Before the Detty December rush</span></div>
@@ -279,12 +260,12 @@
               <tr><td>Premium Table<small>15 tables · 75 seats</small></td><td>NGN 2,000,000<small>per table of 5</small></td><td>Closest to the stage, barricaded VIP section. Bottle service with champagne, Hennessy, vodka and premium spirits.</td><td>Prestige and visibility. Reserved for speakers, public figures, celebrities and major sponsors.</td></tr>
               <tr><td>VIP Cocktail<small>300 tickets</small></td><td>NGN 80,000<small>per person</small></td><td>Named cocktail table, one complimentary cocktail, headset and finger food. Standing access keeps people moving and mingling.</td><td>The networking engine.</td></tr>
               <tr><td>General Access<small>500 tickets</small></td><td>NGN 20,000<small>per person</small></td><td>Full festival grounds: stage, food trucks, games and installations. Standing only.</td><td>Volume and energy: the crowd that makes it feel alive.</td></tr>
-              <tr><td>Investor Lounge</td><td>Badge only</td><td>A curated space inside the festival where investors and founders connect: same energy, higher-stakes conversation.</td><td>Deal flow.</td></tr>
+              <tr><td>Investor Lounge</td><td>Badge only</td><td>A curated space inside the festival where investors and founders connect: same energy, higher-stakes conversation.</td><td>Strictly by invitation.</td></tr>
             </tbody>
           </table>
           <p class="ticket-note">875 ticketed guests sits comfortably inside the 700–1,000 capacity, leaving headroom for guest list, press, performers and crew.</p>
         </div>
-        <div style="text-align:center;margin-top:2.5rem" class="reveal"><a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get tickets / reserve a table <span>-></span></a></div>
+        <div style="text-align:center;margin-top:2.5rem" class="reveal"><a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get tickets / reserve a table <span aria-hidden="true">👆</span></a></div>
       </div>
     </section>
 
@@ -313,13 +294,13 @@
         <div class="eyebrow">Confirmation deadline / November 7, 2026</div>
         <h2 class="display display-lg">Conferences give you a booth.<br /><span style="color:var(--gold-bright)">We give you the whole vibe.</span></h2>
         <p>Slots are allocated first-confirmed, not first-inquired. Lock in your activation, table placement and product-drop timing before the room fills.</p>
-        <a class="btn btn-gold" href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener">Talk partnership <span>-></span></a>
+        <a class="btn btn-gold" href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener">Talk partnership <span aria-hidden="true">👆</span></a>
         <div class="contact-line">onchainfestival@gmail.com &nbsp; / &nbsp; <a href="https://wa.me/2349071679312" target="_blank" rel="noopener">WhatsApp +234 907 167 9312</a></div>
       </div>
     </section>
   </main>
 
-  <footer id="contact"><div class="container footer-inner"><span>OFF-DUTY BY ONCHAIN FESTIVAL</span><span>December 5-6, 2026 / fired & Ice, Lekki Phase 1, Lagos, Nigeria</span><span>onchainfestival.org</span></div></footer>
+  <footer id="contact"><div class="container footer-inner"><span>OFF-DUTY BY ONCHAIN FESTIVAL</span><span>December 5-6, 2026 / fired & Ice, Lekki Phase 1, Lagos, Nigeria</span><a href="sponsorship_prospectus.pdf" target="_blank" rel="noopener">View sponsorship prospectus</a><span>onchainfestival.org</span></div></footer>
 
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
