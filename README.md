@@ -1,4 +1,4 @@
-# Onchain Festival tracker.
+.# Onchain Festival tracker.
 
 The site records page views and clicks on `.gruve-cta-button` through a same-origin Node endpoint. MongoDB credentials are used only by `server.js`; they are never sent to the browser.
 
