@@ -172,15 +172,26 @@
     .final-cta p { max-width: 520px; margin: 0 auto 2rem; color: var(--muted); }
     .contact-line { margin-top: 2.4rem; color: rgba(255,255,255,.5); font-size: .78rem; }
     .contact-line a { color: var(--gold-bright); }
-    footer { padding: 2.5rem 0; background: #050505; border-top: 1px solid var(--line); color: rgba(255,255,255,.45); font-size: .75rem; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    footer { padding: 5rem 0 3rem; background: #050505; border-top: 1px solid var(--line); color: rgba(255,255,255,.45); font-size: .75rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 4rem; margin-bottom: 4rem; }
+    .footer-brand p { max-width: 230px; margin-top: 1rem; color: rgba(255,255,255,.4); line-height: 1.7; }
+    .footer-col h4 { margin-bottom: 1.5rem; color: var(--gold); font-size: .68rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: .75rem; }
+    .footer-col a { color: rgba(255,255,255,.4); transition: color .2s; }
+    .footer-col a:hover { color: var(--fog); }
+    .social-links { display: flex; gap: .75rem; margin-top: 1.5rem; }
+    .social-link { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; color: rgba(255,255,255,.4); font-size: .8rem; font-weight: 600; transition: border-color .25s, color .25s, background .25s; }
+    .social-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,150,42,.08); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.05); flex-wrap: wrap; }
+    .footer-bottom p { color: rgba(255,255,255,.25); font-size: .78rem; }
 
     @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(240,198,92,.35); } 50% { box-shadow: 0 0 0 8px rgba(240,198,92,0); } }
     @keyframes hero-line-loop { 0%, 39% { opacity: 1; transform: translateY(0); } 49%, 58% { opacity: 0; transform: translateY(-110%); } 58.01%, 100% { opacity: 0; transform: translateY(110%); } }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } .hero-title-line { opacity: 1; transform: none; animation: none; } .hero-title-line + .hero-title-line { display: none; } }
-    @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } }
-    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(3.4rem, 16vw, 6rem); } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .footer-inner { align-items: flex-start; flex-direction: column; } }
+    @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; } }
+    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(3.4rem, 16vw, 6rem); } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } }
     @media (max-width: 430px) { .brand { font-size: .72rem; } .brand-mark { width: 38px; height: 38px; } .nav-cta { display: none; } .hero-actions .btn { width: max-content !important; max-width: 100%; } .hero-meta { display: grid; grid-template-columns: 1fr 1fr; } .experiences { grid-template-columns: 1fr; } .experience { min-height: 190px; } }
   </style>
 </head>
@@ -304,7 +315,51 @@
     </section>
   </main>
 
-  <footer id="contact"><div class="container footer-inner"><span>OFF-DUTY BY ONCHAIN FESTIVAL</span><span>December 5-6, 2026 / fired & Ice, Lekki Phase 1, Lagos, Nigeria</span><a href="sponsorship_prospectus.pdf" target="_blank" rel="noopener">View sponsorship prospectus</a><span>onchainfestival.org</span></div></footer>
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#top" class="brand"><span class="brand-mark"><img src="icon.png" alt="Onchain Festival" /></span> OFF-DUTY</a>
+          <p>Off-Duty by Onchain Festival. A tech-culture rave where brands, creators and the room shape the story together.</p>
+          <div class="social-links" aria-label="Social links">
+            <a href="https://www.linkedin.com/company/onchain-festival/" target="_blank" rel="noopener" class="social-link" title="LinkedIn" aria-label="LinkedIn">in</a>
+            <a href="https://www.youtube.com/@onchainfestival" target="_blank" rel="noopener" class="social-link" title="YouTube" aria-label="YouTube">&#9654;</a>
+            <a href="https://www.instagram.com/_bchainafrica?igsh=bm44dmNpa2txeGNl" target="_blank" rel="noopener" class="social-link" title="Instagram" aria-label="Instagram">&#9673;</a>
+            <a href="https://wa.me/2349071679312" target="_blank" rel="noopener" class="social-link" title="WhatsApp" aria-label="WhatsApp">&#9993;</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Festival</h4>
+          <ul>
+            <li><a href="#experience">The vibe</a></li>
+            <li><a href="#gallery">2025 gallery</a></li>
+            <li><a href="#tickets">Tickets</a></li>
+            <li><a href="#partners">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Partner</h4>
+          <ul>
+            <li><a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener">Sponsorship</a></li>
+            <li><a href="sponsorship_prospectus.pdf" target="_blank" rel="noopener">View sponsorship prospectus</a></li>
+            <li><a href="mailto:femiadegolu@gmail.com?subject=Media Accreditation">Media accreditation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:onchainfestival@gmail.com">onchainfestival@gmail.com</a></li>
+            <li><a href="https://wa.me/2349071679312" target="_blank" rel="noopener">+234 907 167 9312</a></li>
+            <li><a href="https://calendly.com/femiadegolu-hltd/30min?month=2026-07" target="_blank" rel="noopener">Talk partnership</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Bchain Technologies Limited. All rights reserved.</p>
+        <p>Lagos, Nigeria / December 5-6, 2026</p>
+      </div>
+    </div>
+  </footer>
 
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
