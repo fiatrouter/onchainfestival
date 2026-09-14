@@ -43,7 +43,7 @@
   track('page_view');
 
   document.addEventListener('click', function (event) {
-    const button = event.target.closest('.gruve-cta-button');
+    const button = event.target.closest('.frontdesk-cta-button');
     if (!button) return;
 
     track('registration_click', {

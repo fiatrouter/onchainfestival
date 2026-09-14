@@ -55,6 +55,51 @@
     .nav-links a:hover { color: var(--gold-bright); }
     .nav-cta { padding: .65rem 1.1rem; }
     .mobile-toggle { display: none; border: 1px solid var(--line); background: transparent; color: var(--fog); padding: .5rem .7rem; cursor: pointer; }
+    .ticket-dialog { position: fixed; inset: 0; width: min(620px, calc(100% - 2rem)); max-height: min(760px, calc(100% - 2rem)); margin: auto; padding: 0; border: 1px solid rgba(240,198,92,.5); background: #0b0b0b; color: var(--fog); box-shadow: 0 0 0 1px rgba(8,8,8,.9), 0 28px 100px rgba(0,0,0,.75), 0 0 100px rgba(200,150,42,.2); overflow: auto; scrollbar-width: none; }
+    .ticket-dialog::-webkit-scrollbar { display: none; }
+    .ticket-dialog::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 0% 8%, rgba(200,150,42,.3), transparent 38%), radial-gradient(ellipse at 100% 30%, rgba(116,30,45,.38), transparent 42%), radial-gradient(ellipse at 50% 100%, rgba(200,150,42,.14), transparent 48%), linear-gradient(125deg, rgba(255,255,255,.06), transparent 34%); }
+    .ticket-dialog::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .08; background-image: linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px); background-size: 34px 34px; mask-image: linear-gradient(120deg, black, transparent 58%); }
+    .ticket-dialog::backdrop { background: radial-gradient(ellipse at 50% 42%, rgba(116,30,45,.54), transparent 44%), radial-gradient(ellipse at 50% 50%, rgba(200,150,42,.22), transparent 66%), rgba(3,3,3,.82); backdrop-filter: blur(14px) saturate(.9); }
+    .ticket-dialog-inner { position: relative; z-index: 1; min-height: 100%; padding: 2.25rem; }
+    .ticket-dialog-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .ticket-dialog h2 { margin-top: .55rem; color: #fff9ed; font-size: clamp(1.8rem, 5vw, 2.5rem); letter-spacing: -.04em; }
+    .ticket-dialog-close { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.03); color: var(--muted); font-size: 1.25rem; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+    .ticket-dialog-close:hover { border-color: var(--gold-bright); background: rgba(200,150,42,.12); color: var(--gold-bright); }
+    .ticket-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin: 1.7rem 0 1.8rem; border-top: 1px solid rgba(255,255,255,.15); border-bottom: 1px solid rgba(255,255,255,.15); padding: .85rem 0; }
+    .ticket-step { color: rgba(255,255,255,.38); font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .ticket-step.active { color: var(--gold-bright); }
+    .ticket-step b { margin-right: .35rem; color: inherit; }
+    .ticket-form { display: grid; gap: 1rem; margin-top: 1.5rem; }
+    .ticket-view[hidden] { display: none; }
+    .ticket-options { display: grid; gap: .7rem; }
+    .ticket-option { position: relative; display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: .9rem; width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,.16); border-left: 2px solid rgba(255,255,255,.22); background: rgba(0,0,0,.32); color: var(--fog); text-align: left; cursor: pointer; transition: border-color .2s, background .2s, box-shadow .2s, transform .2s; }
+    .ticket-option:hover { border-color: rgba(240,198,92,.75); background: rgba(200,150,42,.08); transform: translateX(3px); }
+    .ticket-option.selected { border-color: var(--gold-bright); border-left-color: var(--gold-bright); background: linear-gradient(90deg, rgba(200,150,42,.18), rgba(116,30,45,.11)); box-shadow: 0 0 22px rgba(200,150,42,.12), inset 0 0 18px rgba(200,150,42,.04); }
+    .ticket-option-dot { width: 12px; height: 12px; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; }
+    .ticket-option.selected .ticket-option-dot { border-color: var(--gold-bright); background: var(--gold-bright); box-shadow: 0 0 0 4px rgba(240,198,92,.13), 0 0 16px rgba(240,198,92,.7); }
+    .ticket-option-name { display: block; color: #fff9ed; font-size: .96rem; font-weight: 700; }
+    .ticket-option-note { display: block; margin-top: .25rem; color: rgba(255,255,255,.48); font-size: .72rem; }
+    .ticket-option-price { color: var(--gold-bright); font-size: .82rem; font-weight: 700; white-space: nowrap; }
+    .ticket-section-label { margin-bottom: .7rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .ticket-form label { display: grid; gap: .45rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .ticket-form label span { color: rgba(255,255,255,.38); font-weight: 400; letter-spacing: .04em; text-transform: none; }
+    .ticket-form input { width: 100%; min-height: 48px; padding: .85rem 1rem; border: 1px solid rgba(255,255,255,.18); border-radius: 0; outline: 0; background: rgba(0,0,0,.48); color: var(--fog); font: inherit; transition: border-color .2s, background .2s, box-shadow .2s; }
+    .ticket-form input:focus { border-color: var(--gold-bright); background: rgba(200,150,42,.07); box-shadow: 0 0 0 3px rgba(200,150,42,.12); }
+    .ticket-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .ticket-details-grid label:last-child { grid-column: 1 / -1; }
+    .ticket-summary { display: grid; gap: .8rem; margin: 0; padding: 1.1rem; border: 1px solid rgba(240,198,92,.35); background: rgba(200,150,42,.07); }
+    .ticket-summary-row { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: .7rem; }
+    .ticket-summary-row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .ticket-summary dt { color: rgba(255,255,255,.5); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+    .ticket-summary dd { margin: 0; color: #fff9ed; font-size: .82rem; font-weight: 700; text-align: right; }
+    .ticket-actions { display: flex; justify-content: space-between; gap: .8rem; margin-top: 1.2rem; }
+    .ticket-actions .btn { min-width: 140px; cursor: pointer; }
+    .ticket-form label { display: grid; gap: .45rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .ticket-form label span { color: rgba(255,255,255,.38); font-weight: 400; letter-spacing: .04em; text-transform: none; }
+    .ticket-form input, .ticket-form select { width: 100%; min-height: 48px; padding: .85rem 1rem; border: 1px solid rgba(255,255,255,.18); border-radius: 0; outline: 0; background: rgba(0,0,0,.48); color: var(--fog); font: inherit; transition: border-color .2s, background .2s, box-shadow .2s; }
+    .ticket-form button[type="submit"] { width: 100% !important; min-height: 54px; cursor: pointer; border-radius: 0 !important; letter-spacing: .12em; }
+    .ticket-form button:disabled { cursor: wait; opacity: .6; }
+    .ticket-form-status { min-height: 1.3em; color: var(--gold-bright); font-size: .8rem; }
 
     .hero { min-height: 100svh; position: relative; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; }
     .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3; filter: saturate(.7) contrast(1.12); }
@@ -191,7 +236,7 @@
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } .hero-title-line { opacity: 1; transform: none; animation: none; } .hero-title-line + .hero-title-line { display: none; } }
     @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; } }
-    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(3.4rem, 16vw, 6rem); } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } }
+    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(3.4rem, 16vw, 6rem); } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } .ticket-dialog-inner { padding: 1.5rem; } .ticket-dialog h2 { font-size: 1.8rem; } .ticket-steps { gap: .45rem; } .ticket-step { font-size: .56rem; letter-spacing: .1em; } .ticket-details-grid { grid-template-columns: 1fr; } .ticket-details-grid label:last-child { grid-column: auto; } .ticket-actions { flex-direction: column-reverse; } .ticket-actions .btn { width: 100% !important; } }
     @media (max-width: 430px) { .brand { font-size: .72rem; } .brand-mark { width: 38px; height: 38px; } .nav-cta { display: none; } .hero-actions .btn { width: max-content !important; max-width: 100%; } .hero-meta { display: grid; grid-template-columns: 1fr 1fr; } .experiences { grid-template-columns: 1fr; } .experience { min-height: 190px; } }
   </style>
 </head>
@@ -206,7 +251,7 @@
         <li><a href="#partners">Partners</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <a class="btn btn-gold nav-cta gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get tickets</a>
+      <a class="btn btn-gold nav-cta frontdesk-cta-button">Get tickets</a>
       <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="Open navigation" aria-expanded="false">Menu</button>
     </div>
   </nav>
@@ -220,7 +265,7 @@
         <div class="hero-kicker"><span class="live-dot"></span> Lagos / December 5-6, 2026</div>
         <h1 class="display display-xl"><span class="hero-title-line">Conferences are Boring,</span><span class="hero-title-line">this is where you belong</span></h1>
         <div class="hero-actions">
-          <a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get your ticket <span aria-hidden="true">👆</span></a>
+          <a class="btn btn-gold frontdesk-cta-button">Get your ticket <span aria-hidden="true">👆</span></a>
           <a class="btn btn-ghost" href="sponsorship_prospectus.pdf" target="_blank" rel="noopener">View prospectus <span aria-hidden="true">👆</span></a>
           <a class="btn btn-ghost" href="#experience">Enter the experience</a>
         </div>
@@ -246,7 +291,7 @@
           <article class="experience reveal"><span class="experience-num">01 / 06</span><h3>Main stage moments</h3><p>Music, voices and the moments the crowd will record.</p></article>
           <article class="experience reveal"><span class="experience-num">02 / 06</span><h3>Exhibition lounge</h3><p>A branded environment people actually want to explore.</p></article>
           <article class="experience reveal"><span class="experience-num">03 / 06</span><h3>Sunset product drop</h3><p>The Day 2 moment made for the camera roll.</p></article>
-          <article class="experience reveal"><span class="experience-num">04 / 06</span><h3>VIP cocktail tables</h3><p>Premium access, bottle service and closer proximity.</p><a class="btn btn-gold tier-ticket gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Tickets <span aria-hidden="true">👆</span></a></article>
+          <article class="experience reveal"><span class="experience-num">04 / 06</span><h3>VIP cocktail tables</h3><p>Premium access, bottle service and closer proximity.</p><a class="btn btn-gold tier-ticket frontdesk-cta-button">Tickets <span aria-hidden="true">👆</span></a></article>
           <article class="experience reveal"><span class="experience-num">05 / 06</span><h3>Games and art</h3><p>Playable, shareable spaces with real dwell time.</p></article>
           <article class="experience reveal"><span class="experience-num">06 / 06</span><h3>UGC all weekend</h3><p>Content capture rights that keep moving after Sunday.</p></article>
         </div>
@@ -280,7 +325,7 @@
           </table>
           <p class="ticket-note">875 ticketed guests sits comfortably inside the 700–1,000 capacity, leaving headroom for guest list, press, performers and crew.</p>
         </div>
-        <div style="text-align:center;margin-top:2.5rem" class="reveal"><a class="btn btn-gold gruve-cta-button" data-gruve-event-address="0bfc792a421ed9e164fc51a94656db5423202d43" data-gruve-theme-color="#c8962a" data-gruve-button-text-color="black">Get tickets / reserve a table <span aria-hidden="true">👆</span></a></div>
+        <div style="text-align:center;margin-top:2.5rem" class="reveal"><a class="btn btn-gold frontdesk-cta-button">Get tickets / reserve a table <span aria-hidden="true">👆</span></a></div>
       </div>
     </section>
 
@@ -314,6 +359,52 @@
       </div>
     </section>
   </main>
+
+  <dialog class="ticket-dialog" id="ticket-dialog" aria-labelledby="ticket-dialog-title">
+    <div class="ticket-dialog-inner">
+      <div class="ticket-dialog-header">
+        <div><div class="eyebrow">Frontdesk checkout</div><h2 id="ticket-dialog-title">Choose your access.</h2></div>
+        <button class="ticket-dialog-close" id="ticket-dialog-close" type="button" aria-label="Close ticket checkout">&times;</button>
+      </div>
+      <div class="ticket-steps" aria-label="Checkout progress">
+        <span class="ticket-step active"><b>01</b> Ticket</span>
+        <span class="ticket-step"><b>02</b> Details</span>
+        <span class="ticket-step"><b>03</b> Payment</span>
+      </div>
+      <form class="ticket-form" id="ticket-form">
+        <section class="ticket-view" id="ticket-step-view">
+          <p class="ticket-section-label">Choose your access</p>
+          <div class="ticket-options" id="ticket-options"><p class="ticket-form-status">Loading live ticket options...</p></div>
+          <p class="ticket-form-status" id="ticket-selection-status" role="status"></p>
+          <label style="margin-top:1rem">Quantity<input id="ticket-quantity" name="quantity" type="number" min="1" max="20" value="1" required /></label>
+          <div class="ticket-actions"><span></span><button class="btn btn-gold" id="ticket-to-details" type="button">Enter details</button></div>
+        </section>
+
+        <section class="ticket-view" id="details-step-view" hidden>
+          <p class="ticket-section-label">Who are we expecting?</p>
+          <div class="ticket-details-grid">
+            <label>Name<input id="ticket-name" name="name" type="text" autocomplete="name" required /></label>
+            <label>Email<input id="ticket-email" name="email" type="email" autocomplete="email" required /></label>
+            <label>Phone <span>(optional)</span><input id="ticket-phone" name="phone" type="tel" autocomplete="tel" /></label>
+          </div>
+          <div class="ticket-actions"><button class="btn btn-ghost" id="ticket-back-to-ticket" type="button">Back</button><button class="btn btn-gold" id="ticket-to-confirm" type="button">Review order</button></div>
+        </section>
+
+        <section class="ticket-view" id="confirm-step-view" hidden>
+          <p class="ticket-section-label">Check every detail before continuing</p>
+          <dl class="ticket-summary">
+            <div class="ticket-summary-row"><dt>Ticket</dt><dd id="summary-ticket"></dd></div>
+            <div class="ticket-summary-row"><dt>Quantity</dt><dd id="summary-quantity"></dd></div>
+            <div class="ticket-summary-row"><dt>Name</dt><dd id="summary-name"></dd></div>
+            <div class="ticket-summary-row"><dt>Email</dt><dd id="summary-email"></dd></div>
+            <div class="ticket-summary-row"><dt>Phone</dt><dd id="summary-phone"></dd></div>
+          </dl>
+          <p class="ticket-form-status" id="ticket-form-status" role="status"></p>
+          <div class="ticket-actions"><button class="btn btn-ghost" id="ticket-back-to-details" type="button">Back</button><button class="btn btn-gold" id="ticket-submit" type="submit">Confirm &amp; continue</button></div>
+        </section>
+      </form>
+    </div>
+  </dialog>
 
   <footer id="contact">
     <div class="container">
@@ -361,9 +452,6 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@gruve/echo@latest/dist/index.umd.js"></script>
   <script src="tracker-client.js" defer></script>
   <script>
     const nav = document.getElementById('nav');
@@ -384,6 +472,125 @@
       if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     }), { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+    const ticketDialog = document.getElementById('ticket-dialog');
+    const ticketForm = document.getElementById('ticket-form');
+    const ticketOptions = document.getElementById('ticket-options');
+    const ticketQuantity = document.getElementById('ticket-quantity');
+    const ticketStatus = document.getElementById('ticket-selection-status');
+    const confirmationStatus = document.getElementById('ticket-form-status');
+    const ticketSubmit = document.getElementById('ticket-submit');
+    const ticketViews = {
+      ticket: document.getElementById('ticket-step-view'),
+      details: document.getElementById('details-step-view'),
+      confirm: document.getElementById('confirm-step-view')
+    };
+    const ticketStepLabels = document.querySelectorAll('.ticket-step');
+    let ticketTypesLoaded = false;
+    let selectedTicket = null;
+
+    function formatTicketPrice(ticket) {
+      const price = ticket.priceMinor ?? ticket.prices?.find(item => item.currency === 'NGN')?.amountMinor;
+      return Number.isFinite(price) ? ` - NGN ${(price / 100).toLocaleString()}` : '';
+    }
+
+    async function loadTicketTypes() {
+      if (ticketTypesLoaded) return;
+      const response = await fetch('/api/tickets/event');
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Ticket information unavailable.');
+      ticketOptions.replaceChildren(...result.ticketTypes.map(ticket => {
+        const option = document.createElement('button');
+        option.type = 'button';
+        option.className = 'ticket-option';
+        option.dataset.ticketRef = ticket.ref;
+        option.innerHTML = `<span class="ticket-option-dot" aria-hidden="true"></span><span><strong class="ticket-option-name"></strong><small class="ticket-option-note">${ticket.description || ticket.subtitle || 'Festival access'}</small></span><strong class="ticket-option-price"></strong>`;
+        option.querySelector('.ticket-option-name').textContent = ticket.name || ticket.label || 'Ticket';
+        option.querySelector('.ticket-option-price').textContent = formatTicketPrice(ticket).replace(' - ', '');
+        option.addEventListener('click', () => selectTicket(ticket, option));
+        return option;
+      }));
+      ticketTypesLoaded = true;
+    }
+
+    function selectTicket(ticket, option) {
+      selectedTicket = ticket;
+      ticketOptions.querySelectorAll('.ticket-option').forEach(item => item.classList.toggle('selected', item === option));
+      ticketStatus.textContent = '';
+    }
+
+    function showTicketView(view) {
+      Object.entries(ticketViews).forEach(([name, element]) => { element.hidden = name !== view; });
+      ticketStepLabels.forEach((step, index) => step.classList.toggle('active', index <= ['ticket', 'details', 'confirm'].indexOf(view)));
+      ticketDialog.scrollTop = 0;
+    }
+
+    function updateSummary() {
+      const formData = new FormData(ticketForm);
+      document.getElementById('summary-ticket').textContent = selectedTicket?.name || selectedTicket?.label || 'Ticket';
+      document.getElementById('summary-quantity').textContent = formData.get('quantity');
+      document.getElementById('summary-name').textContent = formData.get('name');
+      document.getElementById('summary-email').textContent = formData.get('email');
+      document.getElementById('summary-phone').textContent = formData.get('phone') || 'Not provided';
+    }
+
+    function resetTicketFlow() {
+      selectedTicket = null;
+      ticketForm.reset();
+      ticketQuantity.value = '1';
+      ticketStatus.textContent = '';
+      confirmationStatus.textContent = '';
+      ticketOptions.querySelectorAll('.ticket-option').forEach(option => option.classList.remove('selected'));
+      showTicketView('ticket');
+    }
+
+    document.querySelectorAll('.frontdesk-cta-button').forEach(button => button.addEventListener('click', async event => {
+      event.preventDefault();
+      ticketDialog.showModal();
+      resetTicketFlow();
+      ticketStatus.textContent = 'Loading live ticket options...';
+      try { await loadTicketTypes(); ticketStatus.textContent = ''; }
+      catch (error) { ticketStatus.textContent = error.message; }
+    }));
+    document.getElementById('ticket-dialog-close').addEventListener('click', () => ticketDialog.close());
+    document.getElementById('ticket-to-details').addEventListener('click', () => {
+      if (!selectedTicket) { ticketStatus.textContent = 'Choose a ticket type to continue.'; return; }
+      if (!ticketQuantity.checkValidity()) { ticketQuantity.reportValidity(); return; }
+      showTicketView('details');
+    });
+    document.getElementById('ticket-back-to-ticket').addEventListener('click', () => showTicketView('ticket'));
+    document.getElementById('ticket-to-confirm').addEventListener('click', () => {
+      const requiredDetails = [document.getElementById('ticket-name'), document.getElementById('ticket-email')];
+      const invalidDetail = requiredDetails.find(input => !input.checkValidity());
+      if (invalidDetail) { invalidDetail.reportValidity(); return; }
+      updateSummary();
+      showTicketView('confirm');
+    });
+    document.getElementById('ticket-back-to-details').addEventListener('click', () => showTicketView('details'));
+    ticketForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!selectedTicket) return;
+      ticketSubmit.disabled = true;
+      confirmationStatus.textContent = 'Opening secure checkout...';
+      const formData = new FormData(ticketForm);
+      try {
+        const response = await fetch('/api/tickets/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ticketTypeRef: selectedTicket.ref,
+            quantity: Number(formData.get('quantity')),
+            contact: { name: formData.get('name'), email: formData.get('email'), phone: formData.get('phone') }
+          })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.hostedUrl) throw new Error(result.error || 'Unable to open checkout.');
+        window.location.assign(result.hostedUrl);
+      } catch (error) {
+        confirmationStatus.textContent = error.message;
+        ticketSubmit.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>
