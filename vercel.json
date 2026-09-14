@@ -4,5 +4,11 @@
     "server.js": {
       "includeFiles": "**/*"
     }
-  }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
+  ]
 }

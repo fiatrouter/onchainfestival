@@ -496,8 +496,11 @@
 
     async function loadTicketTypes() {
       if (ticketTypesLoaded) return;
-      const response = await fetch('/api/tickets/event');
-      const result = await response.json();
+      const response = await fetch('/api/tickets/event', { headers: { Accept: 'application/json' } });
+      const responseText = await response.text();
+      let result;
+      try { result = JSON.parse(responseText); }
+      catch (error) { throw new Error('Ticket service is not connected on this deployment. Please try again shortly.'); }
       if (!response.ok) throw new Error(result.error || 'Ticket information unavailable.');
       ticketOptions.replaceChildren(...result.ticketTypes.map(ticket => {
         const option = document.createElement('button');
