@@ -494,6 +494,19 @@
       return Number.isFinite(price) ? ` - NGN ${(price / 100).toLocaleString()}` : '';
     }
 
+    function getApiErrorMessage(result, fallback) {
+      if (typeof result?.error === 'string') return result.error;
+      if (typeof result?.error?.message === 'string') return result.error.message;
+      return fallback;
+    }
+
+    function getTicketText(value, fallback) {
+      if (typeof value === 'string') return value;
+      if (value && typeof value.text === 'string') return value.text;
+      if (value && typeof value.value === 'string') return value.value;
+      return fallback;
+    }
+
     async function loadTicketTypes() {
       if (ticketTypesLoaded) return;
       const response = await fetch('/api/tickets/event', { headers: { Accept: 'application/json' } });
@@ -501,14 +514,15 @@
       let result;
       try { result = JSON.parse(responseText); }
       catch (error) { throw new Error('Ticket service is not connected on this deployment. Please try again shortly.'); }
-      if (!response.ok) throw new Error(result.error || 'Ticket information unavailable.');
+      if (!response.ok) throw new Error(getApiErrorMessage(result, 'Ticket information unavailable.'));
       ticketOptions.replaceChildren(...result.ticketTypes.map(ticket => {
         const option = document.createElement('button');
         option.type = 'button';
         option.className = 'ticket-option';
         option.dataset.ticketRef = ticket.ref;
-        option.innerHTML = `<span class="ticket-option-dot" aria-hidden="true"></span><span><strong class="ticket-option-name"></strong><small class="ticket-option-note">${ticket.description || ticket.subtitle || 'Festival access'}</small></span><strong class="ticket-option-price"></strong>`;
-        option.querySelector('.ticket-option-name').textContent = ticket.name || ticket.label || 'Ticket';
+        option.innerHTML = '<span class="ticket-option-dot" aria-hidden="true"></span><span><strong class="ticket-option-name"></strong><small class="ticket-option-note"></small></span><strong class="ticket-option-price"></strong>';
+        option.querySelector('.ticket-option-name').textContent = getTicketText(ticket.name || ticket.label, 'Ticket');
+        option.querySelector('.ticket-option-note').textContent = getTicketText(ticket.description || ticket.subtitle, 'Festival access');
         option.querySelector('.ticket-option-price').textContent = formatTicketPrice(ticket).replace(' - ', '');
         option.addEventListener('click', () => selectTicket(ticket, option));
         return option;
