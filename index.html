@@ -185,12 +185,12 @@
     .experience::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,8,.12) 0%, rgba(8,8,8,.8) 72%, rgba(8,8,8,.96) 100%); transition: transform .6s ease, filter .6s ease; }
     .experience:hover::before { transform: scale(1.08); filter: brightness(.9); }
     .experience > * { position: relative; z-index: 1; }
-    .experience:nth-child(1) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1787586488/lan_9995.jpg'); }
-    .experience:nth-child(2) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1789404435/elik.jpg'); }
-    .experience:nth-child(3) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1787586598/lan_106.jpg'); }
-    .experience:nth-child(4) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1789405058/lisk.jpg'); }
-    .experience:nth-child(5) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1789405058/audi1.jpg'); }
-    .experience:nth-child(6) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1789405058/games.jpg'); }
+    .experience:nth-child(1) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1787586598/lan_106.jpg'); }
+    .experience:nth-child(2) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1789405058/lisk.jpg'); }
+    .experience:nth-child(3) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1787586488/lan_9995.jpg'); }
+    .experience:nth-child(4) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1789404435/elik.jpg'); }
+    .experience:nth-child(5) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1789405058/games.jpg'); }
+    .experience:nth-child(6) { background-image: url('https://res.cloudinary.com/w4sapiim/image/upload/v1789405058/audi1.jpg'); }
     .experience-num { color: var(--gold); font-size: .72rem; letter-spacing: .16em; }
     .experience h3 { margin: .7rem 0 .35rem; font-size: 1.25rem; }
     .experience p { color: var(--muted); font-size: .85rem; }
@@ -211,7 +211,7 @@
     .tier-ticket { margin-top: 1.25rem; align-self: flex-start; }
 
     .final-cta { position: relative; padding: 9rem 0; text-align: center; background: radial-gradient(circle at 50% 50%, rgba(200,150,42,.22), transparent 28%), #0b0b0b; overflow: hidden; }
-    .final-cta::before { content: 'LAZY'; position: absolute; inset: 8% 0 auto; color: rgba(255,255,255,.025); font-size: clamp(8rem, 28vw, 30rem); font-weight: 700; letter-spacing: -.1em; line-height: .7; pointer-events: none; }
+    .final-cta::before { content: 'OFF-DUTY'; position: absolute; inset: 8% 0 auto; color: rgba(255,255,255,.025); font-size: clamp(8rem, 28vw, 30rem); font-weight: 700; letter-spacing: -.1em; line-height: .7; pointer-events: none; }
     .final-cta > .container { position: relative; z-index: 1; }
     .final-cta h2 { max-width: 920px; margin: 1rem auto 1.4rem; }
     .final-cta p { max-width: 520px; margin: 0 auto 2rem; color: var(--muted); }
@@ -227,7 +227,9 @@
     .footer-col a:hover { color: var(--fog); }
     .social-links { display: flex; gap: .75rem; margin-top: 1.5rem; }
     .social-link { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; color: rgba(255,255,255,.4); font-size: .8rem; font-weight: 600; transition: border-color .25s, color .25s, background .25s; }
+    .social-link img { width: 16px; height: 16px; filter: invert(1); opacity: .58; transition: opacity .25s; }
     .social-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,150,42,.08); }
+    .social-link:hover img { opacity: 1; }
     .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.05); flex-wrap: wrap; }
     .footer-bottom p { color: rgba(255,255,255,.25); font-size: .78rem; }
 
@@ -419,10 +421,11 @@
           <a href="#top" class="brand"><span class="brand-mark"><img src="icon.png" alt="Onchain Festival" /></span> OFF-DUTY</a>
           <p>Off-Duty by Onchain Festival. A tech-culture rave where brands, creators and the room shape the story together.</p>
           <div class="social-links" aria-label="Social links">
-            <a href="https://www.linkedin.com/company/onchain-festival/" target="_blank" rel="noopener" class="social-link" title="LinkedIn" aria-label="LinkedIn">in</a>
-            <a href="https://www.youtube.com/@onchainfestival" target="_blank" rel="noopener" class="social-link" title="YouTube" aria-label="YouTube">&#9654;</a>
-            <a href="https://www.instagram.com/_bchainafrica?igsh=bm44dmNpa2txeGNl" target="_blank" rel="noopener" class="social-link" title="Instagram" aria-label="Instagram">&#9673;</a>
-            <a href="https://wa.me/2349071679312" target="_blank" rel="noopener" class="social-link" title="WhatsApp" aria-label="WhatsApp">&#9993;</a>
+            <a href="https://www.linkedin.com/company/onchain-festival/" target="_blank" rel="noopener" class="social-link" title="LinkedIn" aria-label="LinkedIn"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg" alt="" /></a>
+            <a href="https://x.com/onchainfestival" target="_blank" rel="noopener" class="social-link" title="X" aria-label="X"><img src="https://simpleicons.org/icons/x.svg" alt="" /></a>
+            <a href="https://www.youtube.com/@onchainfestival" target="_blank" rel="noopener" class="social-link" title="YouTube" aria-label="YouTube"><img src="https://simpleicons.org/icons/youtube.svg" alt="" /></a>
+            <a href="https://www.instagram.com/_bchainafrica?igsh=bm44dmNpa2txeGNl" target="_blank" rel="noopener" class="social-link" title="Instagram" aria-label="Instagram"><img src="https://simpleicons.org/icons/instagram.svg" alt="" /></a>
+            <a href="https://wa.me/2349071679312" target="_blank" rel="noopener" class="social-link" title="WhatsApp" aria-label="WhatsApp"><img src="https://simpleicons.org/icons/whatsapp.svg" alt="" /></a>
           </div>
         </div>
         <div class="footer-col">
