@@ -210,6 +210,15 @@
     .tier-mainstage .tier-price { margin-top: 0; }
     .tier-ticket { margin-top: 1.25rem; align-self: flex-start; }
 
+    .sponsor-section { background: #111; }
+    .sponsor-header { max-width: 760px; margin: 0 auto 3rem; text-align: center; }
+    .sponsor-header .gold-rule { margin: 1.25rem auto 1.8rem; }
+    .sponsor-header p { max-width: 560px; margin: 0 auto; color: var(--muted); font-size: 1rem; }
+    .sponsor-logos { overflow: hidden; }
+    .sponsor-logo-track { display: flex; width: max-content; gap: .8rem; animation: sponsor-slide 28s linear infinite; will-change: transform; }
+    .sponsor-logo { width: clamp(170px, 18vw, 220px); min-height: 112px; display: grid; flex: 0 0 auto; place-items: center; padding: 1.5rem; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.96); }
+    .sponsor-logo img { display: block; width: 100%; height: 62px; object-fit: contain; }
+
     .final-cta { position: relative; padding: 9rem 0; text-align: center; background: radial-gradient(circle at 50% 50%, rgba(200,150,42,.22), transparent 28%), #0b0b0b; overflow: hidden; }
     .final-cta::before { content: 'OFF-DUTY'; position: absolute; inset: 8% 0 auto; color: rgba(255,255,255,.025); font-size: clamp(8rem, 28vw, 30rem); font-weight: 700; letter-spacing: -.1em; line-height: .7; pointer-events: none; }
     .final-cta > .container { position: relative; z-index: 1; }
@@ -236,9 +245,10 @@
     @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(240,198,92,.35); } 50% { box-shadow: 0 0 0 8px rgba(240,198,92,0); } }
     @keyframes hero-line-loop { 0%, 39% { opacity: 1; transform: translateY(0); } 49%, 58% { opacity: 0; transform: translateY(-110%); } 58.01%, 100% { opacity: 0; transform: translateY(110%); } }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes sponsor-slide { from { transform: translateX(0); } to { transform: translateX(calc(-50% - .4rem)); } }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } .hero-title-line { opacity: 1; transform: none; animation: none; } .hero-title-line + .hero-title-line { display: none; } }
     @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; } }
-    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(2.75rem, 13vw, 5rem); } .hero-title-line { overflow-wrap: anywhere; } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } .ticket-dialog-inner { padding: 1.5rem; } .ticket-dialog h2 { font-size: 1.8rem; } .ticket-steps { gap: .45rem; } .ticket-step { font-size: .56rem; letter-spacing: .1em; } .ticket-details-grid { grid-template-columns: 1fr; } .ticket-details-grid label:last-child { grid-column: auto; } .ticket-actions { flex-direction: column-reverse; } .ticket-actions .btn { width: 100% !important; } }
+    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(2.75rem, 13vw, 5rem); } .hero-title-line { overflow-wrap: anywhere; } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .sponsor-logo { width: 150px; min-height: 92px; padding: 1rem; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } .ticket-dialog-inner { padding: 1.5rem; } .ticket-dialog h2 { font-size: 1.8rem; } .ticket-steps { gap: .45rem; } .ticket-step { font-size: .56rem; letter-spacing: .1em; } .ticket-details-grid { grid-template-columns: 1fr; } .ticket-details-grid label:last-child { grid-column: auto; } .ticket-actions { flex-direction: column-reverse; } .ticket-actions .btn { width: 100% !important; } }
     @media (max-width: 430px) { .brand { font-size: .72rem; } .brand-mark { width: 38px; height: 38px; } .nav-cta { display: none; } .hero-actions .btn { width: max-content !important; max-width: 100%; } .hero-meta { display: grid; grid-template-columns: 1fr 1fr; } .experiences { grid-template-columns: 1fr; } .experience { min-height: 190px; } }
   </style>
 </head>
@@ -353,6 +363,39 @@
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789405058/lisk.jpg" alt="Lisk at the festival" loading="lazy" decoding="async" /><figcaption>Build the room</figcaption></figure>
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789405058/audi1.jpg" alt="Audi festival activation" loading="lazy" decoding="async" /><figcaption>Make it loud</figcaption></figure>
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789405058/games.jpg" alt="Games at the festival" loading="lazy" decoding="async" /><figcaption>Play all weekend</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sponsor-section" id="sponsors" aria-labelledby="sponsors-title">
+      <div class="container">
+        <div class="sponsor-header reveal">
+          <div class="eyebrow">The people behind the movement</div>
+          <div class="gold-rule"></div>
+          <h2 class="display display-lg" id="sponsors-title">THE SPONSORS WHO BELIEVED IN US</h2>
+          <p>The brands and institutions that helped make the first edition possible.</p>
+        </div>
+        <div class="sponsor-logos reveal" aria-label="Sponsors">
+          <div class="sponsor-logo-track">
+            <div class="sponsor-logo"><img src="sponsors/cbn.png" alt="CBN" loading="lazy" /></div>
+            <div class="sponsor-logo"><img src="sponsors/nfiu.png" alt="NFIU" loading="lazy" /></div>
+            <div class="sponsor-logo"><img src="sponsors/obiex.png" alt="Obiex" loading="lazy" /></div>
+            <div class="sponsor-logo"><img src="sponsors/sec.png" alt="SEC" loading="lazy" /></div>
+            <div class="sponsor-logo"><img src="sponsors/techcabal.png" alt="TechCabal" loading="lazy" /></div>
+            <div class="sponsor-logo"><img src="sponsors/technext.png" alt="TechNext" loading="lazy" /></div>
+            <div class="sponsor-logo"><img src="sponsors/tradepal.png" alt="TradePal" loading="lazy" /></div>
+            <div class="sponsor-logo"><img src="sponsors/cccgroup.png" alt="CCC Group" loading="lazy" /></div>
+            <div class="sponsor-logo"><img src="sponsors/vaspa.png" alt="Vaspa" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/cbn.png" alt="" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/nfiu.png" alt="" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/obiex.png" alt="" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/sec.png" alt="" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/techcabal.png" alt="" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/technext.png" alt="" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/tradepal.png" alt="" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/cccgroup.png" alt="" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/vaspa.png" alt="" loading="lazy" /></div>
+          </div>
         </div>
       </div>
     </section>
