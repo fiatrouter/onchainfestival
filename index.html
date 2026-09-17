@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --black: #080808;
@@ -26,13 +26,13 @@
     }
     *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; overflow-x: clip; }
-    body { background: var(--black); color: var(--fog); font-family: 'Space Grotesk', sans-serif; line-height: 1.55; overflow-x: hidden; }
+    body { background: var(--black); color: var(--fog); font-family: 'Chakra Petch', sans-serif; line-height: 1.55; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
     .container { width: min(var(--max), calc(100% - 4rem)); margin: 0 auto; }
     .eyebrow { color: var(--gold-bright); font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-    h1, h2, h3, .display { font-weight: 800; }
-    .display { letter-spacing: -.055em; line-height: .92; }
+    h1, h2, h3, .display { font-family: 'Bungee', sans-serif; font-weight: 400; }
+    .display { letter-spacing: -.025em; line-height: .98; }
     .display-xl { font-size: clamp(4rem, 10vw, 9rem); }
     .display-lg { font-size: clamp(3rem, 7vw, 7rem); }
     .gold-rule { width: 54px; height: 2px; background: var(--gold); margin: 1.25rem 0 1.8rem; }
@@ -111,7 +111,7 @@
     .hero h1 { max-width: 950px; height: 1.84em; margin: 1.5rem auto; overflow: hidden; position: relative; text-transform: uppercase; }
     .hero-title-line { position: absolute; inset: 0; display: block; opacity: 0; transform: translateY(110%); animation: hero-line-loop 8s cubic-bezier(.22,1,.36,1) infinite; }
     .hero-title-line + .hero-title-line { animation-delay: 4s; }
-    .hero h1 em { color: var(--gold-bright); font-family: 'DM Serif Display', serif; font-weight: 400; letter-spacing: -.06em; text-transform: none; }
+    .hero h1 em { color: var(--gold-bright); font-family: 'Bungee', sans-serif; font-weight: 400; letter-spacing: -.025em; text-transform: none; }
     .hero-copy { max-width: 540px; margin: 0 auto; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
     .hero-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .8rem; margin: 2rem 0 3.6rem; }
     .hero-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; border-top: 1px solid var(--line); padding-top: 1.2rem; max-width: 840px; margin: 0 auto; }
@@ -248,7 +248,7 @@
     @keyframes sponsor-slide { from { transform: translateX(0); } to { transform: translateX(calc(-50% - .4rem)); } }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } .hero-title-line { opacity: 1; transform: none; animation: none; } .hero-title-line + .hero-title-line { display: none; } }
     @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; } }
-    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { font-size: clamp(2.75rem, 13vw, 5rem); } .hero-title-line { overflow-wrap: anywhere; } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .sponsor-logo { width: 150px; min-height: 92px; padding: 1rem; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } .ticket-dialog-inner { padding: 1.5rem; } .ticket-dialog h2 { font-size: 1.8rem; } .ticket-steps { gap: .45rem; } .ticket-step { font-size: .56rem; letter-spacing: .1em; } .ticket-details-grid { grid-template-columns: 1fr; } .ticket-details-grid label:last-child { grid-column: auto; } .ticket-actions { flex-direction: column-reverse; } .ticket-actions .btn { width: 100% !important; } }
+    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { height: 2.15em; font-size: clamp(2.2rem, 11vw, 4.5rem); } .hero-title-line { overflow-wrap: normal; } .hero-actions { margin-top: 2.7rem; } .hero-actions .btn { min-height: 42px; padding: .62rem .95rem; font-size: .68rem; letter-spacing: .025em; } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .sponsor-logo { width: 150px; min-height: 92px; padding: 1rem; } .final-cta h2 { font-size: clamp(2.2rem, 11vw, 4rem); } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } .ticket-dialog-inner { padding: 1.5rem; } .ticket-dialog h2 { font-size: 1.8rem; } .ticket-steps { gap: .45rem; } .ticket-step { font-size: .56rem; letter-spacing: .1em; } .ticket-details-grid { grid-template-columns: 1fr; } .ticket-details-grid label:last-child { grid-column: auto; } .ticket-actions { flex-direction: column-reverse; } .ticket-actions .btn { width: 100% !important; } }
     @media (max-width: 430px) { .brand { font-size: .72rem; } .brand-mark { width: 38px; height: 38px; } .nav-cta { display: none; } .hero-actions .btn { width: max-content !important; max-width: 100%; } .hero-meta { display: grid; grid-template-columns: 1fr 1fr; } .experiences { grid-template-columns: 1fr; } .experience { min-height: 190px; } }
   </style>
 </head>
