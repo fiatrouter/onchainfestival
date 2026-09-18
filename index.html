@@ -227,12 +227,6 @@
     .sponsor-logo { width: clamp(170px, 18vw, 220px); min-height: 112px; display: grid; flex: 0 0 auto; place-items: center; padding: 0; }
     .sponsor-logo img { display: block; width: auto; max-width: 100%; height: auto; max-height: 78px; box-sizing: border-box; padding: 4px; border: 1px solid rgba(255,255,255,.82); border-radius: 2px; box-shadow: 0 4px 16px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.08); object-fit: contain; }
 
-    .partners-showcase { position: relative; padding: 8rem 0 7rem; background: #0d0d0d; overflow: hidden; }
-    .partners-showcase::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 20% 30%, rgba(240,198,92,.2), transparent 18%), radial-gradient(circle at 80% 10%, rgba(116,30,45,.2), transparent 16%), linear-gradient(120deg, rgba(255,255,255,.02), transparent 35%); pointer-events: none; }
-    .partners-header { max-width: 760px; margin: 0 auto 3rem; text-align: center; position: relative; z-index: 1; }
-    .partners-header .gold-rule { margin: 1.25rem auto 1.8rem; }
-    .partners-header p { max-width: 620px; margin: 0 auto; color: var(--muted); }
-    .partners-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
     .partner-card { position: relative; min-height: 340px; border: 1px solid rgba(255,255,255,.08); background: #171717; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.18); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
     .partner-card:hover { transform: translateY(-8px); border-color: rgba(240,198,92,.7); box-shadow: 0 28px 70px rgba(200,150,42,.14); }
     .partner-card img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.8) contrast(1.04); }
@@ -283,7 +277,6 @@
         <li><a href="#experience">The vibe</a></li>
         <li><a href="#gallery">2025 gallery</a></li>
         <li><a href="#tickets">Tickets</a></li>
-        <li><a href="#partners">Partners</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <a class="btn btn-gold nav-cta frontdesk-cta-button">Get tickets</a>
@@ -418,6 +411,8 @@
             <div class="sponsor-logo"><img src="sponsors/crello.png" alt="Crello" loading="lazy" /></div>
             <div class="sponsor-logo"><img src="sponsors/techpoint.png" alt="Techpoint Africa" loading="lazy" /></div>
             <div class="sponsor-logo"><img src="sponsors/uglycash.png" alt="UglyCash" loading="lazy" /></div>
+            <div class="sponsor-logo"><img src="sponsors/boat.png" alt="Boat" loading="lazy" /></div>
+            <div class="sponsor-logo"><img src="sponsors/gidihouse.jpeg" alt="Gidi House" loading="lazy" /></div>
             <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/cngn.png" alt="" loading="lazy" /></div>
             <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/coinbase.png" alt="" loading="lazy" /></div>
             <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/tradepal.png" alt="" loading="lazy" /></div>
@@ -426,40 +421,9 @@
             <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/crello.png" alt="" loading="lazy" /></div>
             <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/techpoint.png" alt="" loading="lazy" /></div>
             <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/uglycash.png" alt="" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/boat.png" alt="" loading="lazy" /></div>
+            <div aria-hidden="true" class="sponsor-logo"><img src="sponsors/gidihouse.jpeg" alt="" loading="lazy" /></div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="partners-showcase" id="partners">
-      <div class="container">
-        <div class="partners-header reveal">
-          <div class="eyebrow">Partners</div>
-          <div class="gold-rule"></div>
-          <h2 class="display display-lg">The people powering the room.</h2>
-          <p>We build with operators, communities and culture-makers who understand that impact is not a booth — it is a feeling, a movement and a room people never want to leave.</p>
-        </div>
-        <div class="partners-grid reveal">
-          <article class="partner-card">
-            <img src="partners/boat.png" alt="Boat" loading="lazy" decoding="async" />
-            <div class="partner-card-body">
-              <div>
-                <strong>Boat</strong>
-                <span>Airport pickups, Shortlet Apartments, etc</span>
-              </div>
-              <span class="partner-pill">Partner</span>
-            </div>
-          </article>
-          <article class="partner-card">
-            <img src="partners/gidihouse.jpeg" alt="Gidi House" loading="lazy" decoding="async" />
-            <div class="partner-card-body">
-              <div>
-                <strong>Gidi House</strong>
-                <span>Creative culture hub</span>
-              </div>
-              <span class="partner-pill">Partner</span>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -541,7 +505,7 @@
             <a href="https://www.linkedin.com/company/onchain-festival/" target="_blank" rel="noopener" class="social-link" title="LinkedIn" aria-label="LinkedIn"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg" alt="" /></a>
             <a href="https://x.com/onchainfestival" target="_blank" rel="noopener" class="social-link" title="X" aria-label="X"><img src="https://simpleicons.org/icons/x.svg" alt="" /></a>
             <a href="https://www.youtube.com/@onchainfestival" target="_blank" rel="noopener" class="social-link" title="YouTube" aria-label="YouTube"><img src="https://simpleicons.org/icons/youtube.svg" alt="" /></a>
-            <a href="https://www.instagram.com/_bchainafrica?igsh=bm44dmNpa2txeGNl" target="_blank" rel="noopener" class="social-link" title="Instagram" aria-label="Instagram"><img src="https://simpleicons.org/icons/instagram.svg" alt="" /></a>
+            <a href="https://www.instagram.com/onchain_festival?stkn=bm44dmNpa2txeGNl" target="_blank" rel="noopener" class="social-link" title="Instagram" aria-label="Instagram"><img src="https://simpleicons.org/icons/instagram.svg" alt="" /></a>
             <a href="https://wa.me/2349071679312" target="_blank" rel="noopener" class="social-link" title="WhatsApp" aria-label="WhatsApp"><img src="https://simpleicons.org/icons/whatsapp.svg" alt="" /></a>
           </div>
         </div>
@@ -551,7 +515,6 @@
             <li><a href="#experience">The vibe</a></li>
             <li><a href="#gallery">2025 gallery</a></li>
             <li><a href="#tickets">Tickets</a></li>
-            <li><a href="#partners">Partners</a></li>
           </ul>
         </div>
         <div class="footer-col">
