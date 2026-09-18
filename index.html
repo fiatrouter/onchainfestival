@@ -120,16 +120,20 @@
     .rave-gate::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.48)), radial-gradient(circle at center, transparent 12%, rgba(0,0,0,.5) 78%); pointer-events: none; }
     .rave-gate-art { position: absolute; inset: 5% 8%; z-index: 1; background: url('thegate.png') center / contain no-repeat; filter: drop-shadow(0 0 20px rgba(240,198,92,.14)); mask-image: radial-gradient(ellipse at center, #000 48%, rgba(0,0,0,.86) 66%, transparent 92%); transform: translate(calc(var(--cursor-x, 0) * 10px), calc(var(--cursor-y, 0) * 10px)); transition: transform .18s ease-out; pointer-events: none; }
     .rave-gate-graffiti { position: absolute; inset: 0; z-index: 2; pointer-events: none; color: rgba(240,198,92,.7); font-family: 'Chakra Petch', sans-serif; font-size: clamp(.65rem, 1.2vw, .9rem); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; text-shadow: 0 0 10px rgba(240,198,92,.5); transform: translate(calc(var(--cursor-x, 0) * -7px), calc(var(--cursor-y, 0) * -7px)); transition: transform .24s ease-out; }
-    .rave-gate-graffiti::before, .rave-gate-graffiti::after { position: absolute; opacity: .72; }
-    .rave-gate-graffiti::before { content: 'OFF // DUTY'; top: 19%; left: 12%; padding: .25rem .45rem; border: 1px solid rgba(240,198,92,.65); color: rgba(240,198,92,.85); transform: rotate(-11deg); }
-    .rave-gate-graffiti::after { content: 'RAVE  /  26'; right: 11%; bottom: 20%; color: rgba(255,43,131,.85); text-shadow: 0 0 12px rgba(255,43,131,.7); transform: rotate(9deg); }
+    .rave-gate-graffiti::before, .rave-gate-graffiti::after, .rave-gate-graffiti span { position: absolute; opacity: .72; }
+    .rave-gate-graffiti::before { content: 'OFF // DUTY'; top: 27%; left: 7%; padding: .25rem .45rem; border: 1px solid rgba(240,198,92,.65); color: rgba(240,198,92,.85); transform: rotate(-23deg); }
+    .rave-gate-graffiti::after { right: 7%; bottom: 12%; color: rgba(255,43,131,.85); text-shadow: 0 0 12px rgba(255,43,131,.7); transform: rotate(17deg); }
+    .rave-gate-graffiti::after { content: 'RAVE  /  26'; }
+    .rave-gate-graffiti span:nth-child(1) { top: 30%; right: 14%; color: rgba(255,255,255,.72); transform: rotate(7deg); }
+    .rave-gate-graffiti span:nth-child(2) { bottom: 31%; left: 13%; color: rgba(54,255,190,.8); text-shadow: 0 0 12px rgba(54,255,190,.65); transform: rotate(-8deg); }
+    .rave-gate-graffiti span:nth-child(3) { top: 67%; right: 19%; color: rgba(240,198,92,.86); transform: rotate(-6deg); }
     .rave-gate-panel { position: relative; z-index: 1; display: grid; place-items: center; width: min(560px, 100%); min-height: 280px; text-align: center; }
     .rave-gate-kicker { color: var(--gold-bright); font-size: .68rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; }
     .rave-gate-title { margin: 1rem 0 1.2rem; color: #fff9ed; font-size: clamp(2.2rem, 8vw, 5.2rem); line-height: .9; text-transform: uppercase; }
     .rave-gate-title span { display: block; color: var(--gold-bright); }
     .rave-gate-copy { max-width: 330px; margin: 0 auto 2rem; color: var(--muted); font-size: .86rem; }
-    .rave-gate-enter { position: relative; min-width: min(100%, 300px); border: 1px solid rgba(255,43,131,.95); padding: 1.15rem 1.7rem; background: rgba(5,5,5,.92); color: #ff5fa8; box-shadow: 0 0 0 4px rgba(255,43,131,.08), 0 0 12px rgba(255,43,131,.8), 0 0 38px rgba(240,198,92,.35), inset 0 0 18px rgba(255,43,131,.12); cursor: pointer; font: inherit; font-size: .82rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; animation: rave-neon-blink 1.6s ease-in-out infinite; transition: transform .2s, background .2s, box-shadow .2s, color .2s; }
-    .rave-gate-enter:hover, .rave-gate-enter:focus-visible { background: #090909; color: #fff0f7; box-shadow: 0 0 0 7px rgba(255,43,131,.12), 0 0 20px rgba(255,43,131,1), 0 0 55px rgba(240,198,92,.65), inset 0 0 24px rgba(255,43,131,.2); outline: 0; transform: translateY(-3px) scale(1.03); }
+    .rave-gate-enter { position: relative; top: 120px; min-width: min(100%, 300px); border: 1px solid rgba(255,43,131,.95); padding: 1.15rem 1.7rem; background: rgba(5,5,5,.92); color: #ff5fa8; box-shadow: 0 0 0 4px rgba(255,43,131,.08), 0 0 12px rgba(255,43,131,.8), 0 0 38px rgba(240,198,92,.35), inset 0 0 18px rgba(255,43,131,.12); cursor: pointer; font: inherit; font-size: .82rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; animation: rave-neon-blink 1.6s ease-in-out infinite; transition: top .2s, transform .2s, background .2s, box-shadow .2s, color .2s; }
+    .rave-gate-enter:hover, .rave-gate-enter:focus-visible { top: 117px; background: #090909; color: #fff0f7; box-shadow: 0 0 0 7px rgba(255,43,131,.12), 0 0 20px rgba(255,43,131,1), 0 0 55px rgba(240,198,92,.65), inset 0 0 24px rgba(255,43,131,.2); outline: 0; transform: scale(1.03); }
     .rave-gate-kicker, .rave-gate-title, .rave-gate-copy, .rave-gate-meta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     @keyframes rave-neon-blink { 0%, 100% { opacity: 1; box-shadow: 0 0 0 4px rgba(255,43,131,.08), 0 0 12px rgba(255,43,131,.8), 0 0 38px rgba(240,198,92,.35), inset 0 0 18px rgba(255,43,131,.12); } 48% { opacity: .72; box-shadow: 0 0 0 3px rgba(255,43,131,.04), 0 0 6px rgba(255,43,131,.42), 0 0 18px rgba(240,198,92,.18), inset 0 0 10px rgba(255,43,131,.06); } 58% { opacity: 1; box-shadow: 0 0 0 6px rgba(255,43,131,.14), 0 0 22px rgba(255,43,131,1), 0 0 58px rgba(240,198,92,.6), inset 0 0 26px rgba(255,43,131,.2); } }
     .rave-gate-meta { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; color: rgba(255,255,255,.36); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
@@ -297,7 +301,7 @@
 <body>
   <section class="rave-gate" id="rave-gate" role="dialog" aria-modal="true" aria-labelledby="rave-gate-title">
     <div class="rave-gate-art" aria-hidden="true"></div>
-    <div class="rave-gate-graffiti" aria-hidden="true"></div>
+    <div class="rave-gate-graffiti" aria-hidden="true"><span>ALL // WHITE</span><span>PAAAAARTY</span><span>2 NYTZ</span></div>
     <div class="rave-gate-panel">
       <div class="rave-gate-kicker">Off-Duty / Lagos / 2026</div>
       <h1 class="rave-gate-title" id="rave-gate-title">The room <span>is live.</span></h1>
