@@ -108,6 +108,29 @@
     .ticket-form button[type="submit"] { width: 100% !important; min-height: 54px; cursor: pointer; border-radius: 0 !important; letter-spacing: .12em; }
     .ticket-form button:disabled { cursor: wait; opacity: .6; }
     .ticket-form-status { min-height: 1.3em; color: var(--gold-bright); font-size: .8rem; }
+    .audio-dock { position: fixed; right: 1rem; bottom: 1rem; z-index: 15; display: flex; align-items: center; gap: .45rem; padding: .45rem; border: 1px solid rgba(240,198,92,.35); background: rgba(8,8,8,.88); box-shadow: 0 12px 32px rgba(0,0,0,.35); backdrop-filter: blur(12px); }
+    .audio-dock-label { margin: 0 .35rem; color: var(--gold-bright); font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .audio-dock button { min-width: 34px; min-height: 30px; padding: .35rem .5rem; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.04); color: var(--fog); cursor: pointer; font-size: .64rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .audio-dock button:hover, .audio-dock button:focus-visible { border-color: var(--gold-bright); color: var(--gold-bright); outline: 0; }
+    .rave-gate { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 1.5rem; background: #050505; color: var(--fog); overflow: hidden; }
+    .rave-gate[hidden] { display: none; }
+    .rave-gate::before { content: ''; position: absolute; inset: 0; opacity: .3; background: linear-gradient(rgba(240,198,92,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(240,198,92,.18) 1px, transparent 1px); background-size: 42px 42px; mask-image: radial-gradient(ellipse at center, black, transparent 78%); }
+    .rave-gate::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.48)), radial-gradient(circle at center, transparent 12%, rgba(0,0,0,.5) 78%); pointer-events: none; }
+    .rave-gate-art { position: absolute; inset: 5% 8%; z-index: 1; background: url('thegate.png') center / contain no-repeat; filter: drop-shadow(0 0 20px rgba(240,198,92,.14)); mask-image: radial-gradient(ellipse at center, #000 48%, rgba(0,0,0,.86) 66%, transparent 92%); transform: translate(calc(var(--cursor-x, 0) * 10px), calc(var(--cursor-y, 0) * 10px)); transition: transform .18s ease-out; pointer-events: none; }
+    .rave-gate-graffiti { position: absolute; inset: 0; z-index: 2; pointer-events: none; color: rgba(240,198,92,.7); font-family: 'Chakra Petch', sans-serif; font-size: clamp(.65rem, 1.2vw, .9rem); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; text-shadow: 0 0 10px rgba(240,198,92,.5); transform: translate(calc(var(--cursor-x, 0) * -7px), calc(var(--cursor-y, 0) * -7px)); transition: transform .24s ease-out; }
+    .rave-gate-graffiti::before, .rave-gate-graffiti::after { position: absolute; opacity: .72; }
+    .rave-gate-graffiti::before { content: 'OFF // DUTY'; top: 19%; left: 12%; padding: .25rem .45rem; border: 1px solid rgba(240,198,92,.65); color: rgba(240,198,92,.85); transform: rotate(-11deg); }
+    .rave-gate-graffiti::after { content: 'RAVE  /  26'; right: 11%; bottom: 20%; color: rgba(255,43,131,.85); text-shadow: 0 0 12px rgba(255,43,131,.7); transform: rotate(9deg); }
+    .rave-gate-panel { position: relative; z-index: 1; display: grid; place-items: center; width: min(560px, 100%); min-height: 280px; text-align: center; }
+    .rave-gate-kicker { color: var(--gold-bright); font-size: .68rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; }
+    .rave-gate-title { margin: 1rem 0 1.2rem; color: #fff9ed; font-size: clamp(2.2rem, 8vw, 5.2rem); line-height: .9; text-transform: uppercase; }
+    .rave-gate-title span { display: block; color: var(--gold-bright); }
+    .rave-gate-copy { max-width: 330px; margin: 0 auto 2rem; color: var(--muted); font-size: .86rem; }
+    .rave-gate-enter { position: relative; min-width: min(100%, 300px); border: 1px solid rgba(255,43,131,.95); padding: 1.15rem 1.7rem; background: rgba(5,5,5,.92); color: #ff5fa8; box-shadow: 0 0 0 4px rgba(255,43,131,.08), 0 0 12px rgba(255,43,131,.8), 0 0 38px rgba(240,198,92,.35), inset 0 0 18px rgba(255,43,131,.12); cursor: pointer; font: inherit; font-size: .82rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; animation: rave-neon-blink 1.6s ease-in-out infinite; transition: transform .2s, background .2s, box-shadow .2s, color .2s; }
+    .rave-gate-enter:hover, .rave-gate-enter:focus-visible { background: #090909; color: #fff0f7; box-shadow: 0 0 0 7px rgba(255,43,131,.12), 0 0 20px rgba(255,43,131,1), 0 0 55px rgba(240,198,92,.65), inset 0 0 24px rgba(255,43,131,.2); outline: 0; transform: translateY(-3px) scale(1.03); }
+    .rave-gate-kicker, .rave-gate-title, .rave-gate-copy, .rave-gate-meta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    @keyframes rave-neon-blink { 0%, 100% { opacity: 1; box-shadow: 0 0 0 4px rgba(255,43,131,.08), 0 0 12px rgba(255,43,131,.8), 0 0 38px rgba(240,198,92,.35), inset 0 0 18px rgba(255,43,131,.12); } 48% { opacity: .72; box-shadow: 0 0 0 3px rgba(255,43,131,.04), 0 0 6px rgba(255,43,131,.42), 0 0 18px rgba(240,198,92,.18), inset 0 0 10px rgba(255,43,131,.06); } 58% { opacity: 1; box-shadow: 0 0 0 6px rgba(255,43,131,.14), 0 0 22px rgba(255,43,131,1), 0 0 58px rgba(240,198,92,.6), inset 0 0 26px rgba(255,43,131,.2); } }
+    .rave-gate-meta { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; color: rgba(255,255,255,.36); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
 
     .hero { min-height: 100svh; position: relative; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; }
     .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3; filter: saturate(.7) contrast(1.12); }
@@ -270,6 +293,26 @@
   </style>
 </head>
 <body>
+  <section class="rave-gate" id="rave-gate" role="dialog" aria-modal="true" aria-labelledby="rave-gate-title">
+    <div class="rave-gate-art" aria-hidden="true"></div>
+    <div class="rave-gate-graffiti" aria-hidden="true"></div>
+    <div class="rave-gate-panel">
+      <div class="rave-gate-kicker">Off-Duty / Lagos / 2026</div>
+      <h1 class="rave-gate-title" id="rave-gate-title">The room <span>is live.</span></h1>
+      <p class="rave-gate-copy">Enter with sound for the full Off-Duty experience.</p>
+      <button class="rave-gate-enter" id="rave-gate-enter" type="button">Enter the rave</button>
+      <div class="rave-gate-meta"><span>Music on</span><span aria-hidden="true">/</span><span>Stay off-duty</span></div>
+    </div>
+  </section>
+  <audio id="rave-audio" loop autoplay preload="metadata">
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/mWQc996VFTCrKBAUXTALYquul4ih93QHzsTDNqlO.mp3" type="audio/mpeg" />
+  </audio>
+  <div class="audio-dock" aria-label="Rave music controls">
+    <span class="audio-dock-label">Amapiano rave · Tiga Maine</span>
+    <button id="audio-play" type="button" aria-label="Pause rave beat">Pause</button>
+    <button id="audio-mute" type="button" aria-label="Turn sound on">Sound off</button>
+    <button id="audio-stop" type="button" aria-label="Stop rave beat">Stop</button>
+  </div>
   <nav id="nav">
     <div class="container nav-inner">
       <a href="#top" class="brand"><span class="brand-mark"><img src="icon.png" alt="Onchain Festival" /></span> OFF-DUTY</a>
@@ -387,7 +430,6 @@
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789723693/grouppix.jpg" alt="Friends posing together at the festival" loading="lazy" decoding="async" /><figcaption>Our people</figcaption></figure>
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789723693/apptest.jpg" alt="Festival app experience" loading="lazy" decoding="async" /><figcaption>Built for the room</figcaption></figure>
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789723693/audience.jpg" alt="Audience enjoying the festival" loading="lazy" decoding="async" /><figcaption>Feel the room</figcaption></figure>
-          <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789723693/audience.jpg" alt="Audience enjoying the festival" loading="lazy" decoding="async" /><figcaption>All eyes forward</figcaption></figure>
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789723693/discuss.jpg" alt="Guests discussing at the festival" loading="lazy" decoding="async" /><figcaption>Make the connection</figcaption></figure>
         </div>
       </div>
@@ -544,6 +586,12 @@
   <script src="tracker-client.js" defer></script>
   <script>
     const nav = document.getElementById('nav');
+    const raveGate = document.getElementById('rave-gate');
+    const raveGateEnter = document.getElementById('rave-gate-enter');
+    const raveAudio = document.getElementById('rave-audio');
+    const audioPlay = document.getElementById('audio-play');
+    const audioMute = document.getElementById('audio-mute');
+    const audioStop = document.getElementById('audio-stop');
     const navLinks = document.getElementById('nav-links');
     const mobileToggle = document.getElementById('mobile-toggle');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
@@ -561,6 +609,58 @@
       if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     }), { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+    function syncAudioControls() {
+      const isPlaying = !raveAudio.paused && !raveAudio.ended;
+      audioPlay.textContent = isPlaying ? 'Pause' : 'Play';
+      audioPlay.setAttribute('aria-label', isPlaying ? 'Pause rave beat' : 'Play rave beat');
+      audioMute.textContent = raveAudio.muted ? 'Sound off' : 'Sound on';
+      audioMute.setAttribute('aria-label', raveAudio.muted ? 'Turn sound on' : 'Mute rave beat');
+    }
+
+    raveAudio.play().catch(() => {
+      raveAudio.muted = true;
+      raveAudio.play().catch(() => {});
+      syncAudioControls();
+    });
+    raveGateEnter.addEventListener('click', async () => {
+      raveAudio.muted = false;
+      try {
+        await raveAudio.play();
+      } catch (error) {
+        raveAudio.muted = true;
+        await raveAudio.play().catch(() => {});
+      }
+      raveGate.hidden = true;
+      syncAudioControls();
+    });
+    raveGate.addEventListener('pointermove', event => {
+      const bounds = raveGate.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width * 2 - 1;
+      const y = (event.clientY - bounds.top) / bounds.height * 2 - 1;
+      raveGate.style.setProperty('--cursor-x', x.toFixed(3));
+      raveGate.style.setProperty('--cursor-y', y.toFixed(3));
+    }, { passive: true });
+    raveGate.addEventListener('pointerleave', () => {
+      raveGate.style.setProperty('--cursor-x', '0');
+      raveGate.style.setProperty('--cursor-y', '0');
+    });
+    ['play', 'pause', 'volumechange', 'ended'].forEach(eventName => raveAudio.addEventListener(eventName, syncAudioControls));
+    audioPlay.addEventListener('click', () => {
+      if (raveAudio.paused) raveAudio.play().catch(() => {});
+      else raveAudio.pause();
+    });
+    audioMute.addEventListener('click', () => {
+      raveAudio.muted = !raveAudio.muted;
+      if (!raveAudio.muted) raveAudio.play().catch(() => {});
+      syncAudioControls();
+    });
+    audioStop.addEventListener('click', () => {
+      raveAudio.pause();
+      raveAudio.currentTime = 0;
+      syncAudioControls();
+    });
+    syncAudioControls();
 
     const ticketDialog = document.getElementById('ticket-dialog');
     const checkoutDialog = document.getElementById('checkout-dialog');
