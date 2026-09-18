@@ -150,10 +150,17 @@ app.get('/api/tickets/event', async (request, response) => {
 app.post('/api/tickets/checkout', async (request, response) => {
   if (!requireFrontdeskConfiguration(response)) return;
 
-  const { ticketTypeRef, quantity, contact } = request.body || {};
-  const requestedQuantity = Number(quantity);
-  if (typeof ticketTypeRef !== 'string' || !ticketTypeRef || !Number.isInteger(requestedQuantity) || requestedQuantity < 1 || requestedQuantity > 20) {
-    return response.status(400).json({ error: 'Choose a valid ticket and quantity.' });
+  const { tickets, contact } = request.body || {};
+  const requestedTickets = Array.isArray(tickets) ? tickets : [];
+  const normalizedTickets = requestedTickets.map(ticket => ({
+    ticketTypeRef: ticket?.ticketTypeRef,
+    quantity: Number(ticket?.quantity)
+  }));
+  const totalQuantity = normalizedTickets.reduce((total, ticket) => total + ticket.quantity, 0);
+  if (!normalizedTickets.length || normalizedTickets.some(ticket => typeof ticket.ticketTypeRef !== 'string' || !ticket.ticketTypeRef
+    || !Number.isInteger(ticket.quantity) || ticket.quantity < 1 || ticket.quantity > 20)
+    || totalQuantity > 20) {
+    return response.status(400).json({ error: 'Choose valid tickets and quantities.' });
   }
   if (!contact || typeof contact.name !== 'string' || !contact.name.trim() || typeof contact.email !== 'string' || !contact.email.includes('@')) {
     return response.status(400).json({ error: 'Enter your name and a valid email address.' });
@@ -164,7 +171,7 @@ app.post('/api/tickets/checkout', async (request, response) => {
       method: 'POST',
       headers: { 'Idempotency-Key': crypto.randomUUID() },
       body: JSON.stringify({
-        tickets: [{ ticketTypeRef, quantity: requestedQuantity }],
+        tickets: normalizedTickets,
         contact: {
           name: contact.name.trim().slice(0, 120),
           email: contact.email.trim().slice(0, 200),

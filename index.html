@@ -78,16 +78,18 @@
     .ticket-form { display: grid; gap: 1rem; margin-top: 1.5rem; }
     .ticket-view[hidden] { display: none; }
     .ticket-options { display: grid; gap: .7rem; }
-    .ticket-option { position: relative; display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: .9rem; width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,.16); border-left: 2px solid rgba(255,255,255,.22); background: rgba(0,0,0,.32); color: var(--fog); text-align: left; cursor: pointer; transition: border-color .2s, background .2s, box-shadow .2s, transform .2s; }
-    .ticket-option:hover { border-color: rgba(240,198,92,.75); background: rgba(200,150,42,.08); transform: translateX(3px); }
+    .ticket-option { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .9rem; width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,.16); border-left: 2px solid rgba(255,255,255,.22); background: rgba(0,0,0,.32); color: var(--fog); text-align: left; transition: border-color .2s, background .2s, box-shadow .2s, transform .2s; }
+    .ticket-option:hover, .ticket-option.selected { border-color: rgba(240,198,92,.75); background: rgba(200,150,42,.08); transform: translateX(3px); }
     .ticket-option.selected { border-color: var(--gold-bright); border-left-color: var(--gold-bright); background: linear-gradient(90deg, rgba(200,150,42,.18), rgba(116,30,45,.11)); box-shadow: 0 0 22px rgba(200,150,42,.12), inset 0 0 18px rgba(200,150,42,.04); }
     .ticket-option-dot { width: 12px; height: 12px; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; }
     .ticket-option.selected .ticket-option-dot { border-color: var(--gold-bright); background: var(--gold-bright); box-shadow: 0 0 0 4px rgba(240,198,92,.13), 0 0 16px rgba(240,198,92,.7); }
     .ticket-option-name { display: block; color: #fff9ed; font-size: .96rem; font-weight: 700; }
     .ticket-option-note { display: block; margin-top: .25rem; color: rgba(255,255,255,.48); font-size: .72rem; }
     .ticket-early-bird { display: inline-block; margin-top: .55rem; color: var(--gold-bright); font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    .ticket-early-bird::after { content: ' · Ends October 10, 2026'; color: rgba(255,255,255,.55); letter-spacing: .04em; }
-    .ticket-option-price { color: var(--gold-bright); font-size: .82rem; font-weight: 700; white-space: nowrap; }
+    .ticket-early-bird::after { content: ' · Ends Oct. 10'; color: rgba(255,255,255,.55); letter-spacing: .04em; }
+    .ticket-option-price { display: block; margin-top: .45rem; color: var(--gold-bright); font-size: .82rem; font-weight: 700; white-space: nowrap; }
+    .ticket-option-quantity { display: flex; align-items: center; gap: .45rem; color: rgba(255,255,255,.5); font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .ticket-option-quantity input { width: 64px; min-height: 40px; padding: .55rem; text-align: center; }
     .ticket-section-label { margin-bottom: .7rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
     .ticket-form label { display: grid; gap: .45rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
     .ticket-form label span { color: rgba(255,255,255,.38); font-weight: 400; letter-spacing: .04em; text-transform: none; }
@@ -501,7 +503,6 @@
           <p class="ticket-section-label">Choose your access</p>
           <div class="ticket-options" id="ticket-options"><p class="ticket-form-status">Loading live ticket options...</p></div>
           <p class="ticket-form-status" id="ticket-selection-status" role="status"></p>
-          <label style="margin-top:1rem">Quantity<input id="ticket-quantity" name="quantity" type="number" min="1" max="20" value="1" required /></label>
           <div class="ticket-actions"><span></span><button class="btn btn-gold" id="ticket-to-details" type="button">Enter details</button></div>
         </section>
 
@@ -518,8 +519,7 @@
         <section class="ticket-view" id="confirm-step-view" hidden>
           <p class="ticket-section-label">Check every detail before continuing</p>
           <dl class="ticket-summary">
-            <div class="ticket-summary-row"><dt>Ticket</dt><dd id="summary-ticket"></dd></div>
-            <div class="ticket-summary-row"><dt>Quantity</dt><dd id="summary-quantity"></dd></div>
+            <div class="ticket-summary-row"><dt>Tickets</dt><dd id="summary-tickets"></dd></div>
             <div class="ticket-summary-row"><dt>Name</dt><dd id="summary-name"></dd></div>
             <div class="ticket-summary-row"><dt>Email</dt><dd id="summary-email"></dd></div>
             <div class="ticket-summary-row"><dt>Phone</dt><dd id="summary-phone"></dd></div>
@@ -657,7 +657,6 @@
     const checkoutFrame = document.getElementById('checkout-frame');
     const ticketForm = document.getElementById('ticket-form');
     const ticketOptions = document.getElementById('ticket-options');
-    const ticketQuantity = document.getElementById('ticket-quantity');
     const ticketStatus = document.getElementById('ticket-selection-status');
     const confirmationStatus = document.getElementById('ticket-form-status');
     const ticketSubmit = document.getElementById('ticket-submit');
@@ -668,7 +667,7 @@
     };
     const ticketStepLabels = document.querySelectorAll('.ticket-step');
     let ticketTypesLoaded = false;
-    let selectedTicket = null;
+    const ticketQuantities = new Map();
 
     function formatTicketPrice(ticket) {
       const price = ticket.priceMinor ?? ticket.prices?.find(item => item.currency === 'NGN')?.amountMinor;
@@ -697,24 +696,35 @@
       catch (error) { throw new Error('Ticket service is not connected on this deployment. Please try again shortly.'); }
       if (!response.ok) throw new Error(getApiErrorMessage(result, 'Ticket information unavailable.'));
       ticketOptions.replaceChildren(...result.ticketTypes.map(ticket => {
-        const option = document.createElement('button');
-        option.type = 'button';
+        const option = document.createElement('div');
         option.className = 'ticket-option';
         option.dataset.ticketRef = ticket.ref;
-        option.innerHTML = '<span class="ticket-option-dot" aria-hidden="true"></span><span><strong class="ticket-option-name"></strong><small class="ticket-option-note"></small><small class="ticket-early-bird">Early bird</small></span><strong class="ticket-option-price"></strong>';
+        option.innerHTML = '<span><strong class="ticket-option-name"></strong><small class="ticket-option-note"></small><small class="ticket-early-bird">Early bird</small><strong class="ticket-option-price"></strong></span><label class="ticket-option-quantity">Qty<input type="number" min="0" max="20" value="0" inputmode="numeric" aria-label="Quantity"></label>';
         option.querySelector('.ticket-option-name').textContent = getTicketText(ticket.name || ticket.label, 'Ticket');
         option.querySelector('.ticket-option-note').textContent = getTicketText(ticket.description || ticket.subtitle, 'Festival access');
         option.querySelector('.ticket-option-price').textContent = formatTicketPrice(ticket).replace(' - ', '');
-        option.addEventListener('click', () => selectTicket(ticket, option));
+        const quantityInput = option.querySelector('input');
+        quantityInput.addEventListener('input', () => updateTicketQuantity(ticket, option, quantityInput));
         return option;
       }));
       ticketTypesLoaded = true;
     }
 
-    function selectTicket(ticket, option) {
-      selectedTicket = ticket;
-      ticketOptions.querySelectorAll('.ticket-option').forEach(item => item.classList.toggle('selected', item === option));
+    function updateTicketQuantity(ticket, option, quantityInput) {
+      const quantity = Number(quantityInput.value);
+      ticketQuantities.set(ticket.ref, Number.isInteger(quantity) && quantity > 0 ? quantity : 0);
+      option.classList.toggle('selected', quantity > 0);
       ticketStatus.textContent = '';
+    }
+
+    function getSelectedTickets() {
+      return [...ticketQuantities.entries()]
+        .filter(([, quantity]) => quantity > 0)
+        .map(([ticketTypeRef, quantity]) => ({ ticketTypeRef, quantity }));
+    }
+
+    function getTotalQuantity() {
+      return getSelectedTickets().reduce((total, ticket) => total + ticket.quantity, 0);
     }
 
     function showTicketView(view) {
@@ -725,20 +735,26 @@
 
     function updateSummary() {
       const formData = new FormData(ticketForm);
-      document.getElementById('summary-ticket').textContent = selectedTicket?.name || selectedTicket?.label || 'Ticket';
-      document.getElementById('summary-quantity').textContent = formData.get('quantity');
+      const selectedTickets = getSelectedTickets();
+      document.getElementById('summary-tickets').textContent = selectedTickets.map(({ ticketTypeRef, quantity }) => {
+        const option = ticketOptions.querySelector(`[data-ticket-ref="${CSS.escape(ticketTypeRef)}"]`);
+        return `${option?.querySelector('.ticket-option-name')?.textContent || 'Ticket'} x${quantity}`;
+      }).join(', ');
       document.getElementById('summary-name').textContent = formData.get('name');
       document.getElementById('summary-email').textContent = formData.get('email');
       document.getElementById('summary-phone').textContent = formData.get('phone') || 'Not provided';
     }
 
     function resetTicketFlow() {
-      selectedTicket = null;
+      ticketQuantities.clear();
       ticketForm.reset();
-      ticketQuantity.value = '1';
       ticketStatus.textContent = '';
       confirmationStatus.textContent = '';
-      ticketOptions.querySelectorAll('.ticket-option').forEach(option => option.classList.remove('selected'));
+      ticketOptions.querySelectorAll('.ticket-option').forEach(option => {
+        option.classList.remove('selected');
+        const quantityInput = option.querySelector('input');
+        if (quantityInput) quantityInput.value = '0';
+      });
       showTicketView('ticket');
     }
 
@@ -752,8 +768,9 @@
     }));
     document.getElementById('ticket-dialog-close').addEventListener('click', () => ticketDialog.close());
     document.getElementById('ticket-to-details').addEventListener('click', () => {
-      if (!selectedTicket) { ticketStatus.textContent = 'Choose a ticket type to continue.'; return; }
-      if (!ticketQuantity.checkValidity()) { ticketQuantity.reportValidity(); return; }
+      const totalQuantity = getTotalQuantity();
+      if (!totalQuantity) { ticketStatus.textContent = 'Choose at least one ticket to continue.'; return; }
+      if (totalQuantity > 20) { ticketStatus.textContent = 'You can purchase up to 20 tickets per order.'; return; }
       showTicketView('details');
     });
     document.getElementById('ticket-back-to-ticket').addEventListener('click', () => showTicketView('ticket'));
@@ -767,7 +784,8 @@
     document.getElementById('ticket-back-to-details').addEventListener('click', () => showTicketView('details'));
     ticketForm.addEventListener('submit', async event => {
       event.preventDefault();
-      if (!selectedTicket) return;
+      const selectedTickets = getSelectedTickets();
+      if (!selectedTickets.length || getTotalQuantity() > 20) return;
       ticketSubmit.disabled = true;
       confirmationStatus.textContent = 'Opening secure checkout...';
       const formData = new FormData(ticketForm);
@@ -776,8 +794,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            ticketTypeRef: selectedTicket.ref,
-            quantity: Number(formData.get('quantity')),
+            tickets: selectedTickets,
             contact: { name: formData.get('name'), email: formData.get('email'), phone: formData.get('phone') }
           })
         });
