@@ -65,6 +65,12 @@
     .ticket-dialog h2 { margin-top: .55rem; color: #fff9ed; font-size: clamp(1.8rem, 5vw, 2.5rem); letter-spacing: -.04em; }
     .ticket-dialog-close { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.03); color: var(--muted); font-size: 1.25rem; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
     .ticket-dialog-close:hover { border-color: var(--gold-bright); background: rgba(200,150,42,.12); color: var(--gold-bright); }
+    .checkout-dialog { position: fixed; inset: 0; width: min(760px, calc(100% - 2rem)); height: min(820px, calc(100% - 2rem)); margin: auto; padding: 0; border: 1px solid rgba(240,198,92,.5); background: #0b0b0b; color: var(--fog); box-shadow: 0 0 0 1px rgba(8,8,8,.9), 0 28px 100px rgba(0,0,0,.75), 0 0 100px rgba(200,150,42,.2); overflow: hidden; }
+    .checkout-dialog::backdrop { background: rgba(3,3,3,.82); backdrop-filter: blur(14px) saturate(.9); }
+    .checkout-dialog-inner { display: grid; grid-template-rows: auto 1fr; height: 100%; }
+    .checkout-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,.12); background: #0b0b0b; }
+    .checkout-dialog-header h2 { margin-top: .3rem; color: #fff9ed; font-size: 1.25rem; }
+    .checkout-frame { width: 100%; height: 100%; border: 0; background: #fff; }
     .ticket-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin: 1.7rem 0 1.8rem; border-top: 1px solid rgba(255,255,255,.15); border-bottom: 1px solid rgba(255,255,255,.15); padding: .85rem 0; }
     .ticket-step { color: rgba(255,255,255,.38); font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
     .ticket-step.active { color: var(--gold-bright); }
@@ -364,7 +370,6 @@
         <div class="gallery-grid reveal">
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789668172/gugua.jpg" alt="Guests exploring the 2025 exhibition" loading="lazy" decoding="async" /><figcaption>Find your people</figcaption></figure>
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_0005.JPEG" alt="Guests connecting at the 2025 event" loading="lazy" decoding="async" /><figcaption>Make the room</figcaption></figure>
-          <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789668370/gamers.jpg" alt="Gamers at the 2025 event" loading="lazy" decoding="async" /><figcaption>Game on</figcaption></figure>
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_104.jpg" alt="Live moment at the 2025 event" loading="lazy" decoding="async" /><figcaption>Stay in the moment</figcaption></figure>
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_105.jpg" alt="Guests enjoying the 2025 event" loading="lazy" decoding="async" /><figcaption>Bring the energy</figcaption></figure>
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_106.jpg" alt="2025 event experience" loading="lazy" decoding="async" /><figcaption>Make it count</figcaption></figure>
@@ -473,7 +478,7 @@
   <dialog class="ticket-dialog" id="ticket-dialog" aria-labelledby="ticket-dialog-title">
     <div class="ticket-dialog-inner">
       <div class="ticket-dialog-header">
-        <div><div class="eyebrow">Frontdesk checkout</div><h2 id="ticket-dialog-title">Choose your access.</h2></div>
+        <div><div class="eyebrow">Off-Duty checkout</div><h2 id="ticket-dialog-title">Choose your access.</h2></div>
         <button class="ticket-dialog-close" id="ticket-dialog-close" type="button" aria-label="Close ticket checkout">&times;</button>
       </div>
       <div class="ticket-steps" aria-label="Checkout progress">
@@ -513,6 +518,16 @@
           <div class="ticket-actions"><button class="btn btn-ghost" id="ticket-back-to-details" type="button">Back</button><button class="btn btn-gold" id="ticket-submit" type="submit">Confirm &amp; continue</button></div>
         </section>
       </form>
+    </div>
+  </dialog>
+
+  <dialog class="checkout-dialog" id="checkout-dialog" aria-labelledby="checkout-dialog-title">
+    <div class="checkout-dialog-inner">
+      <div class="checkout-dialog-header">
+        <div><div class="eyebrow">Secure payment</div><h2 id="checkout-dialog-title">Complete your order.</h2></div>
+        <button class="ticket-dialog-close" id="checkout-dialog-close" type="button" aria-label="Close secure checkout">&times;</button>
+      </div>
+      <iframe class="checkout-frame" id="checkout-frame" title="Secure ticket checkout" allow="payment" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
   </dialog>
 
@@ -585,6 +600,8 @@
     document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
 
     const ticketDialog = document.getElementById('ticket-dialog');
+    const checkoutDialog = document.getElementById('checkout-dialog');
+    const checkoutFrame = document.getElementById('checkout-frame');
     const ticketForm = document.getElementById('ticket-form');
     const ticketOptions = document.getElementById('ticket-options');
     const ticketQuantity = document.getElementById('ticket-quantity');
@@ -713,12 +730,20 @@
         });
         const result = await response.json();
         if (!response.ok || !result.hostedUrl) throw new Error(result.error || 'Unable to open checkout.');
-        window.location.assign(result.hostedUrl);
+        checkoutFrame.src = result.hostedUrl;
+        ticketDialog.close();
+        checkoutDialog.showModal();
+        confirmationStatus.textContent = '';
       } catch (error) {
         confirmationStatus.textContent = error.message;
         ticketSubmit.disabled = false;
       }
     });
+    checkoutDialog.addEventListener('close', () => {
+      checkoutFrame.src = 'about:blank';
+      ticketSubmit.disabled = false;
+    });
+    document.getElementById('checkout-dialog-close').addEventListener('click', () => checkoutDialog.close());
   </script>
 </body>
 </html>
