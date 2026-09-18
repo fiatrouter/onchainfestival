@@ -169,6 +169,34 @@
     .section-header { max-width: 720px; margin-bottom: 4rem; }
     .section-header p { max-width: 600px; color: rgba(17,17,17,.68); font-size: 1.05rem; }
     .section-dark .section-header p { color: var(--muted); }
+    .off-duty-intro { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: 3rem; align-items: start; }
+    .off-duty-intro .section-header { margin-bottom: 3rem; }
+    .off-duty-scene { width: 100%; aspect-ratio: 1.35; position: relative; isolation: isolate; overflow: visible; background: radial-gradient(circle at center, rgba(200,150,42,.13), transparent 62%), #111; }
+    .off-duty-scene::after { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: radial-gradient(ellipse at center, transparent 33%, rgba(11,11,11,.08) 58%, #0b0b0b 92%), linear-gradient(90deg, #0b0b0b 0%, transparent 17%, transparent 83%, #0b0b0b 100%), linear-gradient(0deg, #0b0b0b 0%, transparent 15%, transparent 85%, #0b0b0b 100%); }
+    .off-duty-art { position: absolute; inset: 0; z-index: 1; background: url('confettibg.png') center 8% / 76% auto no-repeat; filter: saturate(.9) contrast(1.08) drop-shadow(0 0 24px rgba(240,198,92,.12)); -webkit-mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0,0,0,.92) 63%, transparent 95%); mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0,0,0,.92) 63%, transparent 95%); transform: translate(calc(var(--scene-x, 0) * 5px), calc(var(--scene-y, 0) * 5px)); transition: transform .22s ease-out; pointer-events: none; }
+    .off-duty-confetti { position: absolute; inset: -18% -24%; z-index: 3; color: rgba(240,198,92,.78); font-size: clamp(.48rem, .72vw, .68rem); font-weight: 700; letter-spacing: .14em; line-height: 1; text-transform: uppercase; text-shadow: 0 0 9px rgba(240,198,92,.45); pointer-events: none; }
+    .off-duty-confetti span { position: absolute; display: block; white-space: nowrap; transform: translate(calc(var(--scene-x, 0) * var(--drift-x)), calc(var(--scene-y, 0) * var(--drift-y))) rotate(var(--tilt)); transition: transform .2s ease-out; }
+    .off-duty-confetti span:nth-child(3n) { color: rgba(255,43,131,.86); text-shadow: 0 0 10px rgba(255,43,131,.6); }
+    .off-duty-confetti span:nth-child(4n) { color: rgba(54,255,190,.84); text-shadow: 0 0 10px rgba(54,255,190,.54); }
+    .off-duty-confetti span:nth-child(5n) { color: rgba(255,255,255,.78); }
+    .off-duty-confetti span:nth-child(1) { top: 7%; left: 3%; --drift-x: -8px; --drift-y: 5px; --tilt: -13deg; }
+    .off-duty-confetti span:nth-child(2) { top: 18%; right: 3%; --drift-x: 7px; --drift-y: -5px; --tilt: 10deg; }
+    .off-duty-confetti span:nth-child(3) { top: 35%; left: 1%; --drift-x: -12px; --drift-y: 7px; --tilt: -5deg; }
+    .off-duty-confetti span:nth-child(4) { top: 39%; right: 1%; --drift-x: 10px; --drift-y: -8px; --tilt: 17deg; }
+    .off-duty-confetti span:nth-child(5) { top: 66%; left: 4%; --drift-x: -6px; --drift-y: 10px; --tilt: 6deg; }
+    .off-duty-confetti span:nth-child(6) { top: 58%; right: 3%; --drift-x: 12px; --drift-y: 4px; --tilt: -12deg; }
+    .off-duty-confetti span:nth-child(7) { top: 86%; left: 2%; --drift-x: -9px; --drift-y: -7px; --tilt: 12deg; }
+    .off-duty-confetti span:nth-child(8) { top: 79%; right: 2%; --drift-x: 6px; --drift-y: 8px; --tilt: -8deg; }
+    .off-duty-confetti span:nth-child(9) { top: 94%; left: 26%; --drift-x: -11px; --drift-y: -4px; --tilt: -17deg; }
+    .off-duty-confetti span:nth-child(10) { top: 91%; right: 24%; --drift-x: 9px; --drift-y: 6px; --tilt: 8deg; }
+    .off-duty-confetti span:nth-child(11) { top: 3%; left: 34%; --drift-x: -5px; --drift-y: -9px; --tilt: 4deg; }
+    .off-duty-confetti span:nth-child(12) { top: 27%; left: 27%; --drift-x: 8px; --drift-y: 6px; --tilt: -8deg; }
+    .off-duty-confetti span:nth-child(13) { top: 44%; left: 41%; --drift-x: -7px; --drift-y: -6px; --tilt: 13deg; }
+    .off-duty-confetti span:nth-child(14) { top: 73%; left: 35%; --drift-x: 10px; --drift-y: 8px; --tilt: -4deg; }
+    .off-duty-confetti span:nth-child(15) { top: 96%; left: 55%; --drift-x: -9px; --drift-y: -5px; --tilt: 16deg; }
+    .off-duty-confetti span:nth-child(16) { top: 10%; left: 73%; --drift-x: 6px; --drift-y: 9px; --tilt: -11deg; }
+    .off-duty-confetti span:nth-child(17) { top: 52%; left: 72%; --drift-x: -12px; --drift-y: -5px; --tilt: 7deg; }
+    .off-duty-confetti span:nth-child(18) { top: 88%; left: 72%; --drift-x: 8px; --drift-y: -8px; --tilt: -13deg; }
 
     .audience-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 5rem; align-items: center; }
     .audience-art { min-height: 520px; position: relative; background: url('https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_107.jpg') center / cover; filter: saturate(.75) contrast(1.08); -webkit-mask-image: radial-gradient(ellipse at center, #000 54%, transparent 100%); mask-image: radial-gradient(ellipse at center, #000 54%, transparent 100%); }
@@ -295,8 +323,8 @@
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes sponsor-slide { from { transform: translateX(0); } to { transform: translateX(calc(-50% - .4rem)); } }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } .hero-title-line { opacity: 1; transform: none; animation: none; } .hero-title-line + .hero-title-line { display: none; } }
-    @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; } }
-    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { height: 2.15em; font-size: clamp(2.2rem, 11vw, 4.5rem); } .hero-title-line { overflow-wrap: normal; } .hero-actions { margin-top: 2.7rem; } .hero-actions .btn { min-height: 42px; padding: .62rem .95rem; font-size: .68rem; letter-spacing: .025em; } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .sponsor-logo { width: 150px; min-height: 92px; padding: 0; } .final-cta h2 { font-size: clamp(2.2rem, 11vw, 4rem); } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } .ticket-dialog-inner { padding: 1.5rem; } .ticket-dialog h2 { font-size: 1.8rem; } .ticket-steps { gap: .45rem; } .ticket-step { font-size: .56rem; letter-spacing: .1em; } .ticket-details-grid { grid-template-columns: 1fr; } .ticket-details-grid label:last-child { grid-column: auto; } .ticket-actions { flex-direction: column-reverse; } .ticket-actions .btn { width: 100% !important; } }
+    @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; } .off-duty-intro { display: block; } .off-duty-intro .section-header { margin-bottom: 1rem; } .off-duty-scene { display: none; } }
+    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { height: 2.15em; font-size: clamp(2.2rem, 11vw, 4.5rem); } .hero-title-line { overflow-wrap: normal; } .hero-actions { margin-top: 2.7rem; } .hero-actions .btn { min-height: 42px; padding: .62rem .95rem; font-size: .68rem; letter-spacing: .025em; } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .off-duty-confetti { font-size: .48rem; letter-spacing: .1em; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .sponsor-logo { width: 150px; min-height: 92px; padding: 0; } .final-cta h2 { font-size: clamp(2.2rem, 11vw, 4rem); } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } .ticket-dialog-inner { padding: 1.5rem; } .ticket-dialog h2 { font-size: 1.8rem; } .ticket-steps { gap: .45rem; } .ticket-step { font-size: .56rem; letter-spacing: .1em; } .ticket-details-grid { grid-template-columns: 1fr; } .ticket-details-grid label:last-child { grid-column: auto; } .ticket-actions { flex-direction: column-reverse; } .ticket-actions .btn { width: 100% !important; max-width: 100%; } }
     @media (max-width: 430px) { .brand { font-size: .72rem; } .brand-mark { width: 38px; height: 38px; } .nav-cta { display: none; } .hero-actions .btn { width: max-content !important; max-width: 100%; } .hero-meta { display: grid; grid-template-columns: 1fr 1fr; } .experiences { grid-template-columns: 1fr; } .experience { min-height: 190px; } }
   </style>
 </head>
@@ -365,7 +393,15 @@
     
     <section class="section section-dark" id="experience">
       <div class="container">
-        <div class="section-header reveal"><div class="eyebrow">Two days off-duty</div><div class="gold-rule"></div><h2 class="display display-lg">AN ALL WHITE RAVE WITH A POINT OF VIEW.</h2><br/><p>Off-Duty puts culture first and gives you a role in the story.</p></div>
+        <div class="off-duty-intro">
+          <div class="section-header reveal"><div class="eyebrow">Two days off-duty</div><div class="gold-rule"></div><h2 class="display display-lg">AN ALL WHITE RAVE WITH A POINT OF VIEW.</h2><br/><p>Off-Duty puts culture first and gives you a role in the story.</p></div>
+          <div class="off-duty-scene reveal" aria-hidden="true">
+            <div class="off-duty-art"></div>
+            <div class="off-duty-confetti">
+              <span>MAIN CHARACTER</span><span>NO SMALL TALK</span><span>VIBES ONLY</span><span>ONCHAIN ENERGY</span><span>BIG MOOD</span><span>LINK UP</span><span>NO CAP</span><span>HIGH FREQUENCY</span><span>AFTER HOURS</span><span>STAY WEIRD</span><span>ALL GAS</span><span>SOFT LAUNCH</span><span>DEGEN DELIGHT</span><span>TOO FLY</span><span>GOOD TROUBLE</span><span>LOUD LUXURY</span><span>RAVE LOGIC</span><span>WILD CARD</span>
+            </div>
+          </div>
+        </div>
         <div class="experiences">
           <article class="experience reveal"><span class="experience-num">01 / 06</span><h3>Main stage moments</h3><p>Music, voices and the moments the crowd will record.</p></article>
           <article class="experience reveal"><span class="experience-num">02 / 06</span><h3>Exhibition lounge</h3><p>A branded environment people actually want to explore.</p></article>
@@ -598,6 +634,7 @@
     const audioPlay = document.getElementById('audio-play');
     const navLinks = document.getElementById('nav-links');
     const mobileToggle = document.getElementById('mobile-toggle');
+    const offDutyScene = document.querySelector('.off-duty-scene');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
     mobileToggle.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
@@ -646,6 +683,17 @@
     raveGate.addEventListener('pointerleave', () => {
       raveGate.style.setProperty('--cursor-x', '0');
       raveGate.style.setProperty('--cursor-y', '0');
+    });
+    offDutyScene.addEventListener('pointermove', event => {
+      const bounds = offDutyScene.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width * 2 - 1;
+      const y = (event.clientY - bounds.top) / bounds.height * 2 - 1;
+      offDutyScene.style.setProperty('--scene-x', x.toFixed(3));
+      offDutyScene.style.setProperty('--scene-y', y.toFixed(3));
+    }, { passive: true });
+    offDutyScene.addEventListener('pointerleave', () => {
+      offDutyScene.style.setProperty('--scene-x', '0');
+      offDutyScene.style.setProperty('--scene-y', '0');
     });
     ['play', 'pause', 'ended'].forEach(eventName => raveAudio.addEventListener(eventName, syncAudioControls));
     audioPlay.addEventListener('click', () => {
