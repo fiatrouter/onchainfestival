@@ -79,6 +79,8 @@
     .ticket-option.selected .ticket-option-dot { border-color: var(--gold-bright); background: var(--gold-bright); box-shadow: 0 0 0 4px rgba(240,198,92,.13), 0 0 16px rgba(240,198,92,.7); }
     .ticket-option-name { display: block; color: #fff9ed; font-size: .96rem; font-weight: 700; }
     .ticket-option-note { display: block; margin-top: .25rem; color: rgba(255,255,255,.48); font-size: .72rem; }
+    .ticket-early-bird { display: inline-block; margin-top: .55rem; color: var(--gold-bright); font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .ticket-early-bird::after { content: ' · Ends October 10, 2026'; color: rgba(255,255,255,.55); letter-spacing: .04em; }
     .ticket-option-price { color: var(--gold-bright); font-size: .82rem; font-weight: 700; white-space: nowrap; }
     .ticket-section-label { margin-bottom: .7rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
     .ticket-form label { display: grid; gap: .45rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
@@ -431,7 +433,7 @@
             <div class="partner-card-body">
               <div>
                 <strong>Boat</strong>
-                <span>Mobile money energy</span>
+                <span>Airpot pickups, Shortlet Apartments, etc</span>
               </div>
               <span class="partner-pill">Partner</span>
             </div>
@@ -622,7 +624,7 @@
         option.type = 'button';
         option.className = 'ticket-option';
         option.dataset.ticketRef = ticket.ref;
-        option.innerHTML = '<span class="ticket-option-dot" aria-hidden="true"></span><span><strong class="ticket-option-name"></strong><small class="ticket-option-note"></small></span><strong class="ticket-option-price"></strong>';
+        option.innerHTML = '<span class="ticket-option-dot" aria-hidden="true"></span><span><strong class="ticket-option-name"></strong><small class="ticket-option-note"></small><small class="ticket-early-bird">Early bird</small></span><strong class="ticket-option-price"></strong>';
         option.querySelector('.ticket-option-name').textContent = getTicketText(ticket.name || ticket.label, 'Ticket');
         option.querySelector('.ticket-option-note').textContent = getTicketText(ticket.description || ticket.subtitle, 'Festival access');
         option.querySelector('.ticket-option-price').textContent = formatTicketPrice(ticket).replace(' - ', '');
