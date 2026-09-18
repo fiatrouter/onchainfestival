@@ -1,4 +1,4 @@
-.# Onchain Festival tracker.
+..# Onchain Festival tracker.
 
 The site records page views and clicks on `.frontdesk-cta-button` through a same-origin Node endpoint. Ticket checkout is opened server-side through Frontdesk; secret credentials are used only by `server.js` and are never sent to the browser.
 
