@@ -109,9 +109,11 @@
     .ticket-form button:disabled { cursor: wait; opacity: .6; }
     .ticket-form-status { min-height: 1.3em; color: var(--gold-bright); font-size: .8rem; }
     .audio-dock { position: fixed; right: 1rem; bottom: 1rem; z-index: 15; display: flex; align-items: center; gap: .45rem; padding: .45rem; border: 1px solid rgba(240,198,92,.35); background: rgba(8,8,8,.88); box-shadow: 0 12px 32px rgba(0,0,0,.35); backdrop-filter: blur(12px); }
+    .audio-dock-speaker { color: var(--gold-bright); font-size: .9rem; line-height: 1; }
     .audio-dock-label { margin: 0 .35rem; color: var(--gold-bright); font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
     .audio-dock button { min-width: 34px; min-height: 30px; padding: .35rem .5rem; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.04); color: var(--fog); cursor: pointer; font-size: .64rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
     .audio-dock button:hover, .audio-dock button:focus-visible { border-color: var(--gold-bright); color: var(--gold-bright); outline: 0; }
+    @media (max-width: 700px) { .audio-dock { right: .65rem; bottom: .65rem; gap: .25rem; padding: .28rem; } .audio-dock-label { display: none; } .audio-dock-speaker { padding: 0 .2rem; font-size: .78rem; } .audio-dock button { min-width: 30px; min-height: 26px; padding: .25rem .4rem; font-size: .58rem; } }
     .rave-gate { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 1.5rem; background: #050505; color: var(--fog); overflow: hidden; }
     .rave-gate[hidden] { display: none; }
     .rave-gate::before { content: ''; position: absolute; inset: 0; opacity: .3; background: linear-gradient(rgba(240,198,92,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(240,198,92,.18) 1px, transparent 1px); background-size: 42px 42px; mask-image: radial-gradient(ellipse at center, black, transparent 78%); }
@@ -308,10 +310,8 @@
     <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/mWQc996VFTCrKBAUXTALYquul4ih93QHzsTDNqlO.mp3" type="audio/mpeg" />
   </audio>
   <div class="audio-dock" aria-label="Rave music controls">
-    <span class="audio-dock-label">Amapiano rave · Tiga Maine</span>
+    <span class="audio-dock-speaker" aria-hidden="true">&#128266;</span>
     <button id="audio-play" type="button" aria-label="Pause rave beat">Pause</button>
-    <button id="audio-mute" type="button" aria-label="Turn sound on">Sound off</button>
-    <button id="audio-stop" type="button" aria-label="Stop rave beat">Stop</button>
   </div>
   <nav id="nav">
     <div class="container nav-inner">
@@ -590,8 +590,6 @@
     const raveGateEnter = document.getElementById('rave-gate-enter');
     const raveAudio = document.getElementById('rave-audio');
     const audioPlay = document.getElementById('audio-play');
-    const audioMute = document.getElementById('audio-mute');
-    const audioStop = document.getElementById('audio-stop');
     const navLinks = document.getElementById('nav-links');
     const mobileToggle = document.getElementById('mobile-toggle');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
@@ -614,8 +612,6 @@
       const isPlaying = !raveAudio.paused && !raveAudio.ended;
       audioPlay.textContent = isPlaying ? 'Pause' : 'Play';
       audioPlay.setAttribute('aria-label', isPlaying ? 'Pause rave beat' : 'Play rave beat');
-      audioMute.textContent = raveAudio.muted ? 'Sound off' : 'Sound on';
-      audioMute.setAttribute('aria-label', raveAudio.muted ? 'Turn sound on' : 'Mute rave beat');
     }
 
     raveAudio.play().catch(() => {
@@ -645,20 +641,10 @@
       raveGate.style.setProperty('--cursor-x', '0');
       raveGate.style.setProperty('--cursor-y', '0');
     });
-    ['play', 'pause', 'volumechange', 'ended'].forEach(eventName => raveAudio.addEventListener(eventName, syncAudioControls));
+    ['play', 'pause', 'ended'].forEach(eventName => raveAudio.addEventListener(eventName, syncAudioControls));
     audioPlay.addEventListener('click', () => {
       if (raveAudio.paused) raveAudio.play().catch(() => {});
       else raveAudio.pause();
-    });
-    audioMute.addEventListener('click', () => {
-      raveAudio.muted = !raveAudio.muted;
-      if (!raveAudio.muted) raveAudio.play().catch(() => {});
-      syncAudioControls();
-    });
-    audioStop.addEventListener('click', () => {
-      raveAudio.pause();
-      raveAudio.currentTime = 0;
-      syncAudioControls();
     });
     syncAudioControls();
 
