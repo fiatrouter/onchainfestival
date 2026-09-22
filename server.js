@@ -261,6 +261,10 @@ app.get('/', (request, response) => {
   response.sendFile(path.join(staticRoot, 'index.html'));
 });
 
+app.get('/tickets', (request, response) => {
+  response.redirect('/?tickets=1#tickets');
+});
+
 app.get('/old.html', (request, response) => {
   response.redirect('/');
 });

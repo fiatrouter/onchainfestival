@@ -7,6 +7,10 @@
   },
   "routes": [
     {
+      "src": "^/tickets/?$",
+      "dest": "/server.js"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/index.js"
     }

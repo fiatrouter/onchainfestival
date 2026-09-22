@@ -847,6 +847,9 @@
       try { await loadTicketTypes(); ticketStatus.textContent = ''; }
       catch (error) { ticketStatus.textContent = error.message; }
     }));
+    if (new URLSearchParams(window.location.search).get('tickets') === '1') {
+      document.querySelector('.frontdesk-cta-button').click();
+    }
     document.getElementById('ticket-dialog-close').addEventListener('click', () => ticketDialog.close());
     document.getElementById('ticket-to-details').addEventListener('click', () => {
       const totalQuantity = getTotalQuantity();
