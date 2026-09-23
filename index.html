@@ -866,6 +866,13 @@
       showTicketView('ticket');
     }
 
+    function clearTicketRoute() {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get('tickets') !== '1') return;
+      url.searchParams.delete('tickets');
+      history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+    }
+
     document.querySelectorAll('.frontdesk-cta-button').forEach(button => button.addEventListener('click', async event => {
       event.preventDefault();
       ticketDialog.showModal();
@@ -878,6 +885,7 @@
       document.querySelector('.frontdesk-cta-button').click();
     }
     document.getElementById('ticket-dialog-close').addEventListener('click', () => ticketDialog.close());
+    ticketDialog.addEventListener('close', clearTicketRoute);
     document.getElementById('ticket-to-details').addEventListener('click', () => {
       const totalQuantity = getTotalQuantity();
       if (!totalQuantity) { ticketStatus.textContent = 'Choose at least one ticket to continue.'; return; }
