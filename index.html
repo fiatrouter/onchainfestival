@@ -300,16 +300,16 @@
     .sponsor-metrics .number:last-child { border-right: 1px solid rgba(255,255,255,.12); }
     .sponsor-metrics .number strong { font-size: clamp(1.5rem, 3vw, 2.7rem); line-height: 1.1; }
     .sponsor-metrics .number span { display: block; max-width: none; letter-spacing: .12em; }
-    .sponsor-logos { overflow: hidden; }
-    .sponsor-logo-track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; width: 100%; }
+    .sponsor-logos, .partner-logos { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x proximity; }
+    .sponsor-logos::-webkit-scrollbar, .partner-logos::-webkit-scrollbar { display: none; }
+    .sponsor-logo-track, .partner-logo-track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; width: 100%; }
     .sponsor-logo { width: 100%; min-height: 112px; display: grid; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.82); background: rgba(255,255,255,.02); box-shadow: 0 4px 16px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.08); animation: none !important; }
     .sponsor-logo img { display: block; width: auto; max-width: calc(100% - 22px); height: auto; max-height: 82px; object-fit: contain; padding: 0; border: 0; border-radius: 0; box-shadow: none; background: transparent; }
     .partner-showcase, .sponsor-showcase { display: grid; gap: 1.5rem; margin-bottom: 4rem; }
     .partner-showcase-header { display: flex; align-items: end; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,.12); }
     .partner-showcase-header h3 { margin: 0; font-size: clamp(1.4rem, 3vw, 2.2rem); }
     .partner-showcase-header p { max-width: 360px; margin: 0; color: var(--muted); font-size: .78rem; text-align: right; }
-    .partner-logos { overflow: hidden; }
-    .partner-logo-track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; width: 100%; }
+    .partner-logo-track { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .comet-layer { position: fixed; inset: 0; pointer-events: none; z-index: 220; overflow: hidden; }
     .rave-gate:not([hidden]) ~ .comet-layer { display: none; }
     .comet-orb { position: absolute; width: 14px; height: 14px; border-radius: 999px; background: #fff; box-shadow: 0 0 10px #fff, 0 0 24px rgba(255,255,255,.95), 0 0 55px rgba(255,255,255,.58); opacity: 0; will-change: transform, opacity; }
@@ -353,7 +353,8 @@
     @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(240,198,92,.35); } 50% { box-shadow: 0 0 0 8px rgba(240,198,92,0); } }
     @keyframes hero-line-loop { 0%, 39% { opacity: 1; transform: translateY(0); } 49%, 58% { opacity: 0; transform: translateY(-110%); } 58.01%, 100% { opacity: 0; transform: translateY(110%); } }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    @media (max-width: 700px) { .partner-showcase-header { display: block; } .partner-showcase-header p { margin-top: .7rem; text-align: left; } .sponsor-logo { width: 150px; min-height: 92px; } }
+    @media (max-width: 900px) { .comet-layer { display: none !important; } }
+    @media (max-width: 700px) { .partner-showcase-header { display: block; } .partner-showcase-header p { margin-top: .7rem; text-align: left; } .sponsor-logo-track, .partner-logo-track { grid-auto-flow: column; grid-auto-columns: minmax(170px, 72vw); grid-template-columns: none; gap: .8rem; padding-bottom: .25rem; overflow-x: auto; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; } .sponsor-logo, .partner-logo { width: 100%; min-width: 170px; min-height: 92px; scroll-snap-align: start; } }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } .hero-title-line { opacity: 1; transform: none; animation: none; } .hero-title-line + .hero-title-line { display: none; } }
     @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; } .off-duty-intro { display: block; } .off-duty-intro .section-header { margin-bottom: 1rem; } .off-duty-scene { display: none; } .inspo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { height: 2.15em; font-size: clamp(2.2rem, 11vw, 4.5rem); } .hero-title-line { overflow-wrap: normal; } .hero-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 2.7rem; } .hero-actions .btn { width: 100% !important; min-height: 42px; padding: .62rem .95rem; font-size: .68rem; letter-spacing: .025em; } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .off-duty-confetti { font-size: .48rem; letter-spacing: .1em; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .inspo-grid { grid-template-columns: 1fr; } .sponsor-logo { width: 150px; min-height: 92px; padding: 0; } .final-cta h2 { font-size: clamp(2.2rem, 11vw, 4rem); } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } .ticket-dialog-inner { padding: 1.5rem; } .ticket-dialog h2 { font-size: 1.8rem; } .ticket-steps { gap: .45rem; } .ticket-step { font-size: .56rem; letter-spacing: .1em; } .ticket-details-grid { grid-template-columns: 1fr; } .ticket-details-grid label:last-child { grid-column: auto; } .ticket-actions { flex-direction: column-reverse; } .ticket-actions .btn { width: 100% !important; max-width: 100%; } }
@@ -471,7 +472,6 @@
               <tr><td>Investor Lounge</td><td>Badge only</td><td>A curated space inside the festival where investors and founders connect: same energy, higher-stakes conversation.</td><td>Strictly by invitation.</td></tr>
             </tbody>
           </table>
-          <p class="ticket-note">875 ticketed guests sits comfortably inside the 700–1,000 capacity, leaving headroom for guest list, press, performers and crew.</p>
         </div>
         <div style="text-align:center;margin-top:2.5rem" class="reveal"><a class="btn btn-gold frontdesk-cta-button">Get tickets / reserve a table <img class="btn-arrow-icon" src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/arrow-up-right.svg" alt="" aria-hidden="true" /></a></div>
       </div>
@@ -709,6 +709,7 @@
     const partnerCards = Array.from(document.querySelectorAll('.partner-showcase .sponsor-logo'));
     const previouslyCards = Array.from(document.querySelectorAll('.sponsor-showcase .sponsor-logo'));
     const cometLayer = document.querySelector('.comet-layer');
+    const isDesktop = () => window.matchMedia('(min-width: 901px)').matches;
     const cometTargets = [partnerCards[1] || partnerCards[0], previouslyCards[0], partnerCards[3] || partnerCards[0]];
     let cometState = { x: -30, y: window.innerHeight * .2, vx: 0, vy: 0, targetIndex: 0, lastTime: 0, pauseUntil: 0, sectionWasVisible: false, started: false, finished: false };
 
@@ -800,14 +801,31 @@
       requestAnimationFrame(animateComet);
     }
 
-    requestAnimationFrame((timestamp) => {
-      if (partnerCards.length && previouslyCards.length) {
-        const firstTarget = cardCenter(partnerCards[1] || partnerCards[0]);
-        cometState.x = firstTarget.x - 260;
-        cometState.y = firstTarget.y - 130;
-        launchAtTarget(partnerCards[1] || partnerCards[0], 13);
-        animateComet(timestamp);
+    function startCometIfDesktop() {
+      if (!isDesktop() || !partnerCards.length || !previouslyCards.length) {
+        cometOrb.style.opacity = '0';
+        return;
       }
+      const firstTarget = partnerCards[1] || partnerCards[0];
+      const firstPoint = cardCenter(firstTarget);
+      cometState.x = firstPoint.x - 260;
+      cometState.y = firstPoint.y - 130;
+      cometState.started = false;
+      cometState.finished = false;
+      cometState.sectionWasVisible = false;
+      cometState.pauseUntil = 0;
+      cometState.targetIndex = 0;
+      launchAtTarget(firstTarget, 13);
+      requestAnimationFrame(animateComet);
+    }
+
+    startCometIfDesktop();
+    window.addEventListener('resize', () => {
+      if (!isDesktop()) {
+        cometOrb.style.opacity = '0';
+        return;
+      }
+      startCometIfDesktop();
     });
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
     mobileToggle.addEventListener('click', () => {
