@@ -295,6 +295,11 @@
     .sponsor-header .gold-rule { margin: 1rem auto 1.5rem; }
     .sponsor-header h2 { margin-bottom: 0; }
     .sponsor-header p { max-width: 520px; margin: 0 auto; color: var(--muted); font-size: .95rem; }
+    .sponsor-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; max-width: 820px; margin: 0 auto 3rem; }
+    .sponsor-metrics .number { padding: 1.2rem 1rem; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.02); }
+    .sponsor-metrics .number:last-child { border-right: 1px solid rgba(255,255,255,.12); }
+    .sponsor-metrics .number strong { font-size: clamp(1.5rem, 3vw, 2.7rem); line-height: 1.1; }
+    .sponsor-metrics .number span { display: block; max-width: none; letter-spacing: .12em; }
     .sponsor-logos { overflow: hidden; }
     .sponsor-logo-track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; width: 100%; }
     .sponsor-logo { width: 100%; min-height: 112px; display: grid; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.82); background: rgba(255,255,255,.02); box-shadow: 0 4px 16px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.08); animation: none !important; }
@@ -531,6 +536,11 @@
           <div class="gold-rule"></div>
           <h2 class="display display-lg" id="sponsors-title">Sponsors &amp; Partners</h2>
           <p>Meet the partners shaping the next edition, alongside the names that made the previous one unforgettable.</p>
+        </div>
+        <div class="sponsor-metrics reveal" aria-label="2025 sponsor ROI metrics">
+          <div class="number"><strong>1,000+</strong><span>Attendees</span></div>
+          <div class="number"><strong>20+</strong><span>Countries</span></div>
+          <div class="number"><strong>5M+</strong><span>Media reach</span></div>
         </div>
         <div class="partner-showcase reveal" aria-labelledby="partners-2026-title">
           <div class="partner-showcase-header">
