@@ -236,17 +236,19 @@
     .premium-table-header { max-width: 900px; margin-bottom: 2rem; }
     .premium-table-intro { max-width: 850px; }
     .premium-table-intro h3 { margin: 0 0 1rem; color: #fff9ed; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.08; }
-    .premium-table-intro > p { margin: 0 0 1rem; color: var(--muted); font-size: .96rem; line-height: 1.75; }
+    .premium-table-intro > p { margin: 0 0 1rem; color: rgba(255,255,255,.84); font-size: 1rem; line-height: 1.8; }
     .table-reservation-details { margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.18); }
     .table-reservation-details summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0 .25rem; color: #fff9ed; cursor: pointer; font-size: .78rem; font-weight: 700; letter-spacing: .08em; list-style: none; }
     .table-reservation-details summary::-webkit-details-marker { display: none; }
-    .table-reservation-details summary::after { content: '\2304'; flex: 0 0 auto; color: var(--gold-bright); font-size: 1.4rem; line-height: 1; }
-    .table-reservation-details[open] summary::after { content: '\2303'; }
+    .table-reservation-details summary::after { content: 'See more..'; flex: 0 0 auto; color: var(--gold-bright); font-size: .72rem; line-height: 1; letter-spacing: .08em; text-transform: uppercase; }
+    .table-reservation-details[open] summary::after { content: 'See less'; }
     .table-reservation-details summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
-    .table-reservation-content { display: grid; gap: .9rem; padding: 1.2rem 0 .25rem; color: var(--muted); font-size: .9rem; line-height: 1.7; }
+    .table-reservation-content { display: grid; gap: .9rem; padding: 1.2rem 0 .25rem; color: rgba(255,255,255,.82); font-size: .96rem; line-height: 1.75; }
     .table-reservation-content h4 { color: #fff9ed; font-size: 1.15rem; }
     .table-reservation-content p { margin: 0; }
-    .table-reservation-price { color: var(--gold-bright); font-weight: 700; }
+    .table-reservation-price-row { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .table-reservation-price { margin: 0; color: var(--gold-bright); font-weight: 700; }
+    .table-reservation-book { min-height: 42px; padding: .65rem 1rem; font-size: .68rem; }
     .table-reservation-benefits { display: grid; gap: .4rem; padding: 0; list-style: none; }
     .table-reservation-benefits li::before { content: '+ '; color: var(--gold); font-weight: 700; }
 
@@ -481,9 +483,9 @@
 
     <section class="section section-dark premium-table-section" id="premium-tables">
       <div class="container">
-        <div class="section-header premium-table-header reveal"><div class="eyebrow">Corporate Executives &amp; Premium Tables</div><div class="gold-rule"></div><h2 class="display display-lg">The Executive Host Experience</h2></div>
+        <div class="section-header premium-table-header reveal"><div class="eyebrow">Corporate Executives &amp; Premium Tables</div><div class="gold-rule"></div><h2 class="display display-lg">Premium Table Reservations for executives and business leaders</h2></div>
         <div class="premium-table-intro reveal">
-          <h3>Reward the people That Made It Happen.</h3>
+          <h3>Reward the people that impacted you the most.</h3>
           <p>Give your highest-performing executives and key drivers the honor they deserve. Reserve a premium table to celebrate wins, spark new ideas, and unwind.</p>
           <p>With only 15 tables available across the entire festival, your table sits among regional CEOs, venture partners, and pioneer founders. Bring your inner circle of business peers to anchor your presence in the room.</p>
           <details class="table-reservation-details">
@@ -498,7 +500,10 @@
                 <li>Exclusive Drinks, champagne, wines &amp; spirits</li>
                 <li>Private Entry &amp; Exit</li>
               </ul>
-              <p class="table-reservation-price">NGN 2,000,000 per table of 5</p>
+              <div class="table-reservation-price-row">
+                <p class="table-reservation-price">NGN 2,000,000 per table of 5</p>
+                <a class="btn btn-gold table-reservation-book" href="https://wa.me/2349071679312" target="_blank" rel="noopener">Book your table now</a>
+              </div>
               <p><strong>Ideal for:</strong> C-Suite Hosts, Venture Capital Partners, Corporate Innovation Teams, and Enterprise Brand Sponsors.</p>
             </div>
           </details>
