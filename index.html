@@ -232,6 +232,23 @@
     .ticket-table td:last-child { width: 24%; color: rgba(17,17,17,.82); }
     .ticket-table small { display: block; margin-top: .15rem; color: rgba(17,17,17,.48); font-size: .78rem; font-weight: 400; }
     .ticket-note { margin-top: 1.3rem; color: rgba(17,17,17,.5); font-size: .78rem; }
+    .premium-table-section { border-bottom: 1px solid var(--line); }
+    .premium-table-header { max-width: 900px; margin-bottom: 2rem; }
+    .premium-table-intro { max-width: 850px; }
+    .premium-table-intro h3 { margin: 0 0 1rem; color: #fff9ed; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.08; }
+    .premium-table-intro > p { margin: 0 0 1rem; color: var(--muted); font-size: .96rem; line-height: 1.75; }
+    .table-reservation-details { margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.18); }
+    .table-reservation-details summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0 .25rem; color: #fff9ed; cursor: pointer; font-size: .78rem; font-weight: 700; letter-spacing: .08em; list-style: none; }
+    .table-reservation-details summary::-webkit-details-marker { display: none; }
+    .table-reservation-details summary::after { content: '\2304'; flex: 0 0 auto; color: var(--gold-bright); font-size: 1.4rem; line-height: 1; }
+    .table-reservation-details[open] summary::after { content: '\2303'; }
+    .table-reservation-details summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+    .table-reservation-content { display: grid; gap: .9rem; padding: 1.2rem 0 .25rem; color: var(--muted); font-size: .9rem; line-height: 1.7; }
+    .table-reservation-content h4 { color: #fff9ed; font-size: 1.15rem; }
+    .table-reservation-content p { margin: 0; }
+    .table-reservation-price { color: var(--gold-bright); font-weight: 700; }
+    .table-reservation-benefits { display: grid; gap: .4rem; padding: 0; list-style: none; }
+    .table-reservation-benefits li::before { content: '+ '; color: var(--gold); font-weight: 700; }
 
     .gallery-section { background: #111; }
     .gallery-header { max-width: 680px; }
@@ -388,6 +405,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="#experience">The vibe</a></li>
         <li><a href="#gallery">2025 gallery</a></li>
+        <li><a href="#premium-tables">Premium tables</a></li>
         <li><a href="#tickets">Tickets</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -455,26 +473,46 @@
         <div class="numbers reveal">
           <div class="number"><strong>1,000 Persons</strong><span>Curated room by design</span></div>
           <div class="number"><strong>5</strong><span>Partnership tiers</span></div>
-          <a class="number" href="#tickets"><strong>15</strong><span>Premium tables</span></a>
+          <a class="number" href="#premium-tables"><strong>15</strong><span>Premium tables</span></a>
           <div class="number"><strong>Dec 5-6</strong><span>Before the Detty December rush</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark premium-table-section" id="premium-tables">
+      <div class="container">
+        <div class="section-header premium-table-header reveal"><div class="eyebrow">Corporate Executives &amp; Premium Tables</div><div class="gold-rule"></div><h2 class="display display-lg">The Executive Host Experience</h2></div>
+        <div class="premium-table-intro reveal">
+          <h3>Reward the people That Made It Happen.</h3>
+          <p>Give your highest-performing executives and key drivers the honor they deserve. Reserve a premium table to celebrate wins, spark new ideas, and unwind.</p>
+          <p>With only 15 tables available across the entire festival, your table sits among regional CEOs, venture partners, and pioneer founders. Bring your inner circle of business peers to anchor your presence in the room.</p>
+          <details class="table-reservation-details">
+            <summary>Premium table reservation - 5 seats</summary>
+            <div class="table-reservation-content">
+              <p>Designed for corporate leaders, founders, and enterprises honoring their most critical relationships:</p>
+              <ul class="table-reservation-benefits">
+                <li>5 premium All-Access Badges for your select guests, key clients, or top talent</li>
+                <li>Dedicated Concierge &amp; Dedicated Table Service</li>
+                <li>Access to the Private Investor &amp; Founders Lounge</li>
+                <li>Corporate Logo / Brand Recognition on Hosted Table &amp; Mainstage Visuals</li>
+                <li>Exclusive Drinks, champagne, wines &amp; spirits</li>
+                <li>Private Entry &amp; Exit</li>
+              </ul>
+              <p class="table-reservation-price">NGN 2,000,000 per table of 5</p>
+              <p><strong>Ideal for:</strong> C-Suite Hosts, Venture Capital Partners, Corporate Innovation Teams, and Enterprise Brand Sponsors.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
 
     <section class="section section-ash" id="tickets">
       <div class="container">
-        <div class="section-header tickets-header reveal"><div class="eyebrow">The Tickets</div><div class="gold-rule"></div><h2 class="display display-lg">Access - three tiers, one crowd</h2>
-        <div class="reveal" style="margin: 2rem 0 2.5rem; padding: 2rem; border: 1px solid rgba(17,17,17,.12); background: rgba(255,255,255,.35); box-shadow: 0 20px 38px rgba(0,0,0,.04);">
-          <div class="eyebrow" style="margin-bottom: .8rem;">Corporate Executives &amp; Premium Tables</div>
-          <h3 style="margin: 0 0 1rem; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--ink); line-height: 1.08; letter-spacing: -.04em;">Reward the people That Made It Happen.</h3>
-          <p style="margin: 0 0 1rem; max-width: 760px; color: rgba(17,17,17,.7); font-size: 1rem; line-height: 1.75;">Give your highest-performing executives and key drivers the honor they deserve. Reserve a premium table to celebrate wins, spark new ideas, and unwind.</p>
-          <p style="margin: 0; max-width: 820px; color: rgba(17,17,17,.68); font-size: .96rem; line-height: 1.75;">With only 15 tables available across the entire festival, your table sits among regional CEOs, venture partners, and pioneer founders. Bring your inner circle of business peers to anchor your presence in the room.</p>
-        </div>
+        <div class="section-header tickets-header reveal"><div class="eyebrow">The Tickets</div><div class="gold-rule"></div><h2 class="display display-lg">Access - three tiers, one crowd</h2></div>
         <div class="ticket-table-wrap reveal">
           <table class="ticket-table">
             <thead><tr><th>Tier</th><th>Price</th><th>What's included</th><th>Purpose</th></tr></thead>
             <tbody>
-              <tr><td>Premium Table<small>15 tables · 75 seats</small></td><td>NGN 2,000,000<small>per table of 5</small></td><td>Closest to the stage, barricaded VIP section. Bottle service with champagne, Hennessy, vodka and premium spirits.</td><td>Prestige and visibility. Reserved for speakers, public figures, celebrities and major sponsors.</td></tr>
               <tr><td>VIP Cocktail<small>300 tickets</small></td><td>NGN 80,000<small>per person</small></td><td>Named cocktail table, one complimentary cocktail, headset and finger food. Standing access keeps people moving and mingling.</td><td>The networking engine.</td></tr>
               <tr><td>General Access<small>500 tickets</small></td><td>NGN 20,000<small>per person</small></td><td>Full festival grounds: stage, food trucks, games and installations. Standing only.</td><td>Volume and energy: the crowd that makes it feel alive.</td></tr>
               <tr><td>Investor Lounge</td><td>Badge only</td><td>A curated space inside the festival where investors and founders connect: same energy, higher-stakes conversation.</td><td>Strictly by invitation.</td></tr>
@@ -685,6 +723,7 @@
           <ul>
             <li><a href="#experience">The vibe</a></li>
             <li><a href="#gallery">2025 gallery</a></li>
+            <li><a href="#premium-tables">Premium tables</a></li>
             <li><a href="#tickets">Tickets</a></li>
           </ul>
         </div>
