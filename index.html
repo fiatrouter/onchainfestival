@@ -124,16 +124,16 @@
     .rave-gate::before { content: ''; position: absolute; inset: 0; opacity: .3; background: linear-gradient(rgba(240,198,92,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(240,198,92,.18) 1px, transparent 1px); background-size: 42px 42px; mask-image: radial-gradient(ellipse at center, black, transparent 78%); }
     .rave-gate::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.48)), radial-gradient(circle at center, transparent 12%, rgba(0,0,0,.5) 78%); pointer-events: none; }
     .rave-gate-art { position: absolute; inset: 5% 8%; z-index: 1; background: url('thegate.png') center / contain no-repeat; filter: drop-shadow(0 0 20px rgba(240,198,92,.14)); mask-image: radial-gradient(ellipse at center, #000 48%, rgba(0,0,0,.86) 66%, transparent 92%); transform: translate(calc(var(--cursor-x, 0) * 10px), calc(var(--cursor-y, 0) * 10px)); transition: transform .18s ease-out; pointer-events: none; }
-    .rave-gate-confetti { --strip-size: clamp(5rem, 10vw, 9rem); position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; }
+    .rave-gate-confetti { --strip-size: clamp(5rem, 10vw, 9rem); position: absolute; inset: 0; z-index: 3; overflow: hidden; pointer-events: none; }
     .rave-gate-confetti img { position: absolute; width: var(--strip-size); height: auto; opacity: .86; filter: drop-shadow(0 4px 10px rgba(0,0,0,.55)); animation: gate-strip-float var(--float-duration, 7s) ease-in-out var(--float-delay, 0s) infinite alternate; }
     .rave-gate-confetti img:nth-child(1) { top: 13%; left: 12%; --tilt: -18deg; --float-duration: 6.5s; }
     .rave-gate-confetti img:nth-child(2) { top: 17%; right: 13%; --tilt: 14deg; --float-duration: 8s; --float-delay: -2s; }
-    .rave-gate-confetti img:nth-child(3) { top: 43%; left: 5%; --tilt: 11deg; --float-duration: 7s; --float-delay: -4s; }
+    .rave-gate-confetti img:nth-child(3) { left: 2%; bottom: 3%; --tilt: -22deg; --float-duration: 7.2s; --float-delay: -3s; }
     .rave-gate-confetti img:nth-child(4) { top: 48%; right: 6%; --tilt: -16deg; --float-duration: 9s; --float-delay: -1s; }
-    .rave-gate-confetti img:nth-child(5) { bottom: 17%; left: 13%; --tilt: 16deg; --float-duration: 7.5s; --float-delay: -3s; }
+    .rave-gate-confetti img:nth-child(5) { left: 14%; bottom: 15%; --tilt: 18deg; --float-duration: 7.5s; --float-delay: -3s; }
     .rave-gate-confetti img:nth-child(6) { right: 14%; bottom: 14%; --tilt: -12deg; --float-duration: 8.5s; --float-delay: -5s; }
     .rave-gate-confetti img:nth-child(7) { top: 7%; left: 45%; --tilt: 8deg; --float-duration: 6s; --float-delay: -1.5s; }
-    .rave-gate-confetti img:nth-child(8) { right: 43%; bottom: 6%; --tilt: -9deg; --float-duration: 9.5s; --float-delay: -4.5s; }
+    .rave-gate-confetti img:nth-child(8) { right: 43%; bottom: 3%; --tilt: -9deg; --float-duration: 9.5s; --float-delay: -4.5s; }
     @keyframes gate-strip-float { to { transform: translate3d(0, -12px, 0) rotate(var(--tilt)); } }
     .rave-gate-graffiti { position: absolute; inset: 0; z-index: 2; pointer-events: none; color: rgba(240,198,92,.7); font-family: 'Chakra Petch', sans-serif; font-size: clamp(.65rem, 1.2vw, .9rem); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; text-shadow: 0 0 10px rgba(240,198,92,.5); transform: translate(calc(var(--cursor-x, 0) * -7px), calc(var(--cursor-y, 0) * -7px)); transition: transform .24s ease-out; }
     .rave-gate-graffiti::before, .rave-gate-graffiti::after, .rave-gate-graffiti span { position: absolute; opacity: .72; }
@@ -143,7 +143,7 @@
     .rave-gate-graffiti span:nth-child(1) { top: 30%; right: 14%; color: rgba(255,255,255,.72); transform: rotate(7deg); }
     .rave-gate-graffiti span:nth-child(2) { bottom: 31%; left: 13%; color: rgba(54,255,190,.8); text-shadow: 0 0 12px rgba(54,255,190,.65); transform: rotate(-8deg); }
     .rave-gate-graffiti span:nth-child(3) { top: 67%; right: 19%; color: rgba(240,198,92,.86); transform: rotate(-6deg); }
-    .rave-gate-panel { position: relative; z-index: 1; display: grid; place-items: center; width: min(560px, 100%); min-height: 280px; text-align: center; }
+    .rave-gate-panel { position: relative; z-index: 3; display: grid; place-items: center; width: min(560px, 100%); min-height: 280px; text-align: center; }
     .rave-gate-kicker { color: var(--gold-bright); font-size: .68rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; }
     .rave-gate-title { margin: 1rem 0 1.2rem; color: #fff9ed; font-size: clamp(2.2rem, 8vw, 5.2rem); line-height: .9; text-transform: uppercase; }
     .rave-gate-title span { display: block; color: var(--gold-bright); }
@@ -161,8 +161,8 @@
     .hero-content { width: 100%; padding: 9rem 0 4.5rem; text-align: center; }
     .hero-kicker { display: inline-flex; align-items: center; gap: .65rem; padding: .45rem .8rem; border: 1px solid rgba(240,198,92,.5); background: rgba(8,8,8,.38); color: var(--gold-bright); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
     .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold-bright); box-shadow: 0 0 0 6px rgba(240,198,92,.12); animation: pulse 2s infinite; }
-    .hero h1 { max-width: 950px; height: 1.84em; margin: 1.5rem auto; overflow: hidden; position: relative; text-transform: uppercase; }
-    .hero-title-line { position: absolute; inset: 0; display: block; opacity: 0; transform: translateY(110%); animation: hero-line-loop 8s cubic-bezier(.22,1,.36,1) infinite; }
+    .hero h1 { max-width: 950px; height: 1.84em; margin: 1.5rem auto; position: relative; overflow: hidden; text-transform: uppercase; }
+    .hero-title-line { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; opacity: 0; transform: translateY(18px); animation: hero-line-loop 8s cubic-bezier(.22,1,.36,1) infinite; }
     .hero-title-line + .hero-title-line { animation-delay: 4s; }
     .hero h1 em { color: var(--gold-bright); font-family: 'Bungee', sans-serif; font-weight: 400; letter-spacing: -.025em; text-transform: none; }
     .hero-copy { max-width: 540px; margin: 0 auto; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
@@ -383,13 +383,13 @@
     .footer-bottom p { color: rgba(255,255,255,.25); font-size: .78rem; }
 
     @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(240,198,92,.35); } 50% { box-shadow: 0 0 0 8px rgba(240,198,92,0); } }
-    @keyframes hero-line-loop { 0%, 39% { opacity: 1; transform: translateY(0); } 49%, 58% { opacity: 0; transform: translateY(-110%); } 58.01%, 100% { opacity: 0; transform: translateY(110%); } }
+    @keyframes hero-line-loop { 0%, 39% { opacity: 1; transform: translateY(0); } 49%, 58% { opacity: 0; transform: translateY(-18px); } 58.01%, 100% { opacity: 0; transform: translateY(18px); } }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes logo-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @media (max-width: 700px) { .comet-layer { display: none !important; } .partner-showcase-header { display: block; } .partner-showcase-header p { margin-top: .7rem; text-align: left; } .sponsor-logos, .partner-logos { overflow: hidden; } .sponsor-logo-track, .partner-logo-track { display: flex !important; width: max-content; min-width: max-content; gap: .8rem; padding-bottom: .25rem; animation: logo-marquee 18s linear infinite; will-change: transform; } .marquee-duplicate { display: grid !important; } .sponsor-logo, .partner-logo { flex: 0 0 auto; width: min(42vw, 170px); min-width: 150px; min-height: 92px; animation: none !important; } }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } .hero-title-line { opacity: 1; transform: none; animation: none; } .hero-title-line + .hero-title-line { display: none; } }
     @media (max-width: 900px) { .nav-links { display: none; } .mobile-toggle { display: block; } .nav-links.open { position: absolute; top: 4.5rem; left: 1rem; right: 1rem; display: grid; gap: 1rem; padding: 1.2rem; background: rgba(8,8,8,.96); border: 1px solid var(--line); } .tiers { grid-template-columns: repeat(3, 1fr); } .audience-grid { gap: 2rem; } .tier-mainstage { grid-column: span 3; } .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; } .off-duty-intro { display: block; } .off-duty-intro .section-header { margin-bottom: 1rem; } .off-duty-scene { display: none; } .inspo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { height: 2.15em; font-size: clamp(2.2rem, 11vw, 4.5rem); } .hero-title-line { overflow-wrap: normal; } .hero-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 2.7rem; } .hero-actions .btn { width: 100% !important; min-height: 42px; padding: .62rem .95rem; font-size: .68rem; letter-spacing: .025em; } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .off-duty-confetti { font-size: .48rem; letter-spacing: .1em; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .inspo-grid { grid-template-columns: 1fr; } .sponsor-logo { width: 150px; min-height: 92px; padding: 0; } .final-cta h2 { font-size: clamp(2.2rem, 11vw, 4rem); } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } .ticket-dialog-inner { padding: 1.5rem; } .ticket-dialog h2 { font-size: 1.8rem; } .ticket-steps { gap: .45rem; } .ticket-step { font-size: .56rem; letter-spacing: .1em; } .ticket-details-grid { grid-template-columns: 1fr; } .ticket-details-grid label:last-child { grid-column: auto; } .ticket-actions { flex-direction: column-reverse; } .ticket-actions .btn { width: 100% !important; max-width: 100%; } }
+    @media (max-width: 700px) { .container { width: min(var(--max), calc(100% - 2rem)); } .hero-content { padding: 8rem 0 3rem; } .hero h1 { height: 2.15em; font-size: clamp(2.2rem, 11vw, 4.5rem); } .hero-title-line { left: 50%; max-width: 100%; overflow-wrap: anywhere; } .hero-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 2.7rem; } .hero-actions .btn { width: 100% !important; min-height: 42px; padding: .62rem .95rem; font-size: .68rem; letter-spacing: .025em; } .hero-side-note { display: none; } .hero-meta { gap: 1.1rem; } .meta-item strong { font-size: .86rem; } .section { padding: 5.5rem 0; } .audience-grid { grid-template-columns: 1fr; } .audience-art { min-height: 330px; order: 2; } .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px 160px; } .gallery-card:first-child { grid-column: span 2; grid-row: span 1; } .numbers { grid-template-columns: 1fr 1fr; } .number:nth-child(2) { border-right: 0; } .number:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .experiences { grid-template-columns: 1fr 1fr; } .experience { min-height: 230px; padding: 1.3rem; } .off-duty-confetti { font-size: .48rem; letter-spacing: .1em; } .tiers { grid-template-columns: 1fr; } .tier { min-height: auto; } .tier-mainstage { grid-column: auto; display: block; } .tier-mainstage .tier-list { margin-top: 1.2rem; } .tier-price { margin-top: 1.2rem; } .inspo-grid { grid-template-columns: 1fr; } .sponsor-logo { width: 150px; min-height: 92px; padding: 0; } .final-cta h2 { font-size: clamp(2.2rem, 11vw, 4rem); } .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } .footer-bottom { align-items: flex-start; flex-direction: column; } .ticket-dialog-inner { padding: 1.5rem; } .ticket-dialog h2 { font-size: 1.8rem; } .ticket-steps { gap: .45rem; } .ticket-step { font-size: .56rem; letter-spacing: .1em; } .ticket-details-grid { grid-template-columns: 1fr; } .ticket-details-grid label:last-child { grid-column: auto; } .ticket-actions { flex-direction: column-reverse; } .ticket-actions .btn { width: 100% !important; max-width: 100%; } }
     @media (max-width: 430px) { .brand { font-size: .72rem; } .brand-mark { width: 38px; height: 38px; } .nav-cta { display: none; } .hero-meta { display: grid; grid-template-columns: 1fr 1fr; } .experiences { grid-template-columns: 1fr; } .experience { min-height: 190px; } }
   </style>
 </head>
@@ -460,7 +460,7 @@
           <div class="meta-item"><strong>Lagos</strong><span>Nigeria</span></div>
         </div>
       </div>
-      <div class="hero-side-note">By Onchain Festival / First edition</div>
+      <div class="hero-side-note">By Onchain Festival</div>
     </section>
 
     <div class="ticker" aria-label="Off-Duty highlights">
@@ -551,7 +551,7 @@
 
     <section class="section section-dark gallery-section" id="gallery">
       <div class="container">
-        <div class="section-header gallery-header reveal"><div class="eyebrow">2025 edition / Lagos</div><div class="gold-rule"></div><h2 class="display display-lg">They said it could not be done.</h2><p>Then December 30, 2025 happened. A look back at the people, rooms and energy that set the pace for Off-Duty 2026.</p></div>
+        <div class="section-header gallery-header reveal"><div class="eyebrow">2025 edition / Lagos</div><div class="gold-rule"></div><h2 class="display display-lg">They said it could not be done.</h2><p>Then October, 2025 happened. A look back at the people, rooms and energy that set the pace for Off-Duty 2026.</p></div>
         <div class="gallery-grid reveal">
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/v1789668172/gugua.jpg" alt="Guests exploring the 2025 exhibition" loading="lazy" decoding="async" /><figcaption>Find your people</figcaption></figure>
           <figure class="gallery-card"><img src="https://res.cloudinary.com/w4sapiim/image/upload/f_auto,q_auto,w_600/lan_0005.JPEG" alt="Guests connecting at the 2025 event" loading="lazy" decoding="async" /><figcaption>Make the room</figcaption></figure>
