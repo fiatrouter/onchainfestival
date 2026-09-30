@@ -15,6 +15,7 @@ The site records page views and clicks on `.frontdesk-cta-button` through a same
 
    `FRONTDESK_API_KEY` values beginning with `fd_pk_` are publishable keys and cannot open paid checkouts. Never put an `fd_sk_` key in frontend code.
    In Frontdesk, add `https://onchainfestival.org/api/frontdesk/webhook` as the webhook destination and copy its signing secret into `FRONTDESK_WEBHOOK_SECRET`.
+   For the `SLOWCO` ticket promo, set `TICKET_PROMO_CODE="SLOWCO"` and `TICKET_PROMO_DISCOUNT_PERCENT="10"`. Also create the matching 10% discount code in the Frontdesk event settings: checkout validates the configured code and forwards it to Frontdesk, which calculates the payable total.
 
 3. In this folder, install dependencies once:
 

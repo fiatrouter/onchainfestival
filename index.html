@@ -100,6 +100,7 @@
     .ticket-form input:focus { border-color: var(--gold-bright); background: rgba(200,150,42,.07); box-shadow: 0 0 0 3px rgba(200,150,42,.12); }
     .ticket-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .ticket-details-grid label:last-child { grid-column: 1 / -1; }
+    .ticket-promo { max-width: 360px; margin-top: 1.2rem; }
     .ticket-summary { display: grid; gap: .8rem; margin: 0; padding: 1.1rem; border: 1px solid rgba(240,198,92,.35); background: rgba(200,150,42,.07); }
     .ticket-summary-row { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: .7rem; }
     .ticket-summary-row:last-child { border-bottom: 0; padding-bottom: 0; }
@@ -695,6 +696,7 @@
         <section class="ticket-view" id="ticket-step-view">
           <p class="ticket-section-label">Choose your access</p>
           <div class="ticket-options" id="ticket-options"><p class="ticket-form-status">Loading live ticket options...</p></div>
+          <label class="ticket-promo">Promo code<input id="ticket-promo-code" name="promoCode" type="text" autocomplete="off" maxlength="40" placeholder="Enter code" /></label>
           <p class="ticket-form-status" id="ticket-selection-status" role="status"></p>
           <div class="ticket-actions"><span></span><button class="btn btn-gold" id="ticket-to-details" type="button">Enter details</button></div>
         </section>
@@ -716,6 +718,7 @@
             <div class="ticket-summary-row"><dt>Name</dt><dd id="summary-name"></dd></div>
             <div class="ticket-summary-row"><dt>Email</dt><dd id="summary-email"></dd></div>
             <div class="ticket-summary-row"><dt>Phone</dt><dd id="summary-phone"></dd></div>
+            <div class="ticket-summary-row"><dt>Promo code</dt><dd id="summary-promo"></dd></div>
           </dl>
           <p class="ticket-form-status" id="ticket-form-status" role="status"></p>
           <div class="ticket-actions"><button class="btn btn-ghost" id="ticket-back-to-details" type="button">Back</button><button class="btn btn-gold" id="ticket-submit" type="submit">Confirm &amp; continue</button></div>
@@ -1014,6 +1017,7 @@
     const ticketForm = document.getElementById('ticket-form');
     const ticketOptions = document.getElementById('ticket-options');
     const ticketStatus = document.getElementById('ticket-selection-status');
+    const ticketPromoCode = document.getElementById('ticket-promo-code');
     const confirmationStatus = document.getElementById('ticket-form-status');
     const ticketSubmit = document.getElementById('ticket-submit');
     const ticketViews = {
@@ -1099,6 +1103,7 @@
       document.getElementById('summary-name').textContent = formData.get('name');
       document.getElementById('summary-email').textContent = formData.get('email');
       document.getElementById('summary-phone').textContent = formData.get('phone') || 'Not provided';
+      document.getElementById('summary-promo').textContent = String(formData.get('promoCode') || '').trim() || 'None';
     }
 
     function resetTicketFlow() {
@@ -1162,6 +1167,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             tickets: selectedTickets,
+            promoCode: ticketPromoCode.value,
             contact: { name: formData.get('name'), email: formData.get('email'), phone: formData.get('phone') }
           })
         });
