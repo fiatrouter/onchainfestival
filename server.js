@@ -13,8 +13,8 @@ const statsToken = process.env.STATS_TOKEN;
 const frontdeskApiKey = process.env.FRONTDESK_SECRET_KEY || process.env.FRONTDESK_API_KEY;
 const frontdeskEventSlug = process.env.FRONTDESK_EVENT_SLUG;
 const frontdeskWebhookSecret = process.env.FRONTDESK_WEBHOOK_SECRET;
-const ticketPromoCode = (process.env.TICKET_PROMO_CODE || '').trim().toUpperCase();
-const ticketPromoDiscountPercent = Number(process.env.TICKET_PROMO_DISCOUNT_PERCENT || 0);
+const ticketPromoCode = (process.env.TICKET_PROMO_CODE || 'SLOWCO').trim().toUpperCase();
+const ticketPromoDiscountPercent = Number(process.env.TICKET_PROMO_DISCOUNT_PERCENT || 10);
 const frontdeskBaseUrl = 'https://api.frontdesk.africa/v1/store';
 const staticRoot = __dirname;
 
@@ -86,6 +86,17 @@ function requireFrontdeskConfiguration(response) {
   return true;
 }
 
+function resolveTicketPromo(code) {
+  const normalizedCode = typeof code === 'string' ? code.trim().toUpperCase() : '';
+  if (!normalizedCode || !ticketPromoCode || normalizedCode !== ticketPromoCode) {
+    return { error: 'That promo code is not valid.', status: 400 };
+  }
+  if (!Number.isFinite(ticketPromoDiscountPercent) || ticketPromoDiscountPercent <= 0 || ticketPromoDiscountPercent > 100) {
+    return { error: 'Promo code discount is not configured correctly.', status: 503 };
+  }
+  return { code: ticketPromoCode, discountPercent: ticketPromoDiscountPercent };
+}
+
 async function frontdeskRequest(url, options = {}) {
   const frontdeskResponse = await fetch(`${frontdeskBaseUrl}${url}`, {
     ...options,
@@ -149,6 +160,12 @@ app.get('/api/tickets/event', async (request, response) => {
   }
 });
 
+app.post('/api/tickets/promo', (request, response) => {
+  const promo = resolveTicketPromo(request.body?.promoCode);
+  if (promo.error) return response.status(promo.status).json({ error: promo.error });
+  return response.json({ code: promo.code, discountPercent: promo.discountPercent });
+});
+
 app.post('/api/tickets/checkout', async (request, response) => {
   if (!requireFrontdeskConfiguration(response)) return;
 
@@ -168,11 +185,9 @@ app.post('/api/tickets/checkout', async (request, response) => {
   if (!contact || typeof contact.name !== 'string' || !contact.name.trim() || typeof contact.email !== 'string' || !contact.email.includes('@')) {
     return response.status(400).json({ error: 'Enter your name and a valid email address.' });
   }
-  if (normalizedPromoCode && (!ticketPromoCode || normalizedPromoCode !== ticketPromoCode)) {
-    return response.status(400).json({ error: 'That promo code is not valid.' });
-  }
-  if (normalizedPromoCode && (!Number.isFinite(ticketPromoDiscountPercent) || ticketPromoDiscountPercent <= 0 || ticketPromoDiscountPercent > 100)) {
-    return response.status(503).json({ error: 'Promo code discount is not configured correctly.' });
+  if (normalizedPromoCode) {
+    const promo = resolveTicketPromo(normalizedPromoCode);
+    if (promo.error) return response.status(promo.status).json({ error: promo.error });
   }
 
   try {

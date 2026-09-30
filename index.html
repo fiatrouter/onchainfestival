@@ -91,8 +91,13 @@
     .ticket-early-bird { display: inline-block; margin-top: .55rem; color: var(--gold-bright); font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
     .ticket-early-bird::after { content: ' · Ends Oct. 10 · Prices double after'; color: rgba(255,255,255,.55); letter-spacing: .04em; }
     .ticket-option-price { display: block; margin-top: .45rem; color: var(--gold-bright); font-size: .82rem; font-weight: 700; white-space: nowrap; }
-    .ticket-option-quantity { display: flex; align-items: center; gap: .45rem; color: rgba(255,255,255,.5); font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .ticket-option-quantity input { width: 64px; min-height: 40px; padding: .55rem; text-align: center; }
+    .ticket-option-quantity { display: flex; align-items: center; gap: .5rem; color: rgba(255,255,255,.5); font-size: .72rem; font-weight: 700; }
+    .ticket-option-quantity button { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.04); color: var(--fog); cursor: pointer; }
+    .ticket-option-quantity button:hover, .ticket-option-quantity button:focus-visible { border-color: var(--gold-bright); color: var(--gold-bright); outline: 0; }
+    .ticket-option-count { min-width: 1.5rem; color: #fff9ed; text-align: center; }
+    .ticket-cart { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.15); border-bottom: 1px solid rgba(255,255,255,.15); }
+    .ticket-cart span { display: block; color: rgba(255,255,255,.5); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+    .ticket-cart strong { display: block; margin-top: .2rem; color: #fff9ed; font-size: .9rem; }
     .ticket-section-label { margin-bottom: .7rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
     .ticket-form label { display: grid; gap: .45rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
     .ticket-form label span { color: rgba(255,255,255,.38); font-weight: 400; letter-spacing: .04em; text-transform: none; }
@@ -100,7 +105,31 @@
     .ticket-form input:focus { border-color: var(--gold-bright); background: rgba(200,150,42,.07); box-shadow: 0 0 0 3px rgba(200,150,42,.12); }
     .ticket-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .ticket-details-grid label:last-child { grid-column: 1 / -1; }
-    .ticket-promo { max-width: 360px; margin-top: 1.2rem; }
+    .ticket-recipient { display: grid; gap: .7rem; border: 0; padding: 0; }
+    .ticket-recipient legend { margin-bottom: .6rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .ticket-recipient-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+    .ticket-recipient-option { display: flex !important; flex-wrap: nowrap; align-items: center; gap: .4rem !important; min-height: 42px; padding: .5rem .55rem; border: 1px solid rgba(255,255,255,.16); background: rgba(0,0,0,.28); cursor: pointer; font-size: .7rem; white-space: nowrap; }
+    .ticket-recipient-option:has(input:checked) { border-color: var(--gold-bright); background: rgba(200,150,42,.08); color: #fff9ed; }
+    .ticket-recipient-option input { flex: 0 0 14px; width: 14px; min-height: 14px; height: 14px; margin: 0; accent-color: var(--gold-bright); }
+    .ticket-guest-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .ticket-guest-fields[hidden] { display: none; }
+    .ticket-guest-fields label:first-child { grid-column: 1 / -1; }
+    .ticket-order-lines { display: grid; gap: .7rem; }
+    .ticket-order-line { display: flex; justify-content: space-between; gap: 1rem; color: #fff9ed; font-size: .82rem; }
+    .ticket-order-line span:last-child { white-space: nowrap; }
+    .ticket-promo { display: grid; grid-template-columns: minmax(0, 1fr); gap: .45rem; margin: 1.2rem 0; }
+    .ticket-promo-controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .65rem; }
+    .ticket-promo button { min-height: 48px; padding: .7rem 1rem; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.04); color: var(--fog); cursor: pointer; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .ticket-promo button:hover, .ticket-promo button:focus-visible { border-color: var(--gold-bright); color: var(--gold-bright); outline: 0; }
+    .ticket-promo-status { min-height: 1.3em; margin: -.7rem 0 1rem; color: var(--gold-bright); font-size: .76rem; }
+    .ticket-promo-status.error { color: #ff8e8e; }
+    .ticket-promo-status:empty { display: none; }
+    .ticket-order-total { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid rgba(255,255,255,.18); }
+    .ticket-order-total dd { color: var(--gold-bright); font-size: 1rem; }
+    .ticket-fee-note { margin-top: .5rem; color: rgba(255,255,255,.45); font-size: .72rem; }
+    .ticket-contact-summary { display: grid; gap: .45rem; margin-top: 1rem; color: rgba(255,255,255,.62); font-size: .78rem; }
+    .ticket-contact-summary strong { color: #fff9ed; }
+    @media (max-width: 700px) { .ticket-guest-fields { grid-template-columns: 1fr; } .ticket-guest-fields label:first-child { grid-column: auto; } }
     .ticket-summary { display: grid; gap: .8rem; margin: 0; padding: 1.1rem; border: 1px solid rgba(240,198,92,.35); background: rgba(200,150,42,.07); }
     .ticket-summary-row { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: .7rem; }
     .ticket-summary-row:last-child { border-bottom: 0; padding-bottom: 0; }
@@ -111,6 +140,8 @@
     .ticket-form label { display: grid; gap: .45rem; color: rgba(255,255,255,.58); font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
     .ticket-form label span { color: rgba(255,255,255,.38); font-weight: 400; letter-spacing: .04em; text-transform: none; }
     .ticket-form input, .ticket-form select { width: 100%; min-height: 48px; padding: .85rem 1rem; border: 1px solid rgba(255,255,255,.18); border-radius: 0; outline: 0; background: rgba(0,0,0,.48); color: var(--fog); font: inherit; transition: border-color .2s, background .2s, box-shadow .2s; }
+    .ticket-form .ticket-recipient-option { font-size: .7rem; letter-spacing: 0; text-transform: none; }
+    .ticket-form .ticket-recipient-option input[type="radio"] { flex: 0 0 14px; width: 14px; min-height: 14px; height: 14px; padding: 0; border: 0; background: transparent; }
     .ticket-form button[type="submit"] { width: 100% !important; min-height: 54px; cursor: pointer; border-radius: 0 !important; letter-spacing: .12em; }
     .ticket-form button:disabled { cursor: wait; opacity: .6; }
     .ticket-form-status { min-height: 1.3em; color: var(--gold-bright); font-size: .8rem; }
@@ -688,40 +719,58 @@
         <button class="ticket-dialog-close" id="ticket-dialog-close" type="button" aria-label="Close ticket checkout">&times;</button>
       </div>
       <div class="ticket-steps" aria-label="Checkout progress">
-        <span class="ticket-step active"><b>01</b> Ticket</span>
+        <span class="ticket-step active"><b>01</b> Tickets</span>
         <span class="ticket-step"><b>02</b> Details</span>
-        <span class="ticket-step"><b>03</b> Payment</span>
+        <span class="ticket-step"><b>03</b> Review</span>
       </div>
       <form class="ticket-form" id="ticket-form">
         <section class="ticket-view" id="ticket-step-view">
-          <p class="ticket-section-label">Choose your access</p>
+          <p class="ticket-section-label">Choose tickets</p>
           <div class="ticket-options" id="ticket-options"><p class="ticket-form-status">Loading live ticket options...</p></div>
-          <label class="ticket-promo">Promo code<input id="ticket-promo-code" name="promoCode" type="text" autocomplete="off" maxlength="40" placeholder="Enter code" /></label>
+          <div class="ticket-cart" aria-live="polite"><div><span>Admissions</span><strong id="ticket-cart-count">0 tickets</strong></div><div><span>Subtotal</span><strong id="ticket-cart-subtotal">NGN 0</strong></div></div>
           <p class="ticket-form-status" id="ticket-selection-status" role="status"></p>
-          <div class="ticket-actions"><span></span><button class="btn btn-gold" id="ticket-to-details" type="button">Enter details</button></div>
+          <div class="ticket-actions"><button class="btn btn-ghost" id="ticket-cancel-selection" type="button">Cancel</button><button class="btn btn-gold" id="ticket-to-details" type="button">Next</button></div>
         </section>
 
         <section class="ticket-view" id="details-step-view" hidden>
-          <p class="ticket-section-label">Who are we expecting?</p>
+          <p class="ticket-section-label">Your details</p>
           <div class="ticket-details-grid">
-            <label>Name<input id="ticket-name" name="name" type="text" autocomplete="name" required /></label>
-            <label>Email<input id="ticket-email" name="email" type="email" autocomplete="email" required /></label>
+            <label>Your full name<input id="ticket-name" name="name" type="text" autocomplete="name" required /></label>
+            <label>Email (for your tickets)<input id="ticket-email" name="email" type="email" autocomplete="email" required /></label>
             <label>Phone <span>(optional)</span><input id="ticket-phone" name="phone" type="tel" autocomplete="tel" /></label>
+          </div>
+          <fieldset class="ticket-recipient">
+            <legend>Who is this ticket for?</legend>
+            <div class="ticket-recipient-options">
+              <label class="ticket-recipient-option"><input type="radio" name="recipient" value="me" checked /> For me</label>
+              <label class="ticket-recipient-option"><input type="radio" name="recipient" value="guest" /> For someone else</label>
+            </div>
+          </fieldset>
+          <div class="ticket-guest-fields" id="ticket-guest-fields" hidden>
+            <label>Guest name<input id="ticket-guest-name" name="guestName" type="text" autocomplete="name" /></label>
+            <label>Guest phone <span>(optional)</span><input id="ticket-guest-phone" name="guestPhone" type="tel" autocomplete="tel" /></label>
+            <label>Guest email <span>(optional)</span><input id="ticket-guest-email" name="guestEmail" type="email" autocomplete="email" /></label>
           </div>
           <div class="ticket-actions"><button class="btn btn-ghost" id="ticket-back-to-ticket" type="button">Back</button><button class="btn btn-gold" id="ticket-to-confirm" type="button">Review order</button></div>
         </section>
 
         <section class="ticket-view" id="confirm-step-view" hidden>
-          <p class="ticket-section-label">Check every detail before continuing</p>
+          <p class="ticket-section-label">Review order</p>
+          <div class="ticket-order-lines" id="summary-ticket-lines"></div>
           <dl class="ticket-summary">
-            <div class="ticket-summary-row"><dt>Tickets</dt><dd id="summary-tickets"></dd></div>
-            <div class="ticket-summary-row"><dt>Name</dt><dd id="summary-name"></dd></div>
-            <div class="ticket-summary-row"><dt>Email</dt><dd id="summary-email"></dd></div>
-            <div class="ticket-summary-row"><dt>Phone</dt><dd id="summary-phone"></dd></div>
-            <div class="ticket-summary-row"><dt>Promo code</dt><dd id="summary-promo"></dd></div>
+            <div class="ticket-summary-row"><dt>Subtotal</dt><dd id="summary-subtotal"></dd></div>
+            <div class="ticket-summary-row" id="summary-discount-row" hidden><dt>Discount</dt><dd id="summary-discount"></dd></div>
+            <div class="ticket-summary-row ticket-order-total"><dt>Total</dt><dd id="summary-total"></dd></div>
           </dl>
+          <p class="ticket-fee-note">Any payment fees are confirmed in secure checkout.</p>
+          <div class="ticket-promo">
+            <label for="ticket-promo-code">Promo code</label>
+            <div class="ticket-promo-controls"><input id="ticket-promo-code" type="text" autocomplete="off" maxlength="40" placeholder="Enter code" /><button id="ticket-apply-promo" type="button">Apply</button></div>
+          </div>
+          <p class="ticket-promo-status" id="ticket-promo-status" role="status"></p>
+          <div class="ticket-contact-summary"><p><strong>Your details</strong></p><p id="summary-buyer"></p><p><strong>Ticket holder</strong></p><p id="summary-recipient"></p></div>
           <p class="ticket-form-status" id="ticket-form-status" role="status"></p>
-          <div class="ticket-actions"><button class="btn btn-ghost" id="ticket-back-to-details" type="button">Back</button><button class="btn btn-gold" id="ticket-submit" type="submit">Confirm &amp; continue</button></div>
+          <div class="ticket-actions"><button class="btn btn-ghost" id="ticket-back-to-details" type="button">Back</button><button class="btn btn-gold" id="ticket-submit" type="submit">Continue to payment</button></div>
         </section>
       </form>
     </div>
@@ -1018,6 +1067,10 @@
     const ticketOptions = document.getElementById('ticket-options');
     const ticketStatus = document.getElementById('ticket-selection-status');
     const ticketPromoCode = document.getElementById('ticket-promo-code');
+    const ticketPromoStatus = document.getElementById('ticket-promo-status');
+    const ticketApplyPromo = document.getElementById('ticket-apply-promo');
+    const ticketGuestFields = document.getElementById('ticket-guest-fields');
+    const ticketGuestName = document.getElementById('ticket-guest-name');
     const confirmationStatus = document.getElementById('ticket-form-status');
     const ticketSubmit = document.getElementById('ticket-submit');
     const ticketViews = {
@@ -1028,10 +1081,21 @@
     const ticketStepLabels = document.querySelectorAll('.ticket-step');
     let ticketTypesLoaded = false;
     const ticketQuantities = new Map();
+    const ticketTypesByRef = new Map();
+    let appliedPromo = null;
+
+    function getTicketPriceMinor(ticket) {
+      const price = ticket?.priceMinor ?? ticket?.prices?.find(item => item.currency === 'NGN')?.amountMinor;
+      return Number.isFinite(price) ? price : 0;
+    }
+
+    function formatNaira(amountMinor) {
+      return `NGN ${(amountMinor / 100).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
 
     function formatTicketPrice(ticket) {
-      const price = ticket.priceMinor ?? ticket.prices?.find(item => item.currency === 'NGN')?.amountMinor;
-      return Number.isFinite(price) ? ` - NGN ${(price / 100).toLocaleString()}` : '';
+      const price = getTicketPriceMinor(ticket);
+      return price ? ` - ${formatNaira(price)}` : '';
     }
 
     function getApiErrorMessage(result, fallback) {
@@ -1059,22 +1123,36 @@
         const option = document.createElement('div');
         option.className = 'ticket-option';
         option.dataset.ticketRef = ticket.ref;
-        option.innerHTML = '<span><strong class="ticket-option-name"></strong><small class="ticket-option-note"></small><small class="ticket-early-bird">Early bird</small><strong class="ticket-option-price"></strong></span><label class="ticket-option-quantity">Qty<input type="number" min="0" max="20" value="0" inputmode="numeric" aria-label="Quantity"></label>';
-        option.querySelector('.ticket-option-name').textContent = getTicketText(ticket.name || ticket.label, 'Ticket');
+        option.innerHTML = '<span><strong class="ticket-option-name"></strong><small class="ticket-option-note"></small><small class="ticket-early-bird">Early bird</small><strong class="ticket-option-price"></strong></span><div class="ticket-option-quantity"><button type="button" data-quantity-delta="-1" aria-label="Remove one ticket">-</button><output class="ticket-option-count">0</output><button type="button" data-quantity-delta="1" aria-label="Add one ticket">+</button></div>';
+        const ticketName = getTicketText(ticket.name || ticket.label, 'Ticket');
+        option.querySelector('.ticket-option-name').textContent = ticketName;
         option.querySelector('.ticket-option-note').textContent = getTicketText(ticket.description || ticket.subtitle, 'Festival access');
         option.querySelector('.ticket-option-price').textContent = formatTicketPrice(ticket).replace(' - ', '');
-        const quantityInput = option.querySelector('input');
-        quantityInput.addEventListener('input', () => updateTicketQuantity(ticket, option, quantityInput));
+        option.querySelector('[data-quantity-delta="-1"]').setAttribute('aria-label', `Remove one ${ticketName}`);
+        option.querySelector('[data-quantity-delta="1"]').setAttribute('aria-label', `Add one ${ticketName}`);
+        option.querySelectorAll('[data-quantity-delta]').forEach(button => button.addEventListener('click', () => {
+          const currentQuantity = ticketQuantities.get(ticket.ref) || 0;
+          updateTicketQuantity(ticket, option, currentQuantity + Number(button.dataset.quantityDelta));
+        }));
+        ticketTypesByRef.set(ticket.ref, ticket);
         return option;
       }));
       ticketTypesLoaded = true;
+      updateCartSummary();
     }
 
-    function updateTicketQuantity(ticket, option, quantityInput) {
-      const quantity = Number(quantityInput.value);
-      ticketQuantities.set(ticket.ref, Number.isInteger(quantity) && quantity > 0 ? quantity : 0);
-      option.classList.toggle('selected', quantity > 0);
+    function updateTicketQuantity(ticket, option, quantity) {
+      const nextQuantity = Math.max(0, Math.min(20, quantity));
+      const otherQuantity = getTotalQuantity() - (ticketQuantities.get(ticket.ref) || 0);
+      if (otherQuantity + nextQuantity > 20) {
+        ticketStatus.textContent = 'You can purchase up to 20 tickets per order.';
+        return;
+      }
+      ticketQuantities.set(ticket.ref, nextQuantity);
+      option.querySelector('.ticket-option-count').textContent = String(nextQuantity);
+      option.classList.toggle('selected', nextQuantity > 0);
       ticketStatus.textContent = '';
+      updateCartSummary();
     }
 
     function getSelectedTickets() {
@@ -1087,6 +1165,21 @@
       return getSelectedTickets().reduce((total, ticket) => total + ticket.quantity, 0);
     }
 
+    function updateCartSummary() {
+      const selectedTickets = getSelectedTickets();
+      const subtotal = selectedTickets.reduce((total, selected) => {
+        return total + getTicketPriceMinor(ticketTypesByRef.get(selected.ticketTypeRef)) * selected.quantity;
+      }, 0);
+      const discount = appliedPromo ? Math.round(subtotal * appliedPromo.discountPercent / 100) : 0;
+      const count = getTotalQuantity();
+      document.getElementById('ticket-cart-count').textContent = `${count} ${count === 1 ? 'ticket' : 'tickets'}`;
+      document.getElementById('ticket-cart-subtotal').textContent = formatNaira(subtotal);
+      document.getElementById('summary-subtotal').textContent = formatNaira(subtotal);
+      document.getElementById('summary-discount-row').hidden = !appliedPromo;
+      document.getElementById('summary-discount').textContent = `-${formatNaira(discount)}`;
+      document.getElementById('summary-total').textContent = formatNaira(subtotal - discount);
+    }
+
     function showTicketView(view) {
       Object.entries(ticketViews).forEach(([name, element]) => { element.hidden = name !== view; });
       ticketStepLabels.forEach((step, index) => step.classList.toggle('active', index <= ['ticket', 'details', 'confirm'].indexOf(view)));
@@ -1096,26 +1189,43 @@
     function updateSummary() {
       const formData = new FormData(ticketForm);
       const selectedTickets = getSelectedTickets();
-      document.getElementById('summary-tickets').textContent = selectedTickets.map(({ ticketTypeRef, quantity }) => {
-        const option = ticketOptions.querySelector(`[data-ticket-ref="${CSS.escape(ticketTypeRef)}"]`);
-        return `${option?.querySelector('.ticket-option-name')?.textContent || 'Ticket'} x${quantity}`;
-      }).join(', ');
-      document.getElementById('summary-name').textContent = formData.get('name');
-      document.getElementById('summary-email').textContent = formData.get('email');
-      document.getElementById('summary-phone').textContent = formData.get('phone') || 'Not provided';
-      document.getElementById('summary-promo').textContent = String(formData.get('promoCode') || '').trim() || 'None';
+      const lines = selectedTickets.map(({ ticketTypeRef, quantity }) => {
+        const ticket = ticketTypesByRef.get(ticketTypeRef);
+        const line = document.createElement('div');
+        line.className = 'ticket-order-line';
+        const name = document.createElement('span');
+        name.textContent = `${getTicketText(ticket?.name || ticket?.label, 'Ticket')} x${quantity}`;
+        const price = document.createElement('span');
+        price.textContent = formatNaira(getTicketPriceMinor(ticket) * quantity);
+        line.append(name, price);
+        return line;
+      });
+      document.getElementById('summary-ticket-lines').replaceChildren(...lines);
+      document.getElementById('summary-buyer').textContent = `${formData.get('name')} / ${formData.get('email')}`;
+      const recipientIsGuest = formData.get('recipient') === 'guest';
+      document.getElementById('summary-recipient').textContent = recipientIsGuest
+        ? String(formData.get('guestName') || '').trim()
+        : String(formData.get('name') || '').trim();
+      updateCartSummary();
     }
 
     function resetTicketFlow() {
       ticketQuantities.clear();
       ticketForm.reset();
       ticketStatus.textContent = '';
+      ticketPromoCode.value = '';
+      ticketPromoStatus.textContent = '';
+      ticketPromoStatus.classList.remove('error');
+      appliedPromo = null;
       confirmationStatus.textContent = '';
       ticketOptions.querySelectorAll('.ticket-option').forEach(option => {
         option.classList.remove('selected');
-        const quantityInput = option.querySelector('input');
-        if (quantityInput) quantityInput.value = '0';
+        const count = option.querySelector('.ticket-option-count');
+        if (count) count.textContent = '0';
       });
+      ticketGuestFields.hidden = true;
+      ticketGuestName.required = false;
+      updateCartSummary();
       showTicketView('ticket');
     }
 
@@ -1139,6 +1249,7 @@
     }
     document.getElementById('ticket-dialog-close').addEventListener('click', () => ticketDialog.close());
     ticketDialog.addEventListener('close', clearTicketRoute);
+    document.getElementById('ticket-cancel-selection').addEventListener('click', () => ticketDialog.close());
     document.getElementById('ticket-to-details').addEventListener('click', () => {
       const totalQuantity = getTotalQuantity();
       if (!totalQuantity) { ticketStatus.textContent = 'Choose at least one ticket to continue.'; return; }
@@ -1146,14 +1257,63 @@
       showTicketView('details');
     });
     document.getElementById('ticket-back-to-ticket').addEventListener('click', () => showTicketView('ticket'));
+    ticketForm.querySelectorAll('input[name="recipient"]').forEach(input => input.addEventListener('change', () => {
+      const isGuest = input.value === 'guest' && input.checked;
+      ticketGuestFields.hidden = !isGuest;
+      ticketGuestName.required = isGuest;
+      if (!isGuest) {
+        ticketGuestFields.querySelectorAll('input').forEach(field => { field.value = ''; });
+      }
+    }));
     document.getElementById('ticket-to-confirm').addEventListener('click', () => {
       const requiredDetails = [document.getElementById('ticket-name'), document.getElementById('ticket-email')];
+      if (ticketForm.querySelector('input[name="recipient"]:checked')?.value === 'guest') {
+        requiredDetails.push(ticketGuestName, document.getElementById('ticket-guest-email'));
+      }
       const invalidDetail = requiredDetails.find(input => !input.checkValidity());
       if (invalidDetail) { invalidDetail.reportValidity(); return; }
       updateSummary();
       showTicketView('confirm');
     });
     document.getElementById('ticket-back-to-details').addEventListener('click', () => showTicketView('details'));
+    ticketPromoCode.addEventListener('input', () => {
+      if (appliedPromo) {
+        appliedPromo = null;
+        updateCartSummary();
+      }
+      ticketPromoStatus.textContent = '';
+      ticketPromoStatus.classList.remove('error');
+    });
+    ticketApplyPromo.addEventListener('click', async () => {
+      const promoCode = ticketPromoCode.value.trim();
+      if (!promoCode) {
+        ticketPromoStatus.textContent = 'Enter a promo code.';
+        ticketPromoStatus.classList.add('error');
+        return;
+      }
+      ticketApplyPromo.disabled = true;
+      ticketPromoStatus.classList.remove('error');
+      ticketPromoStatus.textContent = 'Checking code...';
+      try {
+        const response = await fetch('/api/tickets/promo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ promoCode })
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || 'Unable to apply promo code.');
+        appliedPromo = result;
+        ticketPromoStatus.textContent = `${result.code} applied: ${result.discountPercent}% off.`;
+        updateCartSummary();
+      } catch (error) {
+        appliedPromo = null;
+        ticketPromoStatus.textContent = error.message;
+        ticketPromoStatus.classList.add('error');
+        updateCartSummary();
+      } finally {
+        ticketApplyPromo.disabled = false;
+      }
+    });
     ticketForm.addEventListener('submit', async event => {
       event.preventDefault();
       const selectedTickets = getSelectedTickets();
@@ -1167,7 +1327,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             tickets: selectedTickets,
-            promoCode: ticketPromoCode.value,
+            promoCode: appliedPromo?.code || '',
             contact: { name: formData.get('name'), email: formData.get('email'), phone: formData.get('phone') }
           })
         });
