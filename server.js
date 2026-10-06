@@ -43,6 +43,13 @@ function rateLimit(request, response, next) {
   next();
 }
 
+function getCountryCode(request) {
+  const country = request.get('x-vercel-ip-country') || request.get('cf-ipcountry');
+  return typeof country === 'string' && /^[a-z]{2}$/i.test(country) && country.toUpperCase() !== 'XX'
+    ? country.toUpperCase()
+    : null;
+}
+
 app.disable('x-powered-by');
 app.set('trust proxy', 1);
 app.use(express.json({
@@ -231,6 +238,7 @@ app.post('/api/track', rateLimit, async (request, response) => {
       visitorId,
       path: typeof pagePath === 'string' ? pagePath.slice(0, 200) : '/',
       referrer: typeof referrer === 'string' ? referrer.slice(0, 500) : null,
+      country: getCountryCode(request),
       buttonText: eventType === 'registration_click' && typeof buttonText === 'string'
         ? buttonText.slice(0, 80)
         : null,
@@ -250,31 +258,58 @@ app.get('/api/stats', async (request, response) => {
 
   const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
   try {
-    const [summary] = await events.aggregate([
+    const [stats] = await events.aggregate([
       { $match: { createdAt: { $gte: since } } },
       {
-        $group: {
-          _id: null,
-          pageViews: { $sum: { $cond: [{ $eq: ['$eventType', 'page_view'] }, 1, 0] } },
-          registrationClicks: { $sum: { $cond: [{ $eq: ['$eventType', 'registration_click'] }, 1, 0] } },
-          visitors: { $addToSet: '$visitorId' }
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          pageViews: 1,
-          registrationClicks: 1,
-          uniqueVisitors: { $size: '$visitors' }
+        $facet: {
+          summary: [
+            {
+              $group: {
+                _id: null,
+                pageViews: { $sum: { $cond: [{ $eq: ['$eventType', 'page_view'] }, 1, 0] } },
+                registrationClicks: { $sum: { $cond: [{ $eq: ['$eventType', 'registration_click'] }, 1, 0] } },
+                visitors: { $addToSet: '$visitorId' }
+              }
+            },
+            {
+              $project: {
+                _id: 0,
+                pageViews: 1,
+                registrationClicks: 1,
+                uniqueVisitors: { $size: '$visitors' }
+              }
+            }
+          ],
+          countries: [
+            { $match: { eventType: 'page_view', country: { $type: 'string' } } },
+            {
+              $group: {
+                _id: '$country',
+                pageViews: { $sum: 1 },
+                visitors: { $addToSet: '$visitorId' }
+              }
+            },
+            {
+              $project: {
+                _id: 0,
+                country: '$_id',
+                pageViews: 1,
+                uniqueVisitors: { $size: '$visitors' }
+              }
+            },
+            { $sort: { uniqueVisitors: -1, pageViews: -1, country: 1 } }
+          ]
         }
       }
     ]).toArray();
+    const summary = stats?.summary?.[0];
 
     return response.json({
       period: { from: since.toISOString(), to: new Date().toISOString() },
       pageViews: summary?.pageViews || 0,
       uniqueVisitors: summary?.uniqueVisitors || 0,
-      registrationClicks: summary?.registrationClicks || 0
+      registrationClicks: summary?.registrationClicks || 0,
+      countries: stats?.countries || []
     });
   } catch (error) {
     console.error('Stats read failed:', error.message);

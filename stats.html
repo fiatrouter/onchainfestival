@@ -17,6 +17,13 @@
     .label { color: #c9bdb1; font: 12px sans-serif; letter-spacing: .12em; text-transform: uppercase; }
     .value { display: block; font-size: 48px; margin-top: 12px; }
     #status { color: #c9bdb1; min-height: 1.5em; }
+    .country-section { margin-top: 40px; }
+    .country-section h2 { color: #e8b84b; font-size: 24px; font-weight: 400; margin-bottom: 16px; }
+    .country-table { border-collapse: collapse; width: 100%; text-align: left; }
+    .country-table th, .country-table td { border-bottom: 1px solid #6b1e2e; padding: 12px 8px; }
+    .country-table th { color: #c9bdb1; font: 12px sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .country-table td:not(:first-child), .country-table th:not(:first-child) { text-align: right; }
+    .country-empty { color: #c9bdb1; }
     @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } form { flex-direction: column; } }
   </style>
 </head>
@@ -32,10 +39,25 @@
     <div class="card"><span class="label">Page views · 30 days</span><strong class="value" id="views">-</strong></div>
     <div class="card"><span class="label">Registration clicks · 30 days</span><strong class="value" id="clicks">-</strong></div>
   </section>
+  <section class="country-section" aria-live="polite">
+    <h2>Visitors by country · 30 days</h2>
+    <table class="country-table">
+      <thead><tr><th scope="col">Country</th><th scope="col">Visitors</th><th scope="col">Page views</th></tr></thead>
+      <tbody id="country-rows"><tr><td class="country-empty" colspan="3">Load stats to see country data.</td></tr></tbody>
+    </table>
+  </section>
   <script>
+    function countryName(code) {
+      if (typeof Intl.DisplayNames === 'function') {
+        return new Intl.DisplayNames([navigator.language], { type: 'region' }).of(code) || code;
+      }
+      return code;
+    }
+
     document.getElementById('stats-form').addEventListener('submit', async function (event) {
       event.preventDefault();
       const status = document.getElementById('status');
+      const countryRows = document.getElementById('country-rows');
       status.textContent = 'Loading...';
       try {
         const response = await fetch('/api/stats', { headers: { 'x-stats-token': document.getElementById('token').value } });
@@ -45,6 +67,28 @@
         document.getElementById('visitors').textContent = stats.uniqueVisitors;
         document.getElementById('views').textContent = stats.pageViews;
         document.getElementById('clicks').textContent = stats.registrationClicks;
+        countryRows.replaceChildren();
+        if (!stats.countries.length) {
+          const row = document.createElement('tr');
+          const cell = document.createElement('td');
+          cell.colSpan = 3;
+          cell.className = 'country-empty';
+          cell.textContent = 'No country data available yet.';
+          row.append(cell);
+          countryRows.append(row);
+        } else {
+          stats.countries.forEach(function (country) {
+            const row = document.createElement('tr');
+            const name = document.createElement('td');
+            const visitors = document.createElement('td');
+            const views = document.createElement('td');
+            name.textContent = countryName(country.country);
+            visitors.textContent = country.uniqueVisitors;
+            views.textContent = country.pageViews;
+            row.append(name, visitors, views);
+            countryRows.append(row);
+          });
+        }
         status.textContent = 'Updated through ' + new Date(stats.period.to).toLocaleString();
       } catch (error) {
         status.textContent = error.message;

@@ -38,6 +38,6 @@ The site records page views and clicks on `.frontdesk-cta-button` through a same
 
 If the dashboard says `Unable to load stats`, confirm the address starts with `http://localhost:3000` and restart `npm start` after changing `.env`.
 
-The stats endpoint reports the last 30 days: unique visitors, page views, and registration CTA clicks. It stores a random browser visitor ID, event metadata, and timestamps; raw IP addresses are used only in memory for rate limiting and are not stored.
+The stats endpoint reports the last 30 days: unique visitors, page views, registration CTA clicks, and page views/unique visitors by country. Country is estimated server-side from the hosting proxy's IP-geolocation header (`x-vercel-ip-country` on Vercel or `cf-ipcountry` on Cloudflare); no raw IP address is stored by the app. Country data is unavailable on local development unless a proxy supplies one of those headers, and older events remain unassigned.
 
 Before deploying, configure HTTPS, set a long random `STATS_TOKEN`, restrict the MongoDB Atlas network access list to the hosting provider, and use a least-privilege MongoDB database user.
