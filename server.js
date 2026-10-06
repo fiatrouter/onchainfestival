@@ -28,6 +28,7 @@ const mongoClient = new MongoClient(mongoUri, {
   serverSelectionTimeoutMS: 5000
 });
 let events;
+let ticketContacts;
 
 const rateBuckets = new Map();
 function rateLimit(request, response, next) {
@@ -50,6 +51,10 @@ function getCountryCode(request) {
     : null;
 }
 
+function hasValidStatsToken(request) {
+  return Boolean(statsToken && request.get('x-stats-token') === statsToken);
+}
+
 app.disable('x-powered-by');
 app.set('trust proxy', 1);
 app.use(express.json({
@@ -65,9 +70,12 @@ async function initializeDatabase() {
   await mongoClient.connect();
   const database = mongoClient.db(databaseName);
   events = database.collection('events');
+  ticketContacts = database.collection('ticketContacts');
   await Promise.all([
     events.createIndex({ createdAt: -1 }),
-    events.createIndex({ eventType: 1, createdAt: -1 })
+    events.createIndex({ eventType: 1, createdAt: -1 }),
+    ticketContacts.createIndex({ flowId: 1 }, { unique: true }),
+    ticketContacts.createIndex({ updatedAt: -1 })
   ]);
 }
 
@@ -224,6 +232,68 @@ app.use('/api', (request, response, next) => {
   return ensureDatabase(request, response, next);
 });
 
+app.post('/api/ticket-contacts', rateLimit, async (request, response) => {
+  const { flowId, contact, guest, tickets, checkoutOpened } = request.body || {};
+  if (typeof flowId !== 'string' || !/^[\da-f]{8}-([\da-f]{4}-){3}[\da-f]{12}$/i.test(flowId)
+    || !contact || typeof contact !== 'object'
+    || typeof contact.name !== 'string' || !contact.name.trim()
+    || contact.name.trim().length > 120
+    || typeof contact.email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email.trim())
+    || contact.email.trim().length > 200
+    || (contact.phone !== undefined && typeof contact.phone !== 'string')
+    || (typeof contact.phone === 'string' && contact.phone.trim().length > 30)
+    || (checkoutOpened !== undefined && typeof checkoutOpened !== 'boolean')
+    || !Array.isArray(tickets) || !tickets.length || tickets.length > 20
+    || tickets.some(ticket => !ticket || typeof ticket.ticketTypeRef !== 'string'
+      || !ticket.ticketTypeRef.trim() || ticket.ticketTypeRef.length > 120
+      || !Number.isInteger(ticket.quantity) || ticket.quantity < 1 || ticket.quantity > 20)
+    || tickets.reduce((total, ticket) => total + ticket.quantity, 0) > 20) {
+    return response.status(400).json({ error: 'Enter valid contact details and ticket selections.' });
+  }
+
+  const guestDetails = guest && typeof guest === 'object' ? {
+    name: typeof guest.name === 'string' ? guest.name.trim() : '',
+    email: typeof guest.email === 'string' ? guest.email.trim() : '',
+    phone: typeof guest.phone === 'string' ? guest.phone.trim() : ''
+  } : null;
+  if (guestDetails && (guestDetails.name.length > 120 || guestDetails.email.length > 200
+    || guestDetails.phone.length > 30)) {
+    return response.status(400).json({ error: 'Guest details exceed the allowed length.' });
+  }
+  if (guestDetails?.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(guestDetails.email)) {
+    return response.status(400).json({ error: 'Enter a valid guest email address.' });
+  }
+
+  const update = {
+    $set: {
+      name: contact.name.trim().slice(0, 120),
+      email: contact.email.trim().slice(0, 200).toLowerCase(),
+      phone: typeof contact.phone === 'string' ? contact.phone.trim().slice(0, 30) : '',
+      guest: guestDetails,
+      tickets: tickets.map(ticket => ({
+        ticketTypeRef: ticket.ticketTypeRef.trim(),
+        quantity: ticket.quantity
+      })),
+      country: getCountryCode(request),
+      updatedAt: new Date()
+    },
+    $setOnInsert: {
+      flowId,
+      createdAt: new Date(),
+      checkoutOpened: false
+    }
+  };
+  if (checkoutOpened) update.$set.checkoutOpened = true;
+
+  try {
+    await ticketContacts.updateOne({ flowId }, update, { upsert: true });
+    return response.status(204).end();
+  } catch (error) {
+    console.error('Ticket contact save failed:', error.message);
+    return response.status(503).json({ error: 'Unable to save ticket follow-up details.' });
+  }
+});
+
 app.post('/api/track', rateLimit, async (request, response) => {
   const { eventType, visitorId, path: pagePath, referrer, buttonText } = request.body || {};
   const validEventTypes = new Set(['page_view', 'registration_click']);
@@ -252,7 +322,7 @@ app.post('/api/track', rateLimit, async (request, response) => {
 });
 
 app.get('/api/stats', async (request, response) => {
-  if (!statsToken || request.get('x-stats-token') !== statsToken) {
+  if (!hasValidStatsToken(request)) {
     return response.status(401).json({ error: 'Unauthorized' });
   }
 
@@ -314,6 +384,87 @@ app.get('/api/stats', async (request, response) => {
   } catch (error) {
     console.error('Stats read failed:', error.message);
     return response.status(503).json({ error: 'Stats unavailable' });
+  }
+});
+
+app.get('/api/stats/ticket-contacts', async (request, response) => {
+  if (!hasValidStatsToken(request)) {
+    return response.status(401).json({ error: 'Unauthorized' });
+  }
+
+  try {
+    const contacts = await ticketContacts.find({}, {
+      projection: {
+        _id: 0,
+        name: 1,
+        email: 1,
+        phone: 1,
+        guest: 1,
+        tickets: 1,
+        country: 1,
+        checkoutOpened: 1,
+        createdAt: 1,
+        updatedAt: 1
+      }
+    }).sort({ updatedAt: -1 }).limit(500).toArray();
+    return response.json({ contacts });
+  } catch (error) {
+    console.error('Ticket contact read failed:', error.message);
+    return response.status(503).json({ error: 'Ticket contacts unavailable' });
+  }
+});
+
+app.get('/api/stats/ticket-contacts.csv', async (request, response) => {
+  if (!hasValidStatsToken(request)) {
+    return response.status(401).json({ error: 'Unauthorized' });
+  }
+
+  const csvValue = value => {
+    const text = String(value ?? '');
+    const safeText = /^[\t\r ]*[=+\-@]/.test(text) ? `'${text}` : text;
+    return `"${safeText.replace(/"/g, '""')}"`;
+  };
+  try {
+    response.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    response.setHeader('Content-Disposition', 'attachment; filename="onchain-festival-ticket-contacts.csv"');
+    response.write('Name,Email,Phone,Guest name,Guest email,Guest phone,Tickets,Country,Checkout opened,First captured,Last updated\r\n');
+    const cursor = ticketContacts.find({}, {
+      projection: {
+        name: 1,
+        email: 1,
+        phone: 1,
+        guest: 1,
+        tickets: 1,
+        country: 1,
+        checkoutOpened: 1,
+        createdAt: 1,
+        updatedAt: 1
+      }
+    }).sort({ updatedAt: -1 });
+
+    for await (const contact of cursor) {
+      const row = [
+        contact.name,
+        contact.email,
+        contact.phone,
+        contact.guest?.name,
+        contact.guest?.email,
+        contact.guest?.phone,
+        (contact.tickets || []).map(ticket => `${ticket.ticketTypeRef} x${ticket.quantity}`).join('; '),
+        contact.country,
+        contact.checkoutOpened ? 'Yes' : 'No',
+        contact.createdAt?.toISOString(),
+        contact.updatedAt?.toISOString()
+      ].map(csvValue).join(',');
+      if (!response.write(`${row}\r\n`)) {
+        await new Promise(resolve => response.once('drain', resolve));
+      }
+    }
+    return response.end();
+  } catch (error) {
+    console.error('Ticket contact export failed:', error.message);
+    if (response.headersSent) return response.destroy(error);
+    return response.status(503).json({ error: 'Ticket contacts unavailable' });
   }
 });
 

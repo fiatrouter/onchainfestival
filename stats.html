@@ -24,6 +24,15 @@
     .country-table th { color: #c9bdb1; font: 12px sans-serif; letter-spacing: .1em; text-transform: uppercase; }
     .country-table td:not(:first-child), .country-table th:not(:first-child) { text-align: right; }
     .country-empty { color: #c9bdb1; }
+    .contact-section { margin-top: 48px; }
+    .contact-section h2 { color: #e8b84b; font-size: 24px; font-weight: 400; margin-bottom: 8px; }
+    .contact-section p { color: #c9bdb1; margin-bottom: 16px; }
+    .table-scroll { overflow-x: auto; }
+    .contact-table { border-collapse: collapse; min-width: 900px; width: 100%; text-align: left; }
+    .contact-table th, .contact-table td { border-bottom: 1px solid #6b1e2e; padding: 12px 8px; }
+    .contact-table th { color: #c9bdb1; font: 12px sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    #export-contacts { margin-top: 20px; }
+    #export-contacts:disabled { cursor: not-allowed; opacity: .5; }
     @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } form { flex-direction: column; } }
   </style>
 </head>
@@ -46,7 +55,25 @@
       <tbody id="country-rows"><tr><td class="country-empty" colspan="3">Load stats to see country data.</td></tr></tbody>
     </table>
   </section>
+  <section class="contact-section" aria-live="polite">
+    <h2>Ticket follow-up contacts</h2>
+    <p>Details saved after a visitor reviews their order. Only for ticket-related follow-up. Showing the latest 500; CSV export includes all records.</p>
+    <div class="table-scroll">
+      <table class="contact-table">
+        <thead><tr>
+          <th scope="col">Name / email</th><th scope="col">Phone</th>
+          <th scope="col">Guest</th><th scope="col">Guest email</th><th scope="col">Guest phone</th>
+          <th scope="col">Tickets</th><th scope="col">Country</th><th scope="col">Checkout opened</th><th scope="col">Last updated</th>
+        </tr></thead>
+        <tbody id="contact-rows"><tr><td class="country-empty" colspan="9">Load stats to see ticket contacts.</td></tr></tbody>
+      </table>
+    </div>
+    <button id="export-contacts" type="button" disabled>Export all contacts as CSV</button>
+  </section>
   <script>
+    const tokenInput = document.getElementById('token');
+    const exportContactsButton = document.getElementById('export-contacts');
+
     function countryName(code) {
       if (typeof Intl.DisplayNames === 'function') {
         return new Intl.DisplayNames([navigator.language], { type: 'region' }).of(code) || code;
@@ -54,13 +81,60 @@
       return code;
     }
 
+    function makeCell(value) {
+      const cell = document.createElement('td');
+      cell.textContent = value || '-';
+      return cell;
+    }
+
+    async function loadTicketContacts(token) {
+      const response = await fetch('/api/stats/ticket-contacts', {
+        headers: { 'x-stats-token': token }
+      });
+      if (response.status === 401) throw new Error('Invalid stats token');
+      if (!response.ok) throw new Error('Ticket contacts unavailable');
+      const result = await response.json();
+      const rows = document.getElementById('contact-rows');
+      rows.replaceChildren();
+      if (!result.contacts.length) {
+        const row = document.createElement('tr');
+        const cell = makeCell('No ticket contacts captured yet.');
+        cell.colSpan = 9;
+        cell.className = 'country-empty';
+        row.append(cell);
+        rows.append(row);
+        return;
+      }
+
+      result.contacts.forEach(function (contact) {
+        const row = document.createElement('tr');
+        const identity = document.createElement('td');
+        identity.textContent = `${contact.name} / ${contact.email}`;
+        const ticketList = (contact.tickets || []).map(ticket => `${ticket.ticketTypeRef} x${ticket.quantity}`).join(', ');
+        const updatedAt = contact.updatedAt ? new Date(contact.updatedAt).toLocaleString() : '-';
+        row.append(
+          identity,
+          makeCell(contact.phone),
+          makeCell(contact.guest?.name),
+          makeCell(contact.guest?.email),
+          makeCell(contact.guest?.phone),
+          makeCell(ticketList),
+          makeCell(contact.country ? countryName(contact.country) : ''),
+          makeCell(contact.checkoutOpened ? 'Yes' : 'No'),
+          makeCell(updatedAt)
+        );
+        rows.append(row);
+      });
+    }
+
     document.getElementById('stats-form').addEventListener('submit', async function (event) {
       event.preventDefault();
       const status = document.getElementById('status');
       const countryRows = document.getElementById('country-rows');
+      const token = tokenInput.value;
       status.textContent = 'Loading...';
       try {
-        const response = await fetch('/api/stats', { headers: { 'x-stats-token': document.getElementById('token').value } });
+        const response = await fetch('/api/stats', { headers: { 'x-stats-token': token } });
         if (response.status === 401) throw new Error('Invalid stats token');
         if (!response.ok) throw new Error('Stats server unavailable');
         const stats = await response.json();
@@ -89,9 +163,36 @@
             countryRows.append(row);
           });
         }
+        await loadTicketContacts(token);
+        exportContactsButton.disabled = false;
         status.textContent = 'Updated through ' + new Date(stats.period.to).toLocaleString();
       } catch (error) {
+        exportContactsButton.disabled = true;
         status.textContent = error.message;
+      }
+    });
+
+    exportContactsButton.addEventListener('click', async function () {
+      const status = document.getElementById('status');
+      exportContactsButton.disabled = true;
+      status.textContent = 'Preparing CSV export...';
+      try {
+        const response = await fetch('/api/stats/ticket-contacts.csv', {
+          headers: { 'x-stats-token': tokenInput.value }
+        });
+        if (response.status === 401) throw new Error('Invalid stats token');
+        if (!response.ok) throw new Error('Unable to export ticket contacts');
+        const file = URL.createObjectURL(await response.blob());
+        const link = document.createElement('a');
+        link.href = file;
+        link.download = 'onchain-festival-ticket-contacts.csv';
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(file), 1000);
+        status.textContent = 'CSV export downloaded.';
+      } catch (error) {
+        status.textContent = error.message;
+      } finally {
+        exportContactsButton.disabled = false;
       }
     });
   </script>
